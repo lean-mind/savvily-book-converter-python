@@ -1,0 +1,3 @@
+[submodule "codigo-sostenible"]
+	path = codigo-sostenible
+	url = git@github.com:carlosble/codigo-sostenible.git

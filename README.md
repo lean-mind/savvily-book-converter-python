@@ -1,3 +1,32 @@
+This project is used to convert Carlos Blé's book "Código Sostenible" to a pdf format.
+It converts markdown files using Pandoc which needs LaTeX to run.
+
+# Project contents:
+
+- _**codigo-sostenible**_ (folder): It is a submodule linked to the repository that contains the markdown files with the book.
+
+
+- _**JetBrains_Mono**_ (folder): Contains needed fonts to run the project.
+
+
+- **_output_** (folder): Contains the converted pdf files.
+
+
+- **_\*.tex_** (files): Contain the LaTeX templates with the custom styles used for the conversion.
+
+
+There are 3 different scripts to convert markdown files to pdf:
+
+- "**_process_book_by_parts.sh_**": This script converts the manuscript files to a pdf file (version to print).
+
+
+- "**_process_report_by_parts.sh_**": This script converts the manuscript files to a pdf file (digital version).
+
+
+- "**_process_cover.sh_**": This script converts the book cover image to a pdf file.
+  It is automatically run before any of the others scripts.
+
+
 # How to clone this project including the submodule
 
 Clone the repository with the command:
@@ -45,7 +74,7 @@ Go to your terminal and type the next command to install Pandoc:
 
 `brew install pandoc`
 
-Once it has been installed it, type the next command to install latex:
+Once it has been installed it, type the next command to install LaTeX:
 
 `brew install basictex`
 
@@ -77,25 +106,16 @@ You can simply double click in the font file and follow the suggested steps.
 NOTE: In case there is some other library added to the project but it has not been included in this README.md,
 when executing the command to generate the pdf with Latex the terminal will ask you to install it.
 
-# Project contents:
 
-- _**codigo-sostenible**_ (folder): It is a submodule linked to the repository that contains the markdown files with the book.
+### Known errors
 
+#### Code line separator format mismatch
 
-- _**JetBrains_Mono**_ (folder): Contains needed fonts to run the project.
+The terminal shows the following error:
 
+```Bash
+standard_init_linux.go:228: exec user process caused: no such file or directory
+```
 
-- **_output_** (folder): Contains the converted pdf files.
-
-
-- **_\*.tex_** (files): Contain the LaTeX templates with the custom styles used for the conversion. 
-
-
-There are 3 different scripts to convert markdown files to pdf:
-
-- "**_process_book_by_parts.sh_**": This script converts the manuscript files to a pdf file (version to print).
-
-- "**_process_report_by_parts.sh_**": This script converts the manuscript files to a pdf file (digital version).
-
-- "**_process_cover.sh_**": This script converts the book cover image to a pdf file. 
-It is automatically run before any of the others scripts.
+Solution: Use your favourite IDE to open the project and change the "line separator" format to LF.
+(In Intellij IDEA: find that option in the tool-bar at the bottom right of the window.

@@ -1,3 +1,18 @@
+# How to clone this project including the submodule
+
+Clone the repository with the command:
+
+`git clone git@github.com:lean-mind/codigo-sostenible-book-converter-format.git`
+
+Navigate into the root folder
+
+`cd codigo-sostenible-book-converter-format`
+
+Init and update the submodule:
+
+`git submodule update --init --recursive`
+
+
 # How to run this project
 
 ## Run with Docker (not available for MAC OS X - Apple Silicon)

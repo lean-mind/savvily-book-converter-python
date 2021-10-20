@@ -1,10 +1,6 @@
 #!/bin/sh
 
-echo "FONTSSSSS"
-ls /usr/shared/fonts/
-
 ./process_cover.sh
-
 
 cp -rf ./codigo-sostenible/manuscript/* .
 

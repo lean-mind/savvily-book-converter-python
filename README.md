@@ -21,6 +21,10 @@ It does the conversion from markdown files using Pandoc. This tool needs LaTeX t
 - ***metadata.yml***: Contains the metadata related to the book.
 
 
+- ***monochrome.theme***: Contains the theme for the epub used to convert to MOBI.
+
+
+
 There are different scripts to convert from markdown files:
 
 - "***process_book.sh***": This script converts the manuscript files to a pdf file (version to print).
@@ -30,6 +34,9 @@ There are different scripts to convert from markdown files:
 
 
 - "***process_ebook.sh***": This script converts the manuscript files to an epub file (eReaders version).
+
+
+- "***process_ebookForMOBI.sh***": This script converts the manuscript files to an epub file with monochrome theme (version used to convert to Kindle version).
 
 
 - "***process_cover.sh***": This script converts the book cover image to a pdf file.

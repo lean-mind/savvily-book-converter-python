@@ -16,12 +16,12 @@ pandoc ./codigo-sostenible/manuscript/0_pre.txt           \
        ./codigo-sostenible/manuscript/9_tipos.txt         \
        ./codigo-sostenible/manuscript/10_contexto.txt     \
        ./codigo-sostenible/manuscript/11_cierre.txt       \
-      --pdf-engine=xelatex                           \
-      --template=custom-book.tex                     \
-      --listings                                     \
-      -V documentclass=book                          \
-      -o ./output/book.pdf
+      --pdf-engine=xelatex                                \
+      --template=custom-book.tex                          \
+      --listings                                          \
+      -V documentclass=book                               \
+      -o ./output/bookWithoutCover.pdf
 
 rm -rf ./*.txt ./resources
 
-pdfunite ./output/cover.pdf ./output/book.pdf ./output/output.pdf
+pdfunite ./output/cover.pdf ./output/bookWithoutCover.pdf ./output/book.pdf

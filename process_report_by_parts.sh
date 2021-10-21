@@ -20,8 +20,8 @@ pandoc ./codigo-sostenible/manuscript/0_pre.txt           \
        --template=custom-report.tex                       \
        --listings                                         \
        -V documentclass=report                            \
-       -o ./output/book.pdf
+       -o ./output/reportWithoutCover.pdf
 
 rm -rf ./*.txt ./resources
 
-pdfunite ./output/cover.pdf ./output/book.pdf ./output/output.pdf
+pdfunite ./output/cover.pdf ./output/reportWithoutCover.pdf ./output/report.pdf

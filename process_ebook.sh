@@ -17,6 +17,6 @@ pandoc ./codigo-sostenible/manuscript/0_pre.txt                                 
        --toc                                                                              \
        --css epub.css                                                                     \
        --epub-cover-image ./codigo-sostenible/manuscript/resources/Codigo_Sostenible.png  \
-      -o ./output/ebook.epub metadata.yml
+       -o ./output/ebook.epub metadata.yml
 
 rm -rf ./*.txt ./resources

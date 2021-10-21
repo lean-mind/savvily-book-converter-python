@@ -16,12 +16,14 @@
 \setmonofont{JetBrains Mono}[Contextuals=Alternate]
 
 \pagestyle{fancy}
-%\fancyhead[LE]{prueba} % Página par izquierda LE
-%\fancyhead[LO]{xxxxxx} % Lado izquierdo del header de las páginas impares. L - Posición del header | O - Páginas impares
-%\fancyhead[RO]{}
-%\renewcommand{\sectionmark}[1]{\markright{#1}}
-%\lhead{\fancyplain{}{\rightmark}}
-%\fancyhead[L]{}
+
+\fancypagestyle{MyStyle}{%
+    \fancyhead{} %Clean headers
+    \fancyhead[RO]{\footnotesize\color{gray}\leftmark}
+    \renewcommand{\chaptermark}[1]{\markboth{\MakeUppercase{##1}}{}}
+    \fancyfoot[C]{\fontfamily{roboto} \thepage}
+}
+
 
 \renewcommand{\headrulewidth}{0pt}
 
@@ -32,15 +34,13 @@
 \renewcommand{\baselinestretch}{1.2}
 
 % Separation between paragraph
-% \setlength{\parskip}{0.5em}
 \setlength{\parskip}{0.25cm}
 
-%\renewcommand*\contentsname{Índice general}   % Rename title of table of content
 
 % Remove number of section and subsection from document
-\titleformat{\chapter}{\normalfont\Large\bfseries}{}{0pt}{}
+\titleformat{\chapter}{\normalfont\Huge\bfseries}{}{0pt}{}
 \titleformat{\section}{\normalfont\Large\bfseries}{}{0pt}{}
-\titleformat{\subsection}{\normalfont\Large\bfseries}{}{0pt}{}
+\titleformat{\subsection}{\normalfont\large\bfseries}{}{0pt}{}
 
 %% Remove number of section and subsection from table of content
 \titlecontents{chapter}[0em]                     % { <chapter|section|subsection|...> } [<left spacing>]
@@ -48,6 +48,7 @@
     {\normalfont\Large\bfseries}                 % { <numbered-entry-format }
     {}                                           % { <numberless-entry-format> }
     {\enspace\dotfill\contentspage}              % { <filler-page-format> }
+
 
 \titlecontents{section}[2em]
     {\vspace{-0.5em}}
@@ -94,13 +95,7 @@ $if(graphics)$
 \makeatother
 $endif$
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 %
 %
 % Listings
@@ -114,16 +109,14 @@ $if(listings)$
 %
 \definecolor{listing-background}{HTML}{f2f3f4}
 \definecolor{listing-rule}{HTML}{B3B2B3}
-\definecolor{listing-numbers}{HTML}{B3B2B3}
-\definecolor{listing-text-color}{HTML}{000000}
-\definecolor{listing-keyword}{HTML}{06707e}
-\definecolor{listing-keyword-2}{HTML}{3ab2c1} % additional keywords
-\definecolor{listing-keyword-3}{HTML}{3ab2c1} % additional keywords
-\definecolor{listing-identifier}{HTML}{000000}
-\definecolor{listing-string}{HTML}{000080}
+\definecolor{listing-text-color-black}{HTML}{000000}
+\definecolor{listing-keyword}{HTML}{29BEA7}
+\definecolor{listing-keyword-2}{HTML}{5283FB} % additional keywords
+\definecolor{listing-keyword-3}{HTML}{5283FB} % additional keywords
+\definecolor{listing-string}{HTML}{101B55}
 \definecolor{listing-comment}{HTML}{8E8E8E}
 
-\lstdefinestyle{eisvogel_listing_style}{
+\lstdefinestyle{leanmind_listing_style}{
     language         = java,
     $if(listings-disable-line-numbers)$
     xleftmargin      = 0.6em,
@@ -134,14 +127,14 @@ $if(listings)$
     framexleftmargin = 2.5em,
     $endif$
     backgroundcolor  = \color{listing-background},
-    basicstyle       = \color{listing-text-color}\linespread{1.0}$if(code-block-font-size)$$code-block-font-size$$else$\small$endif$\ttfamily{},
+    basicstyle       = \color{listing-text-color-black}\linespread{1.0}$if(code-block-font-size)$$code-block-font-size$$else$\footnotesize$endif$\ttfamily{},
     breaklines       = true,
     frame            = single,
     framesep         = 0.19em,
     rulecolor        = \color{listing-rule},
     frameround       = ffff,
     tabsize          = 4,
-    numberstyle      = \color{listing-numbers},
+    numberstyle      = \color{listing-comment},
     aboveskip        = 1.0em,
     belowskip        = 0.1em,
     abovecaptionskip = 0em,
@@ -150,7 +143,7 @@ $if(listings)$
     keywordstyle     = {[2]\color{listing-keyword-2}\bfseries},
     keywordstyle     = {[3]\color{listing-keyword-3}\bfseries\itshape},
     sensitive        = true,
-    identifierstyle  = \color{listing-identifier},
+    identifierstyle  = \color{listing-text-color-black},
     commentstyle     = \color{listing-comment},
     stringstyle      = \color{listing-string},
     showstringspaces = false,
@@ -158,20 +151,11 @@ $if(listings)$
     literate         =
         {á}{{\'a}}1 {é}{{\'e}}1 {í}{{\'i}}1 {ó}{{\'o}}1 {ú}{{\'u}}1
         {Á}{{\'A}}1 {É}{{\'E}}1 {Í}{{\'I}}1 {Ó}{{\'O}}1 {Ú}{{\'U}}1
-        {à}{{\`a}}1 {è}{{\'e}}1 {ì}{{\`i}}1 {ò}{{\`o}}1 {ù}{{\`u}}1
-        {À}{{\`A}}1 {È}{{\'E}}1 {Ì}{{\`I}}1 {Ò}{{\`O}}1 {Ù}{{\`U}}1
-        {ä}{{\"a}}1 {ë}{{\"e}}1 {ï}{{\"i}}1 {ö}{{\"o}}1 {ü}{{\"u}}1
-        {Ä}{{\"A}}1 {Ë}{{\"E}}1 {Ï}{{\"I}}1 {Ö}{{\"O}}1 {Ü}{{\"U}}1
-        {â}{{\^a}}1 {ê}{{\^e}}1 {î}{{\^i}}1 {ô}{{\^o}}1 {û}{{\^u}}1
-        {Â}{{\^A}}1 {Ê}{{\^E}}1 {Î}{{\^I}}1 {Ô}{{\^O}}1 {Û}{{\^U}}1
-        {œ}{{\oe}}1 {Œ}{{\OE}}1 {æ}{{\ae}}1 {Æ}{{\AE}}1 {ß}{{\ss}}1
-        {ç}{{\c c}}1 {Ç}{{\c C}}1 {ø}{{\o}}1 {å}{{\r a}}1 {Å}{{\r A}}1
         {€}{{\EUR}}1 {£}{{\pounds}}1 {«}{{\guillemotleft}}1
         {»}{{\guillemotright}}1 {ñ}{{\~n}}1 {Ñ}{{\~N}}1 {¿}{{?`}}1
         {…}{{\ldots}}1 {≥}{{>=}}1 {≤}{{<=}}1 {„}{{\glqq}}1 {“}{{\grqq}}1
         {”}{{''}}1
 }
-\lstset{style=eisvogel_listing_style}
 
 %
 % Java (Java SE 12, 2019-06-22)
@@ -180,12 +164,12 @@ $if(listings)$
     morekeywords={
         % normal keywords (without data types)
         abstract,assert,break,case,catch,class,continue,default,
-        do,else,enum,exports,extends,final,finally,for,if,implements,
+        do,else,enum,exports,extends,final,finally,for,fun, function,if,implements,
         import,instanceof,interface,module,native,new,package,private,
         protected,public,requires,return,static,strictfp,super,switch,
         synchronized,this,throw,throws,transient,try,volatile,while,
-        % var is an identifier
-        var
+        % identifiers
+        var,let,val,
     },
     morekeywords={[2] % data types
     % primitive data types
@@ -193,7 +177,7 @@ $if(listings)$
     % String
     String,
     % primitive wrapper types
-    Boolean,Byte,Character,Double,Float,Integer,Long,Short
+    Array,Boolean,Byte,Character,Double,Float,Function,Integer,Long,Short,
     % number types
     Number,AtomicInteger,AtomicLong,BigDecimal,BigInteger,DoubleAccumulator,DoubleAdder,LongAccumulator,LongAdder,Short,
     % other
@@ -210,31 +194,14 @@ $if(listings)$
     morestring   = [b]",
     morestring   = [b]',
 }
+\lstset{style=leanmind_listing_style}
 
-\lstdefinelanguage{XML}{
-    morestring      = [b]",
-    moredelim       = [s][\bfseries\color{listing-keyword}]{<}{\ },
-    moredelim       = [s][\bfseries\color{listing-keyword}]{</}{>},
-    moredelim       = [l][\bfseries\color{listing-keyword}]{/>},
-    moredelim       = [l][\bfseries\color{listing-keyword}]{>},
-    morecomment     = [s]{<?}{?>},
-    morecomment     = [s]{<!--}{-->},
-    commentstyle    = \color{listing-comment},
-    stringstyle     = \color{listing-string},
-    identifierstyle = \color{listing-identifier}
-}
 $endif$
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{document}
     \newpage
+    \pagestyle{MyStyle}
     \tableofcontents
     \newpage
     $body$

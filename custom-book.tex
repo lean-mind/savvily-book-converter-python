@@ -19,9 +19,9 @@
 
 \fancypagestyle{MyStyle}{%
     \fancyhead{} %Clean headers
-    \fancyhead[LE]{\rightmark}
-    \fancyhead[RO]{\leftmark}
-    \renewcommand{\chaptermark}[1]{\markboth{\MakeUppercase{\slshape{##1}}}{}}
+    \fancyhead[LE]{\footnotesize\color{gray}\rightmark}
+    \fancyhead[RO]{\footnotesize\color{gray}\leftmark}
+    \renewcommand{\chaptermark}[1]{\markboth{\MakeUppercase{##1}}{}}
     \renewcommand{\sectionmark}[1]{\markright{##1}}
     \fancyfoot[C]{\fontfamily{roboto} \thepage}
 }
@@ -37,12 +37,11 @@
 % Separation between paragraph
 \setlength{\parskip}{0.25cm}
 
-%\renewcommand*\contentsname{Índice general}   % Rename title of table of content
 
 % Remove number of section and subsection from document
-\titleformat{\chapter}{\normalfont\Large\bfseries}{}{0pt}{}
+\titleformat{\chapter}{\normalfont\Huge\bfseries}{}{0pt}{}
 \titleformat{\section}{\normalfont\Large\bfseries}{}{0pt}{}
-\titleformat{\subsection}{\normalfont\Large\bfseries}{}{0pt}{}
+\titleformat{\subsection}{\normalfont\large\bfseries}{}{0pt}{}
 
 %% Remove number of chapter, section and subsection from table of content
 \titlecontents{chapter}[0em]                     % { <chapter|section|subsection|...> } [<left spacing>]

@@ -1,32 +1,38 @@
-This project is used to convert Carlos Blé's book "Código Sostenible" to a pdf format.
-It converts markdown files using Pandoc which needs LaTeX to run.
+This project is used to convert Carlos Blé's book "Código Sostenible" to different formats.
+It does the conversion from markdown files using Pandoc. This tool needs LaTeX to run.
 
 # Project contents:
 
-- _**codigo-sostenible**_ (folder): It is a submodule linked to the repository that contains the markdown files with the book.
+- ***codigo-sostenible*** (folder): It is a submodule linked to the repository that contains the markdown files with the book.
 
 
-- _**JetBrains_Mono**_ (folder): Contains needed fonts to run the project.
+- ***JetBrains_Mono*** (folder): Contains needed fonts to run the project.
 
 
-- **_output_** (folder): Contains the converted files.
+- ***output*** (folder): Contains the converted files.
 
 
-- **_\*.tex_** (files): Contain the LaTeX templates with the custom styles used for the conversion.
+- ***\*.tex*** (files): Contain the LaTeX templates with the custom styles used for the conversion.
+
+
+- ***\epub.css***: Contains the style used to convert from markdown files to epub.
+
+
+- ***metadata.yml***: Contains the metadata related to the book.
 
 
 There are different scripts to convert from markdown files:
 
-- "**_process_book_by_parts.sh_**": This script converts the manuscript files to a pdf file (version to print).
+- "***process_book.sh***": This script converts the manuscript files to a pdf file (version to print).
 
 
-- "**_process_report_by_parts.sh_**": This script converts the manuscript files to a pdf file (digital version).
+- "***process_report.sh***": This script converts the manuscript files to a pdf file (digital version).
 
 
-- "**_process_ebook_by_parts.sh_**": This script converts the manuscript files to an epub file (eReaders version).
+- "***process_ebook.sh***": This script converts the manuscript files to an epub file (eReaders version).
 
 
-- "**_process_cover.sh_**": This script converts the book cover image to a pdf file.
+- "***process_cover.sh***": This script converts the book cover image to a pdf file.
   It is automatically run before any of the others scripts.
 
 
@@ -89,7 +95,7 @@ After that, apply changes with:
 
 `eval "$(/usr/libexe.ae/path-helper)"`
 
-Install with the TeX Live Manager (tlmgr) as admin the next libraries with:
+Install the next libraries with the TeX Live Manager (tlmgr) as admin:
 
 `sudo tlmgr install titlesec`
 

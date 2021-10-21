@@ -14,10 +14,9 @@ pandoc ./codigo-sostenible/manuscript/0_pre.txt                                 
        ./codigo-sostenible/manuscript/9_tipos.txt                                         \
        ./codigo-sostenible/manuscript/10_contexto.txt                                     \
        ./codigo-sostenible/manuscript/11_cierre.txt                                       \
-       --metadata title="Codigo Sostenible"                                               \
        --toc                                                                              \
        --css epub.css                                                                     \
        --epub-cover-image ./codigo-sostenible/manuscript/resources/Codigo_Sostenible.png  \
-      -o ./output/ebook.epub
+      -o ./output/ebook.epub metadata.yml
 
 rm -rf ./*.txt ./resources

@@ -1,6 +1,6 @@
 #!/bin/sh
 
-./process_cover.sh
+./process_coverBook.sh
 
 cp -rf ./codigo-sostenible/manuscript/* .
 
@@ -24,4 +24,7 @@ pandoc ./codigo-sostenible/manuscript/0_pre.txt           \
 
 rm -rf ./*.txt ./resources
 
-pdfunite ./output/cover.pdf ./output/bookWithoutCover.pdf ./output/book.pdf
+pdfunite ./output/coverBook.pdf ./output/bookWithoutCover.pdf ./output/book.pdf
+
+rm ./output/coverBook.pdf
+rm ./output/bookWithoutCover.pdf

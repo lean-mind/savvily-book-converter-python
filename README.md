@@ -56,6 +56,7 @@ Navigate into the root folder
 Init and update the submodule:
 
 `git submodule update --init --recursive`
+`git submodule foreach git pull origin master`
 
 
 # How to run this project
@@ -65,7 +66,7 @@ Init and update the submodule:
 Open your terminal in the root folder of the project (or where the _Dockerfile_ is located). 
 Type the next command to create a docker image (the image will be created from the _Dockerfile_ configuration):
 
-`docker build -t "DOCKER_IMAGE_NAME" .`
+`docker build -t "DOCKER_IMAGE_NAME" $PWD`
 
 Now, run the image specifying the entrypoint (this is the script which will make the conversion):
 

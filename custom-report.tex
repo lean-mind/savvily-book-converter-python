@@ -15,7 +15,6 @@
 
 \setmonofont{JetBrains Mono}[Contextuals=Alternate]
 
-% ToDo.Pandoc Review size with fancyheaders
 \geometry{paperwidth=17.9cm, paperheight=23.5cm}
 \geometry{left=2cm, right=2cm, top=2.5cm, bottom=2.5cm}
 
@@ -37,12 +36,14 @@
 \setlength{\parskip}{0.25cm}
 
 
-% Remove number of section and subsection from document
+% Remove number of chapter, section and subsection from document
+% From titlesec package
 \titleformat{\chapter}{\normalfont\Huge\bfseries}{}{0pt}{}
 \titleformat{\section}{\normalfont\Large\bfseries}{}{0pt}{}
 \titleformat{\subsection}{\normalfont\large\bfseries}{}{0pt}{}
 
-%% Remove number of section and subsection from table of content
+%% Remove number of chapter, section and subsection from table of content
+% From titletoc package
 \titlecontents{chapter}[0em]                     % { <chapter|section|subsection|...> } [<left spacing>]
     {\vspace{0em}}                               % { <space between above-code> }
     {\normalfont\Large\bfseries}                 % { <numbered-entry-format }
@@ -200,6 +201,9 @@ $endif$
 
 
 \begin{document}
+    \thispagestyle{empty}
+    \ThisTileWallPaper{17.9cm}{23.5cm}{./codigo-sostenible/manuscript/resources/Codigo_Sostenible.png}
+    \hspace{0em}
     \newpage
     \pagestyle{MyStyle}
     \tableofcontents

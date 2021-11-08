@@ -1,14 +1,12 @@
 #!/bin/sh
 
-cp -rf ./codigo-sostenible/manuscript/* .
+mkdir -p output && cd codigo-sostenible/manuscript
 
-chapters=$(cat Book.txt)
-
-pandoc $chapters                                          \
-       --pdf-engine=xelatex                               \
-       --template=custom-report.tex                       \
-       --listings                                         \
-       -V documentclass=report                            \
-       -o ./output/report.pdf
-
-rm -rf ./*.txt ./resources
+find . -name "[0-9]*.txt" | sort -V | xargs 			\
+pandoc   																					\
+		--pdf-engine=xelatex                    			\
+		--template=../../custom-report.tex      			\
+		--listings                              			\
+		-V documentclass=report                 			\
+		-o ./../../output/book_for_screen.pdf 				\
+&& echo "PDF for screen successfully generated"

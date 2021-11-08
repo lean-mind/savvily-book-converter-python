@@ -2,18 +2,18 @@
 
 ./pdf_cover.sh
 
-cp -rf ./codigo-sostenible/manuscript/* .
+mkdir output && cd codigo-sostenible/manuscript
 
-chapters=$(cat Book.txt)
+find . -name "[0-9]*.txt" | sort -V | xargs				\
+pandoc                                     				\
+       --pdf-engine=xelatex                				\
+       --template=../../custom-book.tex    				\
+       --listings                          				\
+       -V documentclass=book               				\
+       -o ./../../output/bookWithoutCover.pdf 		\
+&& echo "PDF for print successfully generated"
 
-pandoc $chapters                                           \
-       --pdf-engine=xelatex                                \
-       --template=custom-book.tex                          \
-       --listings                                          \
-       -V documentclass=book                               \
-       -o ./output/bookWithoutCover.pdf
-
-rm -rf ./*.txt ./resources
+cd ../../
 
 pdfunite ./output/cover.pdf ./output/bookWithoutCover.pdf ./output/book.pdf
 

@@ -67,22 +67,18 @@ Init and update the submodule:
 Open your terminal in the root folder of the project (or where the _Dockerfile_ is located). 
 Type the next command to create a docker image (the image will be created from the _Dockerfile_ configuration):
 
-`docker build -t "DOCKER_IMAGE_NAME" $PWD`
+`docker build -t "docker-book-generator" $PWD`
 
-Now, run the image specifying the entrypoint (this is the script which will make the conversion):
+Now, simply run `./generate.sh` with one of the following flags:
 
-
-Command for UNIX:
-```Bash
-docker run --rm --volume $PWD:/data --entrypoint "./nameOfTheScript.sh" DOCKER_IMAGE_NAME
+```
+-p or --print --> Generates a pdf for printing
+-s or --screen --> Generates a pdf for screen viewing
+-e or --epub --> Generates an epub
+-a or --all --> Generates an epub for mobi conversion
 ```
 
-Command for Windows:
-```Bash
-docker run --rm --volume $PWD\:/data --entrypoint "./nameOfTheScript.sh" DOCKER_IMAGE_NAME
-```
-
-
+NOTE: This script will not work from outside the project root nor if the docker image has a different name.
 
 ## Run without Docker
 
@@ -117,7 +113,13 @@ Install the next libraries with the TeX Live Manager (tlmgr) as admin:
 If you haven't got the font Jetbrains Mono, you need to install it. 
 You can simply double click in the font file and follow the suggested steps.
 
-### Run the script to start the conversion with:
+### Run the script to start the conversion
+
+You'll first have to create the `output` directory:
+
+`mkdir -p output`
+
+Now choose the script that suits your needs and run it!
 
 `./nameOfTheScript.sh`
 

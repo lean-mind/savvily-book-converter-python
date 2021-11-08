@@ -1,6 +1,6 @@
 #!/bin/sh
 
-mkdir -p output && cd codigo-sostenible/manuscript
+cd codigo-sostenible/manuscript
 
 find . -name "[0-9]*.txt" | sort -V | xargs 												\
 pandoc 																															\

@@ -117,15 +117,10 @@ $if(listings)$
 
 
 \lstdefinestyle{leanmind_listing_style}{
+    numbers          = none,
     language         = java,
-    $if(listings-disable-line-numbers)$
     xleftmargin      = 0.6em,
     framexleftmargin = 0.4em,
-    $else$
-    numbers          = left,
-    xleftmargin      = 2.7em,
-    framexleftmargin = 2.5em,
-    $endif$
     basicstyle       = \color{listing-text-color}\linespread{1.0}$if(code-block-font-size)$$code-block-font-size$$else$\footnotesize$endif$\ttfamily{},
     breaklines       = true,
     frame            = single,

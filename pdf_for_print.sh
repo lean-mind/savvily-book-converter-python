@@ -8,5 +8,6 @@ pandoc                                     				\
        --template=../../custom-book.tex    				\
        --listings                          				\
        -V documentclass=book               				\
-       -o ./../../output/book_for_print.pdf 			\
+       -f markdown-implicit_figures               \
+       -o ./../../output/book_for_print.pdf 			        \
 && echo "PDF for print successfully generated"

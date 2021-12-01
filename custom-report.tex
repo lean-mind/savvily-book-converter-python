@@ -104,7 +104,6 @@ $endif$
 %
 
 $if(listings)$
-
 %
 % general listing colors
 %
@@ -190,9 +189,15 @@ $if(listings)$
     morestring   = [b]",
     morestring   = [b]',
 }
+
 \lstset{style=leanmind_listing_style}
 
+% Code block page break
+\usepackage{etoolbox}
+\BeforeBeginEnvironment{lstlisting}{\par\noindent\begin{minipage}{\linewidth}}
+\AfterEndEnvironment{lstlisting}{\end{minipage}\par\addvspace{\topskip}}
 $endif$
+
 
 
 \begin{document}

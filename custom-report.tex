@@ -4,7 +4,6 @@
 \usepackage{titlesec}
 \usepackage{titletoc}
 \usepackage{color}
-\usepackage{listings}
 \usepackage{geometry}
 \usepackage{graphicx}
 \usepackage{wallpaper}
@@ -116,6 +115,8 @@ $if(listings)$
 \definecolor{listing-string}{HTML}{101B55}
 \definecolor{listing-comment}{HTML}{8E8E8E}
 
+\usepackage[most]{tcolorbox}
+\usepackage{listings}
 \lstdefinestyle{leanmind_listing_style}{
     numbers          = none,
     language         = java,
@@ -195,6 +196,15 @@ $if(listings)$
 % Code block page break
 \BeforeBeginEnvironment{lstlisting}{\par\noindent\begin{minipage}{\linewidth}}
 \AfterEndEnvironment{lstlisting}{\end{minipage}\par\addvspace{\topskip}}
+
+% Code block tag title
+\newtcolorbox{mybox}{ title = {title}, fonttitle=\sffamily\bfseries,
+  listing only, label = lst:json, colframe = yellow!50!black,
+  colback = yellow!10, enhanced,
+  attach boxed title to top left = {xshift=2em, yshift=-1.5ex} }
+
+\BeforeBeginEnvironment{minipage}{\par\noindent\begin{mybox}}
+\AfterEndEnvironment{minipage}{\end{mybox}\par\addvspace{\topskip}}
 $endif$
 
 

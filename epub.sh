@@ -2,8 +2,7 @@
 
 cd codigo-sostenible/manuscript
 
-find . -name "[0-9]*.txt" | sort -V | xargs               \
-  pandoc                                                  \
+pandoc .tempBook\
     --toc                                                 \
     --css ../../epub.css                                  \
     --epub-cover-image ./resources/Codigo_Sostenible.png  \

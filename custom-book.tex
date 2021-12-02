@@ -12,7 +12,8 @@
 \usepackage[T1]{fontenc}
 \usepackage[sfdefault]{roboto}
 \usepackage[spanish]{babel}
-
+\usepackage{caption}
+\usepackage[most]{tcolorbox}
 
 \setmonofont{JetBrains Mono}[Contextuals=Alternate]
 
@@ -117,13 +118,14 @@ $if(listings)$
 
 
 \lstdefinestyle{leanmind_listing_style}{
+    title            = ,
     numbers          = none,
     language         = java,
     xleftmargin      = 0.6em,
     framexleftmargin = 0.4em,
     basicstyle       = \color{listing-text-color}\linespread{1.0}$if(code-block-font-size)$$code-block-font-size$$else$\footnotesize$endif$\ttfamily{},
     breaklines       = true,
-    frame            = single,
+    frame            = none,
     framesep         = 0.19em,
     rulecolor        = \color{listing-rule},
     frameround       = ffff,
@@ -131,14 +133,27 @@ $if(listings)$
     numberstyle      = \color{listing-comment},
     aboveskip        = 1.0em,
     belowskip        = 0.1em,
-    abovecaptionskip = 0em,
-    belowcaptionskip = 1.0em,
+    abovecaptionskip = -2em,
+    belowcaptionskip = -1em, % Gap between title and code
+    linewidth        = 37em,
     keywordstyle     = {\color{listing-text-color-black}\bfseries},
     keywordstyle     = {[2]\color{listing-text-color-black}\bfseries},
     keywordstyle     = {[3]\color{listing-text-color-black}\bfseries\itshape},
     sensitive        = true,
     commentstyle     = \color{listing-comment},
     showstringspaces = false,
+    identifierstyle  = \color{listing-text-color-black},
+    showstringspaces = false,
+    stepnumber       = 1,
+    numbersep        = 5pt,
+    extendedchars    = true,
+    captionpos       = t,
+    %    mathescape      = true,
+    showspaces       = false,
+    showtabs         = false,
+    framexrightmargin = 17pt,
+    framexbottommargin = 5pt,
+    framextopmargin  = 5pt,
     escapeinside     = {/*@}{@*/}, % Allow LaTeX inside these special comments
     literate         =
         {á}{{\'a}}1 {é}{{\'e}}1 {í}{{\'i}}1 {ó}{{\'o}}1 {ú}{{\'u}}1
@@ -192,6 +207,25 @@ $if(listings)$
 \BeforeBeginEnvironment{lstlisting}{\par\noindent\begin{minipage}{\linewidth}}
 \AfterEndEnvironment{lstlisting}{\end{minipage}\par\addvspace{\topskip}}
 
+% Code block tag title
+\newtcolorbox{mybox}{
+    fonttitle=\sffamily\bfseries,
+    listing only,
+    label = lst:json,
+    colframe = listing-rule,
+    enhanced,
+    left = 0mm,
+    right = 0mm,
+    bottom = 0mm,
+    arc = 0mm,
+    boxrule = 0.3mm
+}
+
+\BeforeBeginEnvironment{minipage}{\par\noindent\begin{mybox}}
+\AfterEndEnvironment{minipage}{\end{mybox}\par\addvspace{\topskip}}
+
+\DeclareCaptionFormat{listing}{{\textwidth+17pt\relax}\vskip1pt#1#2#3}
+\captionsetup[lstlisting]{format=listing, singlelinecheck=false, labelformat={empty}, margin=0pt, font={tt, scriptsize}, labelsep=space, labelfont=bf, justification=raggedleft}
 
 $endif$
 

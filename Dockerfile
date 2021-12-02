@@ -1,7 +1,7 @@
 FROM pandoc/latex:latest
 
 # Install latex libraries
-RUN tlmgr update --self && tlmgr install titlesec && tlmgr install wallpaper && tlmgr install roboto && tlmgr install incgraph
+RUN tlmgr update --self && tlmgr install titlesec && tlmgr install wallpaper && tlmgr install roboto && tlmgr install incgraph && tlmgr install tcolorbox && tlmgr install environ 
 RUN apk add --no-cache poppler-utils
 
 # Install JetBrains Mono font

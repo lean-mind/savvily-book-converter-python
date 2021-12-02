@@ -4,7 +4,6 @@
 \usepackage{titlesec}
 \usepackage{titletoc}
 \usepackage{color}
-\usepackage{listings}
 \usepackage{geometry}
 \usepackage{graphicx}
 \usepackage{wallpaper}
@@ -12,6 +11,7 @@
 \usepackage[T1]{fontenc}
 \usepackage[sfdefault]{roboto}
 \usepackage[spanish]{babel}
+\usepackage{caption}
 
 \setmonofont{JetBrains Mono}[Contextuals=Alternate]
 
@@ -111,20 +111,21 @@ $if(listings)$
 \definecolor{listing-rule}{HTML}{B3B2B3}
 \definecolor{listing-text-color-black}{HTML}{000000}
 \definecolor{listing-keyword}{HTML}{29BEA7}
+\definecolor{listing-language}{HTML}{8F8E8F}
 \definecolor{listing-keyword-2}{HTML}{5283FB} % additional keywords
 \definecolor{listing-keyword-3}{HTML}{5283FB} % additional keywords
 \definecolor{listing-string}{HTML}{101B55}
 \definecolor{listing-comment}{HTML}{8E8E8E}
 
+\usepackage[most]{tcolorbox}
+\usepackage{listings}
 \lstdefinestyle{leanmind_listing_style}{
+    title            = ,
     numbers          = none,
     language         = java,
-    xleftmargin      = 0.6em,
-    framexleftmargin = 0.4em,
-    backgroundcolor  = \color{listing-background},
     basicstyle       = \color{listing-text-color-black}\linespread{1.0}$if(code-block-font-size)$$code-block-font-size$$else$\footnotesize$endif$\ttfamily{},
     breaklines       = true,
-    frame            = single,
+    frame            = none,
     framesep         = 0.19em,
     rulecolor        = \color{listing-rule},
     frameround       = ffff,
@@ -132,8 +133,9 @@ $if(listings)$
     numberstyle      = \color{listing-comment},
     aboveskip        = 1.0em,
     belowskip        = 0.1em,
-    abovecaptionskip = 0em,
-    belowcaptionskip = 1.0em,
+    abovecaptionskip = -2em,
+    belowcaptionskip = -1em, % Gap between title and code
+    linewidth        = 37em,
     keywordstyle     = {\color{listing-keyword}\bfseries},
     keywordstyle     = {[2]\color{listing-keyword-2}\bfseries},
     keywordstyle     = {[3]\color{listing-keyword-3}\bfseries\itshape},
@@ -142,6 +144,16 @@ $if(listings)$
     commentstyle     = \color{listing-comment},
     stringstyle      = \color{listing-string},
     showstringspaces = false,
+    stepnumber       = 1,
+    numbersep        = 5pt,
+    extendedchars    = true,
+    captionpos       = t,
+%    mathescape      = true,
+    showspaces       = false,
+    showtabs         = false,
+    framexrightmargin = 17pt,
+    framexbottommargin = 5pt,
+    framextopmargin  = 5pt,
     escapeinside     = {/*@}{@*/}, % Allow LaTeX inside these special comments
     literate         =
         {á}{{\'a}}1 {é}{{\'e}}1 {í}{{\'i}}1 {ó}{{\'o}}1 {ú}{{\'u}}1
@@ -195,9 +207,28 @@ $if(listings)$
 % Code block page break
 \BeforeBeginEnvironment{lstlisting}{\par\noindent\begin{minipage}{\linewidth}}
 \AfterEndEnvironment{lstlisting}{\end{minipage}\par\addvspace{\topskip}}
+
+% Code block tag title
+\newtcolorbox{mybox}{
+  fonttitle=\sffamily\bfseries,
+  listing only,
+  label = lst:json,
+  colframe = listing-rule,
+  colback = listing-background,
+  enhanced,
+  left = 0mm,
+  right = 0mm,
+  bottom = 0mm,
+  arc = 0mm,
+  boxrule = 0.3mm
+}
+
+\BeforeBeginEnvironment{minipage}{\par\noindent\begin{mybox}}
+\AfterEndEnvironment{minipage}{\end{mybox}\par\addvspace{\topskip}}
+
+\DeclareCaptionFormat{listing}{{\textwidth+17pt\relax}\vskip1pt#1#2#3}
+\captionsetup[lstlisting]{format=listing, singlelinecheck=false, labelformat={empty}, margin=0pt, font={tt ,it, scriptsize, color=listing-language}, labelsep=space, labelfont=bf, justification=raggedleft}
 $endif$
-
-
 
 \begin{document}
     \thispagestyle{empty}

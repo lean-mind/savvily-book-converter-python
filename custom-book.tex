@@ -112,6 +112,7 @@ $if(listings)$
 % general listing colors
 %
 \definecolor{listing-rule}{HTML}{B3B2B3}
+\definecolor{listing-language}{HTML}{8F8E8F}
 \definecolor{listing-comment}{HTML}{989898}
 \definecolor{listing-text-color}{HTML}{3a3a3a}
 \definecolor{listing-text-color-black}{HTML}{000000}
@@ -225,7 +226,7 @@ $if(listings)$
 \AfterEndEnvironment{minipage}{\end{mybox}\par\addvspace{\topskip}}
 
 \DeclareCaptionFormat{listing}{{\textwidth+17pt\relax}\vskip1pt#1#2#3}
-\captionsetup[lstlisting]{format=listing, singlelinecheck=false, labelformat={empty}, margin=0pt, font={tt, scriptsize}, labelsep=space, labelfont=bf, justification=raggedleft}
+\captionsetup[lstlisting]{format=listing, singlelinecheck=false, labelformat={empty}, margin=0pt, font={tt ,it, scriptsize, color=listing-language}, labelsep=space, labelfont=bf, justification=raggedleft}
 
 $endif$
 

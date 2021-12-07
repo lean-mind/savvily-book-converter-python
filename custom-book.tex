@@ -113,6 +113,7 @@ $if(listings)$
 %
 % general listing colors
 %
+\definecolor{listing-background}{HTML}{F5F5F5}
 \definecolor{listing-rule}{HTML}{B3B2B3}
 \definecolor{listing-language}{HTML}{8F8E8F}
 \definecolor{listing-comment}{HTML}{989898}
@@ -128,15 +129,15 @@ $if(listings)$
     framexleftmargin = 0.4em,
     basicstyle       = \color{listing-text-color}\linespread{1.0}$if(code-block-font-size)$$code-block-font-size$$else$\footnotesize$endif$\ttfamily{},
     breaklines       = true,
-    frame            = none,
-    framesep         = 0.19em,
+    frame            = lines,
     rulecolor        = \color{listing-rule},
+    framesep         = 0.19em,
     frameround       = ffff,
     tabsize          = 4,
     numberstyle      = \color{listing-comment},
     aboveskip        = 1.0em,
     belowskip        = 0.1em,
-    abovecaptionskip = -2em,
+    abovecaptionskip = 0em,
     belowcaptionskip = -1em, % Gap between title and code
     linewidth        = 37em,
     keywordstyle     = {\color{listing-text-color-black}\bfseries},
@@ -205,27 +206,6 @@ $if(listings)$
     morestring   = [b]',
 }
 \lstset{style=leanmind_listing_style}
-
-% Code block page break
-\BeforeBeginEnvironment{lstlisting}{\par\noindent\begin{minipage}{\linewidth}}
-\AfterEndEnvironment{lstlisting}{\end{minipage}\par\addvspace{\topskip}}
-
-% Code block tag title
-\newtcolorbox{mybox}{
-    fonttitle=\sffamily\bfseries,
-    listing only,
-    label = lst:json,
-    colframe = listing-rule,
-    enhanced,
-    left = 0mm,
-    right = 0mm,
-    bottom = 0mm,
-    arc = 0mm,
-    boxrule = 0.3mm
-}
-
-\BeforeBeginEnvironment{minipage}{\par\noindent\begin{mybox}}
-\AfterEndEnvironment{minipage}{\end{mybox}\par\addvspace{\topskip}}
 
 \DeclareCaptionFormat{listing}{{\textwidth+17pt\relax}\vskip1pt#1#2#3}
 \captionsetup[lstlisting]{format=listing, singlelinecheck=false, labelformat={empty}, margin=0pt, font={tt ,it, scriptsize, color=listing-language}, labelsep=space, labelfont=bf, justification=raggedleft}

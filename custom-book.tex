@@ -13,7 +13,6 @@
 \usepackage[sfdefault]{roboto}
 \usepackage[spanish]{babel}
 \usepackage{caption}
-\usepackage[most]{tcolorbox}
 \usepackage[bottom]{footmisc}
 \usepackage{emptypage}
 
@@ -26,15 +25,16 @@
 \pagestyle{fancy}
 
 \fancypagestyle{MyStyle}{%
-    \fancyhead{} %Clean headers
+    \fancyhf{} %Clean headers
     \fancyhead[LE]{\footnotesize\color{gray}\rightmark}
     \fancyhead[RO]{\footnotesize\color{gray}\leftmark}
     \renewcommand{\chaptermark}[1]{\markboth{\MakeUppercase{##1}}{}}
     \renewcommand{\sectionmark}[1]{\markright{##1}}
-    \fancyfoot[C]{\fontfamily{roboto} \thepage}
+    \fancyfoot[C]{\fontfamily{\sfdefault} \thepage}
 }
 
 \renewcommand{\headrulewidth}{0pt}
+\renewcommand*{\thepage}{\footnotesize\arabic{page}}
 
 % Separation between lines
 \renewcommand{\baselinestretch}{1.2}

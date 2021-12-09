@@ -49,7 +49,7 @@
 % From titletoc package
 \titlecontents{chapter}[0em]                     % { <chapter|section|subsection|...> } [<left spacing>]
     {\vspace{0em}}                               % { <space between above-code> }
-    {\normalfont\Large\bfseries}                 % { <numbered-entry-format }
+    {\normalfont\bfseries}                       % { <numbered-entry-format }
     {}                                           % { <numberless-entry-format> }
     {\enspace\dotfill\contentspage}              % { <filler-page-format> }
 
@@ -72,6 +72,24 @@
 % remove paragraph indention
 %
 \setlength{\parindent}{0pt}
+
+\usepackage{tocloft}
+\renewcommand\cftdotsep{5}
+\setlength{\cftsecindent}{-8pt}% Indent for \section
+\setlength{\cftsubsecindent}{4pt}% Indent for \subsection
+
+\makeatletter
+\renewcommand{\cftchappresnum}{\begin{lrbox}{\@tempboxa}}
+\renewcommand{\cftchapaftersnum}{\end{lrbox}}
+\makeatother
+\makeatletter
+\renewcommand{\cftsecpresnum}{\begin{lrbox}{\@tempboxa}}
+\renewcommand{\cftsecaftersnum}{\end{lrbox}}
+\makeatother
+\makeatletter
+\renewcommand{\cftsubsecpresnum}{\begin{lrbox}{\@tempboxa}}
+\renewcommand{\cftsubsecaftersnum}{\end{lrbox}}
+\makeatother
 
 
 % code to insert to fix environment Shaded undefined issue with

@@ -148,14 +148,14 @@ $if(listings)$
     breaklines       = true,
     frame            = lines,
     rulecolor        = \color{listing-rule},
-    framesep         = 0.19em,
+    framesep         = 1.3em,
     frameround       = ffff,
     tabsize          = 4,
     numberstyle      = \color{listing-comment},
     aboveskip        = 1.0em,
     belowskip        = 0.1em,
     abovecaptionskip = 0em,
-    belowcaptionskip = -1em, % Gap between title and code
+    belowcaptionskip = -1.3em, % Gap between title and code
     linewidth        = 37em,
     keywordstyle     = {\color{listing-text-color-black}\bfseries},
     keywordstyle     = {[2]\color{listing-text-color-black}\bfseries},
@@ -225,7 +225,16 @@ $if(listings)$
 \lstset{style=leanmind_listing_style}
 
 \DeclareCaptionFormat{listing}{{\textwidth+17pt\relax}\vskip1pt#1#2#3}
-\captionsetup[lstlisting]{format=listing, singlelinecheck=false, labelformat={empty}, margin=0pt, font={tt ,it, scriptsize, color=listing-language}, labelsep=space, labelfont=bf, justification=raggedleft}
+\captionsetup[lstlisting]{
+    format=listing,
+    singlelinecheck=false,
+    labelformat={empty},
+    margin=0pt,
+    font={tt, it, scriptsize, color=listing-language},
+    labelsep=space,
+    labelfont=bf,
+    justification=raggedleft
+}
 
 $endif$
 

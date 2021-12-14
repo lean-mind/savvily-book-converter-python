@@ -3,8 +3,8 @@
 cd codigo-sostenible/manuscript
 
 # Prepare book beginning and ending pages separately
-pdflatex -output-directory ./../../output ../../starting.tex 
-pdflatex -output-directory ./../../output ../../ending.tex 
+pdflatex -output-directory ./../../output ../../print/starting.tex
+pdflatex -output-directory ./../../output ../../print/ending.tex
 rm ../../output/*.log ../../output/*.aux
 
 # Prepare markdown for processing
@@ -20,7 +20,7 @@ sed -Ee 's:(^#):\n\1:' \
 # Run Pandoc on stdin
 pandoc \
     --pdf-engine=xelatex                       \
-    --template=../../custom-book.tex           \
+    --template=../../print/custom-book.tex           \
     --listings                                 \
     -V documentclass=book                      \
     -f markdown-implicit_figures               \

@@ -3,8 +3,8 @@
 cd codigo-sostenible/manuscript
 
 # Prepare book beginning and ending pages separately
-pdflatex -output-directory ./../../output ../../print/starting.tex
-pdflatex -output-directory ./../../output ../../print/ending.tex
+xelatex -output-directory ./../../output ../../print/starting.tex
+xelatex -output-directory ./../../output ../../print/ending.tex
 rm ../../output/*.log ../../output/*.aux
 
 # Prepare markdown for processing

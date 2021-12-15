@@ -1,11 +1,12 @@
 #!/bin/sh
 
+mkdir output/tmp
 cd codigo-sostenible/manuscript
 
 # Prepare book beginning and ending pages separately
-xelatex -output-directory ./../../output ../../print/starting.tex
-xelatex -output-directory ./../../output ../../print/ending.tex
-rm ../../output/*.log ../../output/*.aux
+xelatex -output-directory ./../../output/tmp ../../print/starting.tex
+xelatex -output-directory ./../../output/tmp ../../print/copyright.tex
+#xelatex -output-directory ./../../output/tmp ../../print/ending.tex
 
 # Prepare markdown for processing
 
@@ -24,9 +25,10 @@ pandoc \
     --listings                                 \
     -V documentclass=book                      \
     -f markdown-implicit_figures               \
-    -o ./../../output/tmp_book_for_print.pdf       \
-&& echo "PDF for print successfully generated"
+    -o ./../../output/tmp/tmp_book_for_print.pdf
 
-pdfunite ./../../output/starting.pdf ./../../output/tmp_book_for_print.pdf ./../../output/ending.pdf ./../../output/book_for_print.pdf
+pandoc --pdf-engine=xelatex --template=../../print/ending.tex --listings -V documentclass=book -f markdown-implicit_figures -o ./../../output/tmp/ending.pdf agradecimientos.txt autor.txt bibliografia.txt savvily.txt
 
-rm ../../output/starting.pdf ../../output/ending.pdf ../../output/tmp_book_for_print.pdf
+pdfunite ./../../output/tmp/starting.pdf ./../../output/tmp/tmp_book_for_print.pdf ./../../output/tmp/copyright.pdf ./../../output/tmp/ending.pdf ./../../output/book_for_print.pdf && echo "PDF for print successfully generated"
+
+rm -rf ../../output/tmp

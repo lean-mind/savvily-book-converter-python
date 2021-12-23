@@ -231,13 +231,11 @@ $if(listings)$
 $endif$
 
 \begin{document}
-    \thispagestyle{empty}
-    \ThisTileWallPaper{17.9cm}{23.5cm}{./resources/Codigo_Sostenible_Screen.png}
-    \hspace{0em}
-    \newpage
+    \setcounter{page}{9}
+    \raggedbottom
     \pagestyle{MyStyle}
     \tableofcontents
-    \newpage
+    \newpage\phantom{blabla}\thispagestyle{empty}
     \begin{sloppypar} % Escape overflow long words
     $body$
     \end{sloppypar}

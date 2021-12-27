@@ -23,10 +23,9 @@ pandoc \
     -V documentclass=report                    \
     -f markdown-implicit_figures               \
     -o ./../../output/tmp/tmp_book_for_screen.pdf      \
-&& echo "PDF for screen successfully generated"
 
 pandoc --pdf-engine=xelatex --template=../../screen/ending.tex --listings -V documentclass=report -f markdown-implicit_figures -o ./../../output/tmp/ending.pdf agradecimientos.txt autor.txt bibliografia.txt savvily.txt
 
-pdfunite ./../../output/tmp/starting.pdf ./../../output/tmp/tmp_book_for_screen.pdf ./../../output/tmp/copyright.pdf ./../../output/tmp/ending.pdf ./../../output/book_for_screen.pdf && echo "PDF for screen successfully generated"
+gs -q -dNOPAUSE -dBATCH -sDEVICE=pdfwrite -sOutputFile=./../../output/book_for_screen.pdf ./../../output/tmp/starting.pdf ./../../output/tmp/tmp_book_for_screen.pdf ./../../output/tmp/copyright.pdf ./../../output/tmp/ending.pdf && echo "PDF for screen successfully generated"
 
 rm -rf ../../output/tmp

@@ -2,12 +2,14 @@
 
 ARGS=$(getopt --options psea --long "print,screen,epub,all" -- "$@")
 
+mkdir -p output
+
 case "$1" in
   -p|--print)
     docker run -it --rm \
       --volume $PWD:/data \
       -u $(id -u ${USER}):$(id -g ${USER}) \
-      --entrypoint ./pdf_for_print.sh \
+      --entrypoint ./scripts/pdf_for_print.sh \
       docker-book-generator
     shift;;
 
@@ -15,7 +17,7 @@ case "$1" in
     docker run -it --rm \
       --volume $PWD:/data \
       -u $(id -u ${USER}):$(id -g ${USER}) \
-      --entrypoint ./pdf_for_screen.sh \
+      --entrypoint ./scripts/pdf_for_screen.sh \
       docker-book-generator
     shift;;
 
@@ -23,12 +25,12 @@ case "$1" in
     docker run -it --rm \
       --volume $PWD:/data \
       -u $(id -u ${USER}):$(id -g ${USER}) \
-      --entrypoint ./epub.sh \
+      --entrypoint ./scripts/epub.sh \
       docker-book-generator
     docker run -it --rm \
       --volume $PWD:/data \
       -u $(id -u ${USER}):$(id -g ${USER}) \
-      --entrypoint ./epub_for_mobi.sh \
+      --entrypoint ./scripts/epub_for_mobi.sh \
       docker-book-generator
     shift;;
 

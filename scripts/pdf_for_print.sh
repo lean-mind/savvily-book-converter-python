@@ -2,6 +2,7 @@
 
 mkdir output/tmp
 cd codigo-sostenible/manuscript
+
 # Prepare book beginning and ending pages separately
 xelatex -output-directory ./../../output/tmp ../../templates/print/starting.tex
 

@@ -5,7 +5,6 @@ cd codigo-sostenible/manuscript
 
 # Prepare markdown for processing
 xelatex -output-directory ./../../output/tmp ../../screen/starting.tex
-xelatex -output-directory ./../../output/tmp ../../screen/copyright.tex
 
 # Sort all chapters and cat them to stdout
 find . -name "[0-9]*.txt" | sort -V | xargs  cat |\
@@ -26,6 +25,6 @@ pandoc \
 
 pandoc --pdf-engine=xelatex --template=../../screen/ending.tex --listings -V documentclass=report -f markdown-implicit_figures -o ./../../output/tmp/ending.pdf agradecimientos.txt autor.txt bibliografia.txt savvily.txt
 
-gs -q -dNOPAUSE -dBATCH -sDEVICE=pdfwrite -sOutputFile=./../../output/book_for_screen.pdf ./../../output/tmp/starting.pdf ./../../output/tmp/tmp_book_for_screen.pdf ./../../output/tmp/copyright.pdf ./../../output/tmp/ending.pdf && echo "PDF for screen successfully generated"
+gs -q -dNOPAUSE -dBATCH -sDEVICE=pdfwrite -sOutputFile=./../../output/book_for_screen.pdf ./../../output/tmp/starting.pdf ./../../output/tmp/tmp_book_for_screen.pdf ./../../output/tmp/ending.pdf && echo "PDF for screen successfully generated"
 
 rm -rf ../../output/tmp

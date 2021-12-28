@@ -5,8 +5,6 @@ cd codigo-sostenible/manuscript
 
 # Prepare book beginning and ending pages separately
 xelatex -output-directory ./../../output/tmp ../../print/starting.tex
-xelatex -output-directory ./../../output/tmp ../../print/copyright.tex
-#xelatex -output-directory ./../../output/tmp ../../print/ending.tex
 
 # Prepare markdown for processing
 
@@ -29,6 +27,6 @@ pandoc \
 
 pandoc --pdf-engine=xelatex --template=../../print/ending.tex --listings -V documentclass=book -f markdown-implicit_figures -o ./../../output/tmp/ending.pdf agradecimientos.txt autor.txt bibliografia.txt savvily.txt
 
-gs -q -dNOPAUSE -dBATCH -sDEVICE=pdfwrite -sOutputFile=./../../output/book_for_print.pdf ./../../output/tmp/starting.pdf ./../../output/tmp/tmp_book_for_print.pdf ./../../output/tmp/copyright.pdf ./../../output/tmp/ending.pdf && echo "PDF for print successfully generated"
+gs -q -dNOPAUSE -dBATCH -sDEVICE=pdfwrite -sOutputFile=./../../output/book_for_print.pdf ./../../output/tmp/starting.pdf ./../../output/tmp/tmp_book_for_print.pdf ./../../output/tmp/ending.pdf && echo "PDF for print successfully generated"
 
 rm -rf ../../output/tmp

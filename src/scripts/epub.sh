@@ -1,6 +1,6 @@
 #!/bin/sh
 
-cd codigo-sostenible/manuscript
+cd manuscript
 
 # Prepare markdown for processing
 
@@ -15,8 +15,8 @@ sed -Ee 's:(^#):\n\1:' \
 # Run Pandoc on stdin
 pandoc \
     --toc                                                 \
-    --css ../../src/templates/epub/epub.css                                  \
+    --css ../src/templates/epub/epub.css                                  \
     --epub-cover-image ./resources/Codigo_Sostenible.png  \
-    -o ./../../output/ebook.epub                          \
-    --metadata-file ../../src/templates/epub/metadata.yml                    \
+    -o ./../output/ebook.epub                          \
+    --metadata-file ../src/templates/epub/metadata.yml                    \
 && echo "EPUB successfully generated"

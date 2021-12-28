@@ -1,6 +1,6 @@
 #!/bin/sh
 
-cd codigo-sostenible/manuscript
+cd manuscript
 
 # Prepare markdown for processing
 
@@ -15,9 +15,9 @@ sed -Ee 's:(^#):\n\1:' \
 # Run Pandoc on stdin
 pandoc \
     --toc                                                 \
-    --css ../../src/templates/epub/epub.css                                  \
-    --highlight-style ../../src/templates/epub/monochrome.theme              \
+    --css ../src/templates/epub/epub.css                                  \
+    --highlight-style ../src/templates/epub/monochrome.theme              \
     --epub-cover-image ./resources/Codigo_Sostenible.png  \
-    -o ./../../output/ebook_for_mobi.epub                 \
-    --metadata-file ../../src/templates/epub/metadata.yml                    \
+    -o ./../output/ebook_for_mobi.epub                 \
+    --metadata-file ../src/templates/epub/metadata.yml                    \
 && echo "EPUB for MOBI successfully generated"

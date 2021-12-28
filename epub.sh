@@ -15,8 +15,8 @@ sed -Ee 's:(^#):\n\1:' \
 # Run Pandoc on stdin
 pandoc \
     --toc                                                 \
-    --css ../../epub.css                                  \
+    --css ../../templates/epub/epub.css                                  \
     --epub-cover-image ./resources/Codigo_Sostenible.png  \
     -o ./../../output/ebook.epub                          \
-    --metadata-file ../../metadata.yml                    \
+    --metadata-file ../../templates/epub/metadata.yml                    \
 && echo "EPUB successfully generated"

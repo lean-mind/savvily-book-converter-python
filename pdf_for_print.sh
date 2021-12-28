@@ -3,7 +3,7 @@
 mkdir output/tmp
 cd codigo-sostenible/manuscript
 # Prepare book beginning and ending pages separately
-xelatex -output-directory ./../../output/tmp ../../print/starting.tex
+xelatex -output-directory ./../../output/tmp ../../templates/print/starting.tex
 
 # Prepare MD
 # Sort all chapters and cat them to stdout
@@ -14,7 +14,7 @@ sed -Ee 's:(^#):\n\1:' -Ee 's:] \(:](:g' -Ee 's:(```)(.+)$:\1{title=\u\2}:' | \
 # Run Pandoc on stdin
 pandoc \
     --pdf-engine=xelatex \
-    --template=../../print/custom-book.tex \
+    --template=../../templates/print/custom-book.tex \
     --listings \
     -V documentclass=book \
     -f markdown-implicit_figures \
@@ -23,7 +23,7 @@ pandoc \
 # Process md additional fragments
 pandoc \
     --pdf-engine=xelatex \
-    --template=../../print/ending.tex \
+    --template=../../templates/print/ending.tex \
     --listings -V documentclass=book \
     -f markdown-implicit_figures \
     -o ./../../output/tmp/ending.pdf agradecimientos.txt autor.txt bibliografia.txt savvily.txt

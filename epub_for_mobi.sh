@@ -15,9 +15,9 @@ sed -Ee 's:(^#):\n\1:' \
 # Run Pandoc on stdin
 pandoc \
     --toc                                                 \
-    --css ../../epub.css                                  \
-    --highlight-style ../../monochrome.theme              \
+    --css ../../templates/epub/epub.css                                  \
+    --highlight-style ../../templates/epub/monochrome.theme              \
     --epub-cover-image ./resources/Codigo_Sostenible.png  \
     -o ./../../output/ebook_for_mobi.epub                 \
-    --metadata-file ../../metadata.yml                    \
+    --metadata-file ../../templates/epub/metadata.yml                    \
 && echo "EPUB for MOBI successfully generated"

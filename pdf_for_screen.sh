@@ -4,7 +4,7 @@ mkdir output/tmp
 cd codigo-sostenible/manuscript
 
 # Prepare markdown for processing
-xelatex -output-directory ./../../output/tmp ../../screen/starting.tex
+xelatex -output-directory ./../../output/tmp ../../templates/screen/starting.tex
 # Sort all chapters and cat them to stdout
 find . -name "[0-9]*.txt" | sort -V | xargs  cat | \
 
@@ -14,7 +14,7 @@ sed -Ee 's:(^#):\n\1:' -Ee 's:] \(:](:g' -Ee 's:(```)(.+)$:\1{title=\u\2}:' | \
 # Run Pandoc on stdin
 pandoc \
     --pdf-engine=xelatex \
-    --template=../../screen/custom-report.tex \
+    --template=../../templates/screen/custom-report.tex \
     --listings \
     -V documentclass=report \
     -f markdown-implicit_figures \
@@ -23,7 +23,7 @@ pandoc \
 # Process md additional fragments
 pandoc \
     --pdf-engine=xelatex\
-    --template=../../screen/ending.tex\
+    --template=../../templates/screen/ending.tex\
     --listings -V documentclass=report\
     -f markdown-implicit_figures\
     -o ./../../output/tmp/ending.pdf agradecimientos.txt autor.txt bibliografia.txt savvily.txt

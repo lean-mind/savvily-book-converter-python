@@ -20,6 +20,7 @@ pandoc \
     -f markdown-implicit_figures \
     -o ./../../output/tmp/tmp_book_for_screen.pdf \
 
+# Process md additional fragments
 pandoc \
     --pdf-engine=xelatex\
     --template=../../screen/ending.tex\
@@ -27,6 +28,7 @@ pandoc \
     -f markdown-implicit_figures\
     -o ./../../output/tmp/ending.pdf agradecimientos.txt autor.txt bibliografia.txt savvily.txt
 
+# Join pdf fragments
 gs \
   -q \
   -dNOPAUSE \

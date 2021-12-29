@@ -1,2 +1,6 @@
-* [Home](/)
-* [Test](test.md "test")
+- [Home](/)
+- [Test](test.md "test")
+- **Find Us**
+- [GitHub](https://github.com/lean-mind/codigo-sostenible-book-converter-format)
+- [Lean Mind](https://leanmind.es/es/)
+- ![lean mind logo](https://leanmind.es/images/min/isotipo.svg)

@@ -58,6 +58,11 @@ If you are installing with docker now is a good time to build the image. Run:
 
 Make sure you run this command from the project's root directory (where the Dockerfile is located) and do not change the name of the image (or do so in `convert.sh` as well).
 
+You'll find two important directories under `src`, `scripts` and `templates`.
+
+- These scripts are the ones doing the heavy lifting. Pre-processing ,rendering and merging is done here.
+- In templates you'll find the relevant `.tex` files for each conversion type. Modify them at you own risk!
+
 # How to run the project
 
 ## With Docker

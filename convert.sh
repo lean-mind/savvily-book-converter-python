@@ -1,5 +1,10 @@
 #!/bin/sh
 
+if [[ $# -lt 2 ]]; then
+    echo "I need both a flag and a path!"
+    exit 1
+fi
+
 ARGS=$(getopt --options psea --long "print,screen,epub,all" -- "$@")
 
 case "$1" in
@@ -9,7 +14,7 @@ case "$1" in
       --volume $PWD:/data \
       -u $(id -u ${USER}):$(id -g ${USER}) \
       --entrypoint ./src/scripts/pdf_for_print.sh \
-      docker-book-generator
+      savvily-book-generator
     shift;;
 
   -s|--screen)
@@ -18,7 +23,7 @@ case "$1" in
       --volume $PWD:/data \
       -u $(id -u ${USER}):$(id -g ${USER}) \
       --entrypoint ./src/scripts/pdf_for_screen.sh \
-      docker-book-generator
+      savvily-book-generator
     shift;;
 
   -e|--epub)
@@ -27,12 +32,12 @@ case "$1" in
       --volume $PWD:/data \
       -u $(id -u ${USER}):$(id -g ${USER}) \
       --entrypoint ./src/scripts/epub.sh \
-      docker-book-generator
+      savvily-book-generator
     docker run -it --rm \
       --volume $PWD:/data \
       -u $(id -u ${USER}):$(id -g ${USER}) \
       --entrypoint ./src/scripts/epub_for_mobi.sh \
-      docker-book-generator
+      savvily-book-generator
     shift;;
 
   -a|--all)

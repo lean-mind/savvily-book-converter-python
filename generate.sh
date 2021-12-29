@@ -2,11 +2,9 @@
 
 ARGS=$(getopt --options psea --long "print,screen,epub,all" -- "$@")
 
-mkdir -p output
-mkdir -p manuscript && cp -r $2/* ./manuscript
-
 case "$1" in
   -p|--print)
+    mkdir -p manuscript && cp -r $2/* ./manuscript
     docker run -it --rm \
       --volume $PWD:/data \
       -u $(id -u ${USER}):$(id -g ${USER}) \
@@ -15,6 +13,7 @@ case "$1" in
     shift;;
 
   -s|--screen)
+    mkdir -p manuscript && cp -r $2/* ./manuscript
     docker run -it --rm \
       --volume $PWD:/data \
       -u $(id -u ${USER}):$(id -g ${USER}) \
@@ -23,6 +22,7 @@ case "$1" in
     shift;;
 
   -e|--epub)
+    mkdir -p manuscript && cp -r $2/* ./manuscript
     docker run -it --rm \
       --volume $PWD:/data \
       -u $(id -u ${USER}):$(id -g ${USER}) \
@@ -36,7 +36,7 @@ case "$1" in
     shift;;
 
   -a|--all)
-    ./generate.sh -p; ./generate.sh -s; ./generate.sh -e
+    ./generate.sh -p $2; ./generate.sh -s $2; ./generate.sh -e $2
     shift;;
 
   --)
@@ -46,3 +46,5 @@ case "$1" in
     printf "Unknown option %s\n" "$1"
     exit 1;;
 esac
+
+rm -rf manuscript

@@ -39,4 +39,4 @@ gs \
 
 echo "PDF for print successfully generated"
 
-rm -rf ../output/tmp ../manuscript
+rm -rf ../output/tmp

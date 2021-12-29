@@ -37,4 +37,4 @@ gs \
   ./../output/tmp/starting.pdf ./../output/tmp/tmp_book_for_screen.pdf ./../output/tmp/ending.pdf
 echo "PDF for screen successfully generated"
 
-rm -rf ../output/tmp ../manuscript
+rm -rf ../output/tmp

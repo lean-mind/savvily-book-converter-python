@@ -36,7 +36,7 @@ case "$1" in
     shift;;
 
   -a|--all)
-    ./generate.sh -p $2; ./generate.sh -s $2; ./generate.sh -e $2
+    ./convert.sh -p $2; ./convert.sh -s $2; ./convert.sh -e $2
     shift;;
 
   --)

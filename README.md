@@ -1,6 +1,6 @@
 Easily convert you markdown manuscript to a pdf and/or epub book!
 
-Full documentation can be found [here](https://lean-mind.github.io/codigo-sostenible-book-converter-format/).
+Full documentation can be found [here](https://lean-mind.github.io/savvily-book-converter/#/).
 
 # Pre-Requisites
 

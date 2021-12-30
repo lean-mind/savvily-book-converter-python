@@ -1,141 +1,99 @@
-This project is used to convert Carlos Blé's book "Código Sostenible" to different formats.
-It does the conversion from markdown files using Pandoc. This tool needs LaTeX to run.
+Easily convert you markdown manuscript to a pdf and/or epub book!
 
-# Project contents:
+Full documentation can be found [here](https://lean-mind.github.io/savvily-book-converter/#/).
 
-- ***codigo-sostenible*** (folder): It is a submodule linked to the repository that contains the markdown files with the book.
+# Pre-Requisites
 
+The easiest way to run this project is with Docker.
 
-- ***JetBrains_Mono*** (folder): Contains needed fonts to run the project.
+If you'd rather not use it (or can't), you'll have to install Latex and some other dependencies (see [below](#latex)).
 
+## Docker
 
-- ***output*** (folder): Contains the converted files.
+Get it [here](https://docs.docker.com/get-docker/)!
 
+<a name="latex"/>
 
-- ***\*.tex*** (files): Contain the LaTeX templates with the custom styles used for the conversion.
+## Without Docker
 
+### LaTeX
 
-- ***\epub.css***: Contains the style used to convert from markdown files to epub.
+Make sure you have both `pandoc` and `basictex` installed and working on your system.
 
+Install the next libraries with the TeX Live Manager (tlmgr) as admin:
 
-- ***metadata.yml***: Contains the metadata related to the book.
+```shell
+tlmgr update --self && tlmgr install tocloft && tlmgr install emptypage && tlmgr install footmisc && tlmgr install titlesec && tlmgr install wallpaper && tlmgr install roboto && tlmgr install incgraph && tlmgr install tcolorbox && tlmgr install environ
+```
 
+### Ghostscript
 
-- ***monochrome.theme***: Contains the theme for the epub used to convert to MOBI.
+The scripts use Ghostscript to do a final merge of the complete book (if converting to PDF), make sure its installed and available in your systems `PATH`.
 
+### Sed
 
+GNU's version of sed is needed for the book to render properly.
 
-There are different scripts to convert from markdown files:
+Ensure you have the right version on your machine (Busybox, BSD, Alpine Linux and Mac OS users might have to install a different version).
 
-- "***process_book.sh***": This script converts the manuscript files to a pdf file (version to print).
+An easy way to check if you sed flavour is causing issues is to have a look at the code block's language tags.
 
+If you see `\uLANGUAGE_NAME` with no capitalization, you'll need to install the GNU version.
 
-- "***process_report.sh***": This script converts the manuscript files to a pdf file (digital version).
+# Getting started
 
+Clone the repo and `cd` into it:
 
-- "***process_ebook.sh***": This script converts the manuscript files to an epub file (eReaders version).
+`git clone git@github.com:lean-mind/savvily-book-converter.git && cd codigo-sostenible-book-converter-format`
 
+You can ignore the `docs` directory.
 
-- "***process_ebookForMOBI.sh***": This script converts the manuscript files to an epub file with monochrome theme (version used to convert to Kindle version).
+If you are installing without docker, you'll notice the Dockerfile contains the same dependencies you had to install.
 
+**That** is your reference in case of dependency issues.
 
-- "***process_cover.sh***": This script converts the book cover image to a pdf file.
-  It is automatically run before any of the others scripts.
+If you are installing with docker now is a good time to build the image. Run:
 
+`docker build -t "savvily-book-generator" $PWD`
 
-# How to clone this project including the submodule
+Make sure you run this command from the project's root directory (where the Dockerfile is located) and do not change the name of the image (or do so in `convert.sh` as well).
 
-Clone the repository with the command:
+You'll find two important directories under `src`, `scripts` and `templates`.
 
-`git clone git@github.com:lean-mind/codigo-sostenible-book-converter-format.git`
+- These scripts are the ones doing the heavy lifting. Pre-processing ,rendering and merging is done here.
+- In templates you'll find the relevant `.tex` files for each conversion type. Modify them at you own risk!
 
-Navigate into the root folder
+# How to run the project
 
-`cd codigo-sostenible-book-converter-format`
+## With Docker
 
-Init and update the submodule:
+From the project root directory:
 
-`git submodule update --init --recursive`
+`./convert.sh [FLAG] [MANUSCRIPT_PATH]`
 
-`git submodule foreach git pull origin master`
+The script expects **both** a flag determining the wanted output format **and** a path (relative or absolute) to the manuscript.
 
-
-# How to run this project
-
-## Run with Docker (not available for MAC OS X - Apple Silicon)
-
-Open your terminal in the root folder of the project (or where the _Dockerfile_ is located). 
-Type the next command to create a docker image (the image will be created from the _Dockerfile_ configuration):
-
-`docker build -t "docker-book-generator" $PWD`
-
-Now, simply run `./generate.sh` with one of the following flags:
+The available flags are:
 
 ```
 -p or --print --> Generates a pdf for printing
 -s or --screen --> Generates a pdf for screen viewing
--e or --epub --> Generates an epub
--a or --all --> Generates an epub for mobi conversion
+-e or --epub --> Generates an epub (standard and mobi-redy)
+-a or --all --> All of the above
 ```
 
-NOTE: This script will not work from outside the project root nor if the docker image has a different name.
+You'll find the output in the `output` directory.
 
-## Run without Docker
+## Without Docker
 
-### Install LaTeX in your system (MAC OS X)
+You won't be able to use the main `convert.sh` script.
 
-Go to your terminal and type the next command to install Pandoc:
+In stead, you'll have to manually run the individual script you are interested in (they can be found under `src/scripts`)
 
-`brew install pandoc`
+For these to work they must be invoked from the project's root, where they expect to find a directory called `manuscript`.
 
-Once it has been installed it, type the next command to install LaTeX:
+This directory must contain the full manuscript with the expected format and structure.
 
-`brew install basictex`
+## Manuscript Structure
 
-Afterwards, install _poppler_ library to be able to render PDF with pdfunite:
-
-`brew install poppler`
-
-After that, apply changes with:
-
-`eval "$(/usr/libexe.ae/path-helper)"`
-
-Install the next libraries with the TeX Live Manager (tlmgr) as admin:
-
-`sudo tlmgr install titlesec`
-
-`sudo tlmgr install wallpaper`
-
-`sudo tlmgr install incgraph`
-
-`sudo tlmgr install roboto`
-
-If you haven't got the font Jetbrains Mono, you need to install it. 
-You can simply double click in the font file and follow the suggested steps.
-
-### Run the script to start the conversion
-
-You'll first have to create the `output` directory:
-
-`mkdir -p output`
-
-Now choose the script that suits your needs and run it!
-
-`./nameOfTheScript.sh`
-
-NOTE: In case there is some other library added to the project but it has not been included in this README.md,
-when executing the command to make the conversion with Latex the terminal will ask you to install it.
-
-
-### Known errors
-
-#### Code line separator format mismatch
-
-The terminal shows the following error:
-
-```Bash
-standard_init_linux.go:228: exec user process caused: no such file or directory
-```
-
-Solution: Use your favourite IDE to open the project and change the "line separator" format to LF.
-(In Intellij IDEA: find that option in the tool-bar at the bottom right of the window.
+## TODO.Link to installation resources for dependencies

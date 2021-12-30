@@ -14,4 +14,4 @@ This command generates a new page with a background image, so it is needed to be
 \end{document}
 ```
 
-[book cover](resources/images/book-cover.PNG)
+![book cover](resources/images/book-cover.PNG)

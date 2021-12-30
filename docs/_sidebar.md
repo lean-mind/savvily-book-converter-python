@@ -1,5 +1,10 @@
-- [Home](/)
-- [Test](test.md "test")
+- [Getting started](/)
+- **Screen and print**
+- [Page size](page-size.md)
+- **Epub**
+- [Epub config](epub.md)
+- **Documentation**
+- [Docsify](docsify.md)
 - **Find Us**
 - [GitHub](https://github.com/lean-mind/codigo-sostenible-book-converter-format)
 - [Lean Mind](https://leanmind.es/es/)

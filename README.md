@@ -1,6 +1,6 @@
-Easily convert you markdown manuscript to a pdf and/or epub book!
+Easily convert your markdown manuscript into a pdf and/or epub book!
 
-Full documentation can be found [here](https://lean-mind.github.io/savvily-book-converter/#/).
+Full documentation can also be found [here](https://lean-mind.github.io/savvily-book-converter/#/).
 
 # Pre-Requisites
 
@@ -28,7 +28,7 @@ tlmgr update --self && tlmgr install tocloft && tlmgr install emptypage && tlmgr
 
 ### Ghostscript
 
-The scripts use Ghostscript to do a final merge of the complete book (if converting to PDF), make sure its installed and available in your systems `PATH`.
+The scripts use Ghostscript to do a final merge of the complete book (if converting to PDF), make sure its installed and available in your system's `PATH`.
 
 ### Sed
 
@@ -56,12 +56,12 @@ If you are installing with docker now is a good time to build the image. Run:
 
 `docker build -t "savvily-book-generator" $PWD`
 
-Make sure you run this command from the project's root directory (where the Dockerfile is located) and do not change the name of the image (or do so in `convert.sh` as well).
+Make sure you run this command from the project's root directory (where the Dockerfile is located) and do not change the name (`tag`) of the image (or do so in `convert.sh` as well).
 
-You'll find two important directories under `src`, `scripts` and `templates`.
+You'll find two important directories under `src`: `scripts` and `templates`.
 
-- These scripts are the ones doing the heavy lifting. Pre-processing ,rendering and merging is done here.
-- In templates you'll find the relevant `.tex` files for each conversion type. Modify them at you own risk!
+- These scripts are the ones doing the heavy lifting. Pre-processing, rendering and merging is done here.
+- In the templates directory you'll find the relevant `.tex` files for each conversion type. Modify them at you own risk!
 
 # How to run the project
 
@@ -88,7 +88,7 @@ You'll find the output in the `output` directory.
 
 You won't be able to use the main `convert.sh` script.
 
-In stead, you'll have to manually run the individual script you are interested in (they can be found under `src/scripts`)
+In stead, you'll have to manually run the individual script you are interested in (they can be found under `src/scripts`).
 
 For these to work they must be invoked from the project's root, where they expect to find a directory called `manuscript`.
 

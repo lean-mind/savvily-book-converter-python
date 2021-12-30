@@ -26,7 +26,7 @@ pandoc \
     --template=../src/templates/print/ending.tex \
     --listings -V documentclass=book \
     -f markdown-implicit_figures \
-    -o ./../output/tmp/ending.pdf agradecimientos.txt autor.txt bibliografia.txt savvily.txt
+    -o ./../output/tmp/ending.pdf agradecimientos.txt autor.txt bibliografia.txt savvily.txt appraisals.txt
 
 # Join pdf fragments
 gs \

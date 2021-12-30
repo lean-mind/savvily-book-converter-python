@@ -1,6 +1,6 @@
 #!/bin/sh
 
-if [[ $# -lt 2 ]]; then
+if [ $# -lt 2 ]; then
     echo "I need both a flag and a path!"
     exit 1
 fi

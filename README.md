@@ -1,7 +1,7 @@
 <br />
 <div align="center">
   <a href="https://github.com/lean-mind/savvily-book-converter">
-    <img src="docs/resources/images/logo.png" alt="Logo" width="80" height="80">
+    <img src="docs/chapters/resources/images/logo.png" alt="Logo" width="80" height="80">
   </a>
 
   <h3 align="center">Savvily Book Converter</h3>

@@ -1,8 +1,20 @@
-Easily convert you markdown manuscript to a pdf and/or epub book!
+<br />
+<div align="center">
+  <a href="https://github.com/lean-mind/savvily-book-converter">
+    <img src="docs/logo.png" alt="Logo" width="80" height="80">
+  </a>
 
-Full documentation can be found [here](https://lean-mind.github.io/savvily-book-converter/#/).
+<h3 align="center">Savvily Book Converter</h3>
 
-# Pre-Requisites
+  <p align="center">
+    Easily convert your markdown manuscript into a pdf and/or epub book!
+    <br />
+    <a href="https://lean-mind.github.io/savvily-book-converter/#/"><strong>Explore the docs »</strong></a>
+    <br />
+    </p>
+</div>
+
+## Pre-Requisites
 
 The easiest way to run this project is with Docker.
 
@@ -93,7 +105,5 @@ In stead, you'll have to manually run the individual script you are interested i
 For these to work they must be invoked from the project's root, where they expect to find a directory called `manuscript`.
 
 This directory must contain the full manuscript with the expected format and structure.
-
-## Manuscript Structure
 
 ## TODO.Link to installation resources for dependencies

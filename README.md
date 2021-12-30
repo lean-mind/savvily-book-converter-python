@@ -29,20 +29,20 @@
   </ol>
 </details>
 
-# About The Project
+## About The Project
 
 Easily convert your markdown manuscript into a pdf and/or epub book!
 
 Full documentation can also be found [here](https://lean-mind.github.io/savvily-book-converter/#/).
 
-# Prerequisites
+## Prerequisites
 
 The easiest way to run this project is with Docker.
 
 If you'd rather not use it (or can't), you'll have to install Latex and some other dependencies (see [the
 documentation](https://lean-mind.github.io/savvily-book-converter/#/)).
 
-# Getting started
+## Getting started
 
 1. Clone the repo and `cd` into it:
 
@@ -58,7 +58,7 @@ docker build -t "savvily-book-generator" $PWD
 
 3. Output should be found in the `output` directory.
 
-# Usage
+## Usage
 
 From the project root directory:
 
@@ -80,12 +80,12 @@ The available flags are:
 If you are not using docker, check the [docs](https://lean-mind.github.io/savvily-book-converter/#/) to see how to run
 the project.
 
-# Manuscript Structure
+## Manuscript Structure
 
 The Manuscript should follow this structure:
 
 ```
-Manuscript
+<manuscript-dir>
 ├── 0_Chapter.md
 ├── 1_Chapter.md
 ├── ...

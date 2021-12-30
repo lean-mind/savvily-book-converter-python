@@ -1,6 +1,7 @@
 - [Getting started](/)
 - **Screen and print**
 - [Page size](chapters/page-size.md)
+- [Book cover](chapters/book-cover.md)
 - **Epub**
 - [Epub config](epub.md)
 - **Documentation**

@@ -1,7 +1,5 @@
 # Page Size
 
-## How to configure latex page size properly
-
 The book page size can be configured using the package [`geometry`](https://texdoc.org/serve/geometry.pdf/0).
 
 We can configure paper height, paper width and inner margins with this commands:

@@ -1,7 +1,7 @@
 - [Getting started](/)
 - **Screen and print**
-- [Page size](chapters/page-size.md)
-- [Book cover](chapters/book-cover.md)
+- [Page size](page-size.md)
+- [Book cover](book-cover.md)
 - **Epub**
 - [Epub config](epub.md)
 - **Documentation**
@@ -9,4 +9,4 @@
 - **Find Us**
 - [GitHub](https://github.com/lean-mind/codigo-sostenible-book-converter-format)
 - [Lean Mind](https://leanmind.es/es/)
-- ![savvily logo](chapters/resources/images/logo.png)
+- ![savvily logo](resources/images/logo.png)

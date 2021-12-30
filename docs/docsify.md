@@ -1,6 +1,6 @@
 # Docsify
 
-The documentation is handled with [Docsify](https://docsify.js.org/#/). It is a doc site generator to 
+The documentation is handled with [Docsify](https://docsify.js.org/#/). It is a doc site generator to
 deploy a static page in github pages easily.
 
 ## Getting started

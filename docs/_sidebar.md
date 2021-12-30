@@ -1,5 +1,6 @@
 - [Getting started](/)
 - [Manuscript structure](manuscript.md)
+- [Pandoc](pandoc.md)
 - **Screen and print**
 - [Page size](page-size.md)
 - [Book cover](book-cover.md)

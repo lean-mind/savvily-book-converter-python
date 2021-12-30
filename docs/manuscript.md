@@ -8,7 +8,8 @@ In order to execute the conversion properly the <manuscript-dir> should follow t
 ├── 1_Chapter.md
 ├── ...
 ├── resources
-│   ├── image.png
+│   ├── book-cover-screen.png
+│   ├── book-cover-print.png
 │   ├── ...
 ├── autor.md
 ├── agradecimientos.md

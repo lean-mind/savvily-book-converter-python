@@ -90,7 +90,8 @@ The Manuscript should follow this structure:
 ├── 1_Chapter.md
 ├── ...
 ├── resources
-│   ├── image.png
+│   ├── book-cover-screen.png
+│   ├── book-cover-print.png
 │   ├── ...
 ├── autor.md
 ├── agradecimientos.md
@@ -100,4 +101,4 @@ The Manuscript should follow this structure:
 
 Keep in mind that the Chapters name **must** follow the format `number_name` for the script to work!
 
-For more information regarding this, check the [docs](https://lean-mind.github.io/savvily-book-converter/#/).
+For more information regarding this, check the [docs](https://lean-mind.github.io/savvily-book-converter/#/manuscript).

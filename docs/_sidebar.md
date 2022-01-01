@@ -3,7 +3,8 @@
 - [Pandoc](pandoc.md)
 - **Screen and print**
 - [Page size](page-size.md)
-- [Book cover](book-cover.md)
+- [Starting section](starting-section.md)
+- [Relevant details](relevant-details.md)
 - **Epub**
 - [Epub config](epub.md)
 - **Documentation**

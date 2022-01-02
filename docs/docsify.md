@@ -35,5 +35,5 @@ The theme use in this site is [docsify-themeable](https://jhildenbiddle.github.i
 
 ## Github pages
 
-[Github pages](https://pages.github.com/)
+This documentation is deployed using [Github pages](https://pages.github.com/).
 

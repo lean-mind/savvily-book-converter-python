@@ -1,4 +1,4 @@
-# Relevant details
+# Basic latex commands
 
 ## Set font
 

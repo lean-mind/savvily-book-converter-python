@@ -4,7 +4,7 @@
 - **Screen and print**
 - [Page size](page-size.md)
 - [Starting section](starting-section.md)
-- [Relevant details](relevant-details.md)
+- [Relevant details](basic-commands.md)
 - **Epub**
 - [Epub config](epub.md)
 - **Documentation**

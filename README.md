@@ -35,6 +35,9 @@ This project make use of [Pandoc](https://pandoc.org/). This is a conversion too
 provide us the capacity of transform a specific Markdown document to other formats
 like pdf or epub.
 
+To format the Markdown, Pandoc uses [Latex](https://www.latex-project.org/).
+Latex is a composition text system and it counts with endless format configurations.
+
 Full documentation can also be found [here](https://lean-mind.github.io/savvily-book-converter/#/).
 
 ## Prerequisites

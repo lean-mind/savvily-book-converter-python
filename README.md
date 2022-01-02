@@ -31,7 +31,9 @@
 
 ## About The Project
 
-Easily convert your markdown manuscript into a pdf and/or epub book!
+This project make use of [Pandoc](https://pandoc.org/). This is a conversion tool that
+provide us the capacity of transform a specific Markdown document to other formats
+like pdf or epub.
 
 Full documentation can also be found [here](https://lean-mind.github.io/savvily-book-converter/#/).
 

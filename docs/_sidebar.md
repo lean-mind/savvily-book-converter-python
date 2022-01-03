@@ -2,9 +2,11 @@
 - [Manuscript structure](manuscript.md)
 - [Pandoc](pandoc.md)
 - **Screen and print**
+- [Basic commands](basic-commands.md)
 - [Page size](page-size.md)
 - [Starting section](starting-section.md)
-- [Relevant details](basic-commands.md)
+- [Table of contents](table-of-contents.md)
+- [Paragraph](paragraph.md)
 - **Epub**
 - [Epub config](epub.md)
 - **Documentation**

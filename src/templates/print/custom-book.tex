@@ -15,16 +15,15 @@
 \usepackage{caption}
 \usepackage[bottom]{footmisc}
 
-\setmonofont{JetBrains Mono}[Contextuals=Alternate]
 
-% ToDo.Pandoc Review size with fancyheaders
+% Page size
 \geometry{paperwidth=17.9cm, paperheight=23.5cm}
 \geometry{left=2cm, right=2cm, top=2.5cm, bottom=2.5cm}
 
+% Page style (header and footer)
 \pagestyle{fancy}
-
-\fancypagestyle{MyStyle}{%
-    \fancyhf{} %Clean headers
+\fancypagestyle{MyStyle}{
+    \fancyhf{}
     \fancyhead[LE]{\footnotesize\color{gray}\rightmark}
     \fancyhead[RO]{\footnotesize\color{gray}\leftmark}
     \renewcommand{\chaptermark}[1]{\markboth{\MakeUppercase{##1}}{}}
@@ -35,25 +34,22 @@
 \renewcommand{\headrulewidth}{0pt}
 \renewcommand*{\thepage}{\footnotesize\arabic{page}}
 
-% Separation between lines
-\renewcommand{\baselinestretch}{1.2}
-
-% Separation between paragraph
-\setlength{\parskip}{0.25cm}
-
+% Paragraph
+\renewcommand{\baselinestretch}{1.2} % Separation between lines
+\setlength{\parskip}{0.25cm} % Separation between paragraph
+\setlength{\parindent}{0pt} % remove paragraph indention
 
 % Remove number of section and subsection from document
 \titleformat{\chapter}{\normalfont\Huge\bfseries}{}{0pt}{}
 \titleformat{\section}{\normalfont\Large\bfseries}{}{0pt}{}
 \titleformat{\subsection}{\normalfont\large\bfseries}{}{0pt}{}
 
-%% Remove number of chapter, section and subsection from table of content
-\titlecontents{chapter}[0em]                     % { <chapter|section|subsection|...> } [<left spacing>]
-    {\vspace{0em}}                               % { <space between above-code> }
-    {\normalfont\bfseries}                       % { <numbered-entry-format }
-    {}                                           % { <numberless-entry-format> }
-    {\enspace\dotfill\contentspage}              % { <filler-page-format> }
-
+% Table of contents
+\titlecontents{chapter}[0em]        % { <chapter|section|subsection|...> } [<left spacing>]
+    {\vspace{0em}}                  % { <space between above-code> }
+    {\normalfont\bfseries}          % { <numbered-entry-format }
+    {}                              % { <numberless-entry-format> }
+    {\enspace\dotfill\contentspage} % { <filler-page-format> }
 
 \titlecontents{section}[2em]
     {\vspace{-0.5em}}
@@ -66,19 +62,15 @@
     {}
     {}
     {\enspace\small\dotfill\contentspage}
-
 \renewcommand{\familydefault}{\sfdefault}
 
-%
-% remove paragraph indention
-%
-\setlength{\parindent}{0pt}
-
+% Dots style
 \usepackage{tocloft}
 \renewcommand\cftdotsep{5}
-\setlength{\cftsecindent}{-8pt}% Indent for \section
-\setlength{\cftsubsecindent}{4pt}% Indent for \subsection
+\setlength{\cftsecindent}{-8pt} % Indent for \section
+\setlength{\cftsubsecindent}{4pt} % Indent for \subsection
 
+% Remove table of content numeration
 \makeatletter
 \renewcommand{\cftchappresnum}{\begin{lrbox}{\@tempboxa}}
 \renewcommand{\cftchapaftersnum}{\end{lrbox}}
@@ -93,7 +85,7 @@
 \makeatother
 
 % code to insert to fix environment Shaded undefined issue with
-% showing code chunks in rticle IEEE template.
+% showing code chunks in article IEEE template.
 $if(highlighting-macros)$
 $highlighting-macros$
 $endif$
@@ -101,7 +93,7 @@ $endif$
 \providecommand{\tightlist}{%
   \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
 
-
+% Images
 $if(graphics)$
 \makeatletter
 \def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
@@ -117,25 +109,15 @@ $if(graphics)$
 \makeatother
 $endif$
 
-
-%
-%
-% Listings
-%
-%
-
+% Listings (code blocks)
 $if(listings)$
-
-%
 % general listing colors
-%
 \definecolor{listing-background}{HTML}{F5F5F5}
 \definecolor{listing-rule}{HTML}{B3B2B3}
 \definecolor{listing-language}{HTML}{8F8E8F}
 \definecolor{listing-comment}{HTML}{989898}
 \definecolor{listing-text-color}{HTML}{3a3a3a}
 \definecolor{listing-text-color-black}{HTML}{000000}
-
 
 \lstdefinestyle{leanmind_listing_style}{
     title            = ,
@@ -168,7 +150,6 @@ $if(listings)$
     numbersep        = 5pt,
     extendedchars    = true,
     captionpos       = t,
-    %    mathescape      = true,
     showspaces       = false,
     showtabs         = false,
     framexrightmargin = 17pt,
@@ -184,9 +165,7 @@ $if(listings)$
         {”}{{''}}1
 }
 
-%
 % Java (Java SE 12, 2019-06-22)
-%
 \lstdefinelanguage{Java}{
     morekeywords={
         % normal keywords (without data types)
@@ -243,7 +222,7 @@ $endif$
     \pagestyle{MyStyle}
     \tableofcontents
     \newpage\phantom{blabla}\thispagestyle{empty}
-    \begin{sloppypar} % Escape overflow long words
+    \begin{sloppypar} % Escape overflowed long words
     $body$
     \end{sloppypar}
     \newpage\phantom{blabla}\thispagestyle{empty}

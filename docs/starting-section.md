@@ -82,10 +82,11 @@ This is a page which is used to add all information related to the book.
 
 ## Dedication
 
+We can custom the dedication position by adjusting `\newgeometry` margins.
+
 ```latex
 \begin{titlepage}\thispagestyle{empty}
-  \newgeometry{left=10.5cm, right=2cm, top=2.5cm, bottom=2.5cm}
-  \vspace*{6cm}
+  \newgeometry{left=10.5cm, right=2cm, top=8.5cm, bottom=2.5cm}
   {\itshape\small\raggedleft Fancy dedication for whom this book is possible. \par}
   \restoregeometry
 \end{titlepage}

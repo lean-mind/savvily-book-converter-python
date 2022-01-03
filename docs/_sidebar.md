@@ -8,6 +8,7 @@
 - [Table of contents](table-of-contents.md)
 - [Page style](page-style.md)
 - [Paragraph](paragraph.md)
+- [Code block](code-block.md)
 - **Epub**
 - [Epub config](epub.md)
 - **Documentation**

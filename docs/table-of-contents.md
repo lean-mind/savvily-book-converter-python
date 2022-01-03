@@ -56,3 +56,22 @@ To add hyperlinks to table of content it is only needed to use this package.
 ```latex
 \usepackage[hidelinks]{hyperref}
 ```
+
+## Numeration
+
+These commands delete the table of content chapter numeration.
+
+```latex
+\makeatletter
+\renewcommand{\cftchappresnum}{\begin{lrbox}{\@tempboxa}}
+\renewcommand{\cftchapaftersnum}{\end{lrbox}}
+\makeatother
+\makeatletter
+\renewcommand{\cftsecpresnum}{\begin{lrbox}{\@tempboxa}}
+\renewcommand{\cftsecaftersnum}{\end{lrbox}}
+\makeatother
+\makeatletter
+\renewcommand{\cftsubsecpresnum}{\begin{lrbox}{\@tempboxa}}
+\renewcommand{\cftsubsecaftersnum}{\end{lrbox}}
+\makeatother
+```

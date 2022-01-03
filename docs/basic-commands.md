@@ -45,3 +45,17 @@ It is needed to be declared at the beginning of latex file.
   {\normalsize This text will appear on bottom \par}
 \end{titlepage}
 ```
+
+## Remove numeration from chapters
+
+```latex
+\titleformat{\chapter}{\normalfont\Huge\bfseries}{}{0pt}{}
+\titleformat{\section}{\normalfont\Large\bfseries}{}{0pt}{}
+\titleformat{\subsection}{\normalfont\large\bfseries}{}{0pt}{}
+```
+
+## Set custom page number initialization
+
+```latex
+\setcounter{page}{9}
+```

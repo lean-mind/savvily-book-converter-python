@@ -6,6 +6,7 @@
 - [Page size](page-size.md)
 - [Starting section](starting-section.md)
 - [Table of contents](table-of-contents.md)
+- [Page style](page-style.md)
 - [Paragraph](paragraph.md)
 - **Epub**
 - [Epub config](epub.md)

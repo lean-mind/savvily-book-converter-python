@@ -1,5 +1,14 @@
 # Basic latex commands
 
+## Document structure
+
+Latex use a layout as base [document structure](https://en.wikibooks.org/wiki/LaTeX/Document_Structure).
+It is needed to be declared at the beginning of latex file.
+
+```latex
+\documentclass[10pt]{book}
+```
+
 ## Set font
 
 ```latex

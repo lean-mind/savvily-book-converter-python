@@ -2,8 +2,9 @@
 
 ## Document structure
 
-Latex use a layout as base [document structure](https://en.wikibooks.org/wiki/LaTeX/Document_Structure).
-It is needed to be declared at the beginning of latex file.
+Latex uses a base [document structure](https://en.wikibooks.org/wiki/LaTeX/Document_Structure) as a layout.
+
+It is needed to be declared at the beginning of latex file, like so:
 
 ```latex
 \documentclass[10pt]{book}
@@ -21,7 +22,7 @@ It is needed to be declared at the beginning of latex file.
 \newpage\phantom{blabla}\thispagestyle{empty}
 ```
 
-## Add margin between lines
+## Set spacing between two lines
 
 ```latex
 {\normalsize Top line \par}
@@ -29,7 +30,7 @@ It is needed to be declared at the beginning of latex file.
 {\normalsize Bottom line \par}
 ```
 
-## Center
+## Center an image
 
 ```latex
 \begin{center}
@@ -37,7 +38,7 @@ It is needed to be declared at the beginning of latex file.
 \end{center}
 ```
 
-## Move all to bottom
+## Move text to the bottom of the page
 
 ```latex
 \begin{titlepage}\thispagestyle{empty}

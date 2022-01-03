@@ -1,8 +1,10 @@
 # Starting section
 
-> This configuration can be found in starting.tex files.
-> This is the beginning of the book until table of contents.
-> Contains different subsections placed sequentially customized based on requirements.
+> This configuration can be found in `starting.tex`.
+> 
+> This portion includes everything from the book cover up to the table of contents.
+> 
+> It consists of different subsections placed sequentially based on custom requirements.
 
 ## Book Cover
 
@@ -10,24 +12,26 @@ The book cover is added by using this command.
 
 ```latex
 \usepackage{wallpaper}
-\ThisTileWallPaper{17.9cm}{23.5cm}{./resources/Codigo_Sostenible_Print.png}
+\ThisTileWallPaper{17.9cm}{23.5cm}{./resources/book-cover.png}
 ```
 
-This command generates a new page with a background image, so it is needed to be used between commands `\begin` and `\end`.
+This command generates a new page with a background image, so it is needs to be used like so:
 
 ```latex
 \begin{document}
-  \ThisTileWallPaper{17.9cm}{23.5cm}{./resources/Codigo_Sostenible_Print.png}
+  \ThisTileWallPaper{17.9cm}{23.5cm}{./resources/book-cover.png}
 \end{document}
 ```
 
-![book cover](resources/images/book-cover.PNG)
+![book cover](resources/images/book-cover.png)
+
+> It is necessary to add a `book-cover.png` in manuscript resources folder.
 
 ## Title page
 
-This is a page carrying nothing but the title.
+Blank page with the book title.
 
-It is necessary to add a blank line to add space between title and page top border.
+We use a blank line to add space between title and page top border and help with formatting.
 
 ```latex
 \begin{titlepage}
@@ -37,12 +41,11 @@ It is necessary to add a blank line to add space between title and page top bord
 \end{titlepage}
 ```
 
-
 ## Half-title page
 
-This is a page carrying book title, note, author and logo.
+Blank page with the book title, note, author name and logo.
 
-> It is necessary to add a logo.png in manuscript resources folder.
+> It is necessary to add a `logo.png` in manuscript resources folder.
 
 ```latex
 \begin{titlepage}\thispagestyle{empty}
@@ -62,7 +65,7 @@ This is a page carrying book title, note, author and logo.
 
 ## Back half-title page
 
-This is a page which is used to add all information related to the book.
+A page dedicated to copyright and other such legal information.
 
 ```latex
 \begin{titlepage}\thispagestyle{empty}
@@ -82,7 +85,7 @@ This is a page which is used to add all information related to the book.
 
 ## Dedication
 
-We can custom the dedication position by adjusting `\newgeometry` margins.
+We can modify the dedication positioning by adjusting its margins with `\newgeometry`.
 
 ```latex
 \begin{titlepage}\thispagestyle{empty}

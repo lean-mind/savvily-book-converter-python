@@ -14,17 +14,21 @@
     </p>
 </div>
 
-## Pre-Requisites
+# Getting started
 
-The easiest way to run this project is with Docker.
+## A note about Docker
 
-If you'd rather not use it (or can't), you'll have to install Latex and some other dependencies (see [below](#latex)).
+The following instructions will rely on docker to run the project and generate the documents.
+
+This is by far the easiest way to interact with the project, but if you want (or need) to do it the hard way, have a look over [here](pandoc).
 
 ## Docker
 
 Get it [here](https://docs.docker.com/get-docker/)!
 
-# Getting started
+Remember to configure it to [start on boot](https://docs.docker.com/engine/install/linux-postinstall/#configure-docker-to-start-on-boot) and to make it [manageable](https://docs.docker.com/engine/install/linux-postinstall/#manage-docker-as-a-non-root-user) for non-root users.
+
+## Install
 
 Clone the repo and `cd` into it:
 
@@ -38,26 +42,15 @@ Generate docker image:
 docker build -t "savvily-book-generator" $PWD
 ```
 
-If you are installing with docker now is a good time to build the image. Run:
+Make sure to run this command from the project's root directory and do not change the name of the image (or do so in `convert.sh` as well).
 
-`docker build -t "savvily-book-generator" $PWD`
-
-Make sure you run this command from the project's root directory (where the Dockerfile is located) and do not change the name of the image (or do so in `convert.sh` as well).
-
-You'll find two important directories under `src`, `scripts` and `templates`.
-
-- These scripts are the ones doing the heavy lifting. Pre-processing ,rendering and merging is done here.
-- In templates you'll find the relevant `.tex` files for each conversion type. Modify them at you own risk!
-
-# How to run the project
-
-## Docker
+## How to run the project
 
 From the project root directory:
 
 `./convert.sh [FLAG] [MANUSCRIPT_PATH]`
 
-The script expects **both** a flag determining the wanted output format **and** a path (relative or absolute) to the manuscript.
+The script expects **both** a flag determining the wanted output format **and** a path (relative or absolute) to your [manuscript](manuscript).
 
 The available flags are:
 

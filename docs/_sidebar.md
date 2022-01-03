@@ -1,6 +1,7 @@
 - [Getting started](/)
 - [Manuscript structure](manuscript.md)
 - [Pandoc](pandoc.md)
+- [Project Tour](tour.md)
 - **Screen and print**
 - [Basic commands](basic-commands.md)
 - [Page size](page-size.md)

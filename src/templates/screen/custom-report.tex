@@ -18,13 +18,14 @@
 
 \setmonofont{JetBrains Mono}[Contextuals=Alternate]
 
+% Page size
 \geometry{paperwidth=17.9cm, paperheight=23.5cm}
 \geometry{left=2cm, right=2cm, top=2.5cm, bottom=2.5cm}
 
+% Page style (header and footer)
 \pagestyle{fancy}
-
-\fancypagestyle{MyStyle}{%
-    \fancyhf{} %Clean headers
+\fancypagestyle{MyStyle}{
+    \fancyhf{}
     \fancyhead[RO]{\footnotesize\color{gray}\leftmark}
     \renewcommand{\chaptermark}[1]{\markboth{\MakeUppercase{##1}}{}}
     \fancyfoot[C]{\fontfamily{\sfdefault} \thepage}
@@ -33,27 +34,23 @@
 \renewcommand{\headrulewidth}{0pt}
 \renewcommand*{\thepage}{\footnotesize\arabic{page}}
 
-% Separation between lines
-\renewcommand{\baselinestretch}{1.2}
-
-% Separation between paragraph
-\setlength{\parskip}{0.25cm}
-
+% Paragraph
+\renewcommand{\baselinestretch}{1.2}% Separation between lines
+\setlength{\parskip}{0.25cm}% Separation between paragraph
+\setlength{\parindent}{0pt}% remove paragraph indention
 
 % Remove number of chapter, section and subsection from document
-% From titlesec package
 \titleformat{\chapter}{\normalfont\Huge\bfseries}{}{0pt}{}
 \titleformat{\section}{\normalfont\Large\bfseries}{}{0pt}{}
 \titleformat{\subsection}{\normalfont\large\bfseries}{}{0pt}{}
 \titlespacing{\chapter}{0em}{0em}{0em}
-%% Remove number of chapter, section and subsection from table of content
-% From titletoc package
+
+% Table of contents
 \titlecontents{chapter}[0em]                     % { <chapter|section|subsection|...> } [<left spacing>]
     {\vspace{0em}}                               % { <space between above-code> }
     {\normalfont\bfseries}                       % { <numbered-entry-format }
     {}                                           % { <numberless-entry-format> }
     {\enspace\dotfill\contentspage}              % { <filler-page-format> }
-
 
 \titlecontents{section}[2em]
     {\vspace{-0.5em}}
@@ -69,16 +66,14 @@
 
 \renewcommand{\familydefault}{\sfdefault}
 
-%
-% remove paragraph indention
-%
-\setlength{\parindent}{0pt}
-
+% Dots style
 \usepackage{tocloft}
 \renewcommand\cftdotsep{5}
+
 \setlength{\cftsecindent}{-8pt}% Indent for \section
 \setlength{\cftsubsecindent}{4pt}% Indent for \subsection
 
+% Remove table of content numeration
 \makeatletter
 \renewcommand{\cftchappresnum}{\begin{lrbox}{\@tempboxa}}
 \renewcommand{\cftchapaftersnum}{\end{lrbox}}
@@ -118,17 +113,9 @@ $if(graphics)$
 \makeatother
 $endif$
 
-
-%
-%
-% Listings
-%
-%
-
+% Listings (code blocks)
 $if(listings)$
-%
 % general listing colors
-%
 \definecolor{listing-background}{HTML}{F5F5F5}
 \definecolor{listing-rule}{HTML}{B3B2B3}
 \definecolor{listing-text-color-black}{HTML}{000000}
@@ -170,7 +157,6 @@ $if(listings)$
     numbersep        = 5pt,
     extendedchars    = true,
     captionpos       = t,
-%    mathescape      = true,
     showspaces       = false,
     showtabs         = false,
     framexrightmargin = 17pt,
@@ -186,9 +172,7 @@ $if(listings)$
         {”}{{''}}1
 }
 
-%
 % Java (Java SE 12, 2019-06-22)
-%
 \lstdefinelanguage{Java}{
     morekeywords={
         % normal keywords (without data types)
@@ -227,7 +211,16 @@ $if(listings)$
 \lstset{style=leanmind_listing_style}
 
 \DeclareCaptionFormat{listing}{{\textwidth+17pt\relax}\vskip1pt#1#2#3}
-\captionsetup[lstlisting]{format=listing, singlelinecheck=false, labelformat={empty}, margin=0pt, font={tt ,it, scriptsize, color=listing-language}, labelsep=space, labelfont=bf, justification=raggedleft}
+\captionsetup[lstlisting]{
+    format=listing, 
+    singlelinecheck=false, 
+    labelformat={empty}, 
+    margin=0pt, 
+    font={tt ,it, scriptsize, color=listing-language}, 
+    labelsep=space, 
+    labelfont=bf, 
+    justification=raggedleft
+}
 $endif$
 
 \begin{document}

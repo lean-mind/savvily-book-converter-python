@@ -6,7 +6,8 @@ cd manuscript
 # Prepare markdown for processing
 
 # Sort all chapters and cat them to stdout (Ignore "xargs: 'cat' terminated by signal 13" known bug)
-find . -name "[0-9]*.txt" | sort -V | xargs  cat 2>/dev/null |\
+#find . -name "[0-9]*.txt" | sort -V | xargs  cat 2>/dev/null |\
+find . -maxdepth 1 -name "[0-9]*.txt" -o -name '[0-9]*.md' | sort -V | xargs  cat | \
 
 # Ensure: h1 headers work, links respect md format, code block languages are passed as capitalized titles
 sed -Ee 's:(^#):\n\1:' \

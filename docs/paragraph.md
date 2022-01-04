@@ -14,7 +14,7 @@
 
 ## Paragraph indention
 
-In order to remove default indention we set `0pt` as value.
+We override Latex default indentation setting its size to `0pt`:
 
 ```latex
 \setlength{\parindent}{0pt}

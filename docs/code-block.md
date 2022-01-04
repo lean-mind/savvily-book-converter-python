@@ -1,8 +1,8 @@
 # Code block
 
-Code block are being configurated [listing package](https://texdoc.org/serve/listings.pdf/0)
+Code block are being rendered using the [listings package](https://texdoc.org/serve/listings.pdf/0)
 
-All information in web related with code blocks is finding as `listings`.
+When searching for documentation or information regarding code blocks, please use the keyword `listings` and thank us later.
 
 ## Define colors
 
@@ -12,7 +12,7 @@ All information in web related with code blocks is finding as `listings`.
 
 ## Basic configuration
 
-All style configuration have to be set inside `\lstdefinestyle` command as follows.
+All style configuration regarding code blocks has to be set inside the `\lstdefinestyle` command as follows:
 
 ```latex
 \lstdefinestyle{listing_style_name}{
@@ -22,9 +22,8 @@ All style configuration have to be set inside `\lstdefinestyle` command as follo
 
 ## Caption
 
-To configure caption it is necessary to keep in mind two types of configurations:
+When setting a caption it is necessary to keep in mind two types of configurations:
 1. Caption configuration
-2. Listing configuration related to caption
 
 ```latex
 \DeclareCaptionFormat{listing}{{\textwidth+17pt\relax}\vskip1pt#1#2#3}
@@ -40,7 +39,9 @@ To configure caption it is necessary to keep in mind two types of configurations
 }
 ```
 
-Listing configuration related to caption position.
+2. Listing configuration related to caption. 
+
+The following commands for example belong to the `listings` package but set the caption position:
 
 ```latex
 ...

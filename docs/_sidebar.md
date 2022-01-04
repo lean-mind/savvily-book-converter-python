@@ -7,7 +7,7 @@
 - [Page size](page-size.md)
 - [Starting section](starting-section.md)
 - [Table of contents](table-of-contents.md)
-- [Page style](page-style.md)
+- [Headers and Footers](headers-footers.md)
 - [Paragraph](paragraph.md)
 - [Code block](code-block.md)
 - **Epub**

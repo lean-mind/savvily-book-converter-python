@@ -1,13 +1,10 @@
-# Page style
+# Headers and Footers
 
-The page style make use of [fancyhdr](http://tug.ctan.org/tex-archive/macros/latex/contrib/fancyhdr/fancyhdr.pdf)
-package. This package is used to apply style to page header and footer.
+We are using the [fancyhdr](http://tug.ctan.org/tex-archive/macros/latex/contrib/fancyhdr/fancyhdr.pdf) package to style headers and footers.
 
-## Config
+## Configuration
 
-This config allows to show the title chapter on odd pages with position on right side.
-
-Otherwise, it changes the footer number page to a small size.
+This configuration shows the chapter title on the right side of odd pages.
 
 ```latex
 \usepackage{fancyhdr}
@@ -23,5 +20,10 @@ Otherwise, it changes the footer number page to a small size.
 }
 
 \renewcommand{\headrulewidth}{0pt}
+```
+
+This on the other hand, sets the page number in the footer to a smaller size.
+
+```
 \renewcommand*{\thepage}{\footnotesize\arabic{page}}
 ```

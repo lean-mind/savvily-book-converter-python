@@ -1,14 +1,18 @@
 # Table of contents
 
-This section is generated between starting section and first book chapter.
+This section is also known as Index and is currently being generated between the [starting section](starting-section) and the first chapter of the book.
 
 ## Basic configuration
 
 The table of content is generated based on headings.
 
 > chapter = h1 | #
+>
 > section = h2 | ##
+>
 > subsection = h3 | ###
+
+And is set with these commands:
 
 ```latex
 \usepackage{titletoc}
@@ -33,7 +37,7 @@ The table of content is generated based on headings.
 
 ## Dots
 
-The dot density can be configured with this command.
+The dot density (between the chapter names and corresponding page numbers) can be configured with this command.
 
 ```latex
 \usepackage{tocloft}
@@ -42,7 +46,7 @@ The dot density can be configured with this command.
 
 ## Indent
 
-The indent is removed with this command.
+The default indent is removed with this command.
 
 ```latex
 \setlength{\cftsecindent}{-8pt}
@@ -51,7 +55,7 @@ The indent is removed with this command.
 
 ## Hyperlinks
 
-To add hyperlinks to table of content it is only needed to use this package.
+Add clickable links to the Table of Contents by simply including this package:
 
 ```latex
 \usepackage[hidelinks]{hyperref}
@@ -59,7 +63,7 @@ To add hyperlinks to table of content it is only needed to use this package.
 
 ## Numeration
 
-These commands delete the table of content chapter numeration.
+These commands delete the chapter numeration from the table of content.
 
 ```latex
 \makeatletter

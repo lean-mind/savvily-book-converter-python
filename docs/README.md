@@ -8,10 +8,7 @@
 
   <p align="center">
     Easily convert your markdown manuscript into a pdf and/or epub book!
-    <br />
-    <a href="https://lean-mind.github.io/savvily-book-converter/#/"><strong>Explore the docs »</strong></a>
-    <br />
-    </p>
+  </p>
 </div>
 
 # Getting started

@@ -19,4 +19,3 @@ We override Latex default indentation setting its size to `0pt`:
 ```latex
 \setlength{\parindent}{0pt}
 ```
-

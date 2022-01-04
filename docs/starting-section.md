@@ -1,6 +1,6 @@
 # Starting section
 
-> This configuration can be found in `starting.tex`.
+> This configuration can be found in `starting.tex` inside src/templates/<doc_type>/.
 > 
 > This portion includes everything from the book cover up to the table of contents.
 > 
@@ -10,14 +10,12 @@
 
 The book cover is added by using this command.
 
-```latex
-\usepackage{wallpaper}
-\ThisTileWallPaper{17.9cm}{23.5cm}{./resources/book-cover.png}
-```
+> The size image have to be equal to page size.
 
 This command generates a new page with a background image, so it is needs to be used like so:
 
 ```latex
+\usepackage{wallpaper}
 \begin{document}
   \ThisTileWallPaper{17.9cm}{23.5cm}{./resources/book-cover.png}
 \end{document}
@@ -65,7 +63,7 @@ Blank page with the book title, note, author name and logo.
 
 ## Back half-title page
 
-A page dedicated to copyright and other such legal information.
+A page dedicated to copyright and other information.
 
 ```latex
 \begin{titlepage}\thispagestyle{empty}
@@ -85,7 +83,7 @@ A page dedicated to copyright and other such legal information.
 
 ## Dedication
 
-We can modify the dedication positioning by adjusting its margins with `\newgeometry`.
+We can modify the dedication position by adjusting page margins with `\newgeometry`.
 
 ```latex
 \begin{titlepage}\thispagestyle{empty}

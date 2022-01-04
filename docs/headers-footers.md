@@ -27,3 +27,11 @@ This on the other hand, sets the page number in the footer to a smaller size.
 ```
 \renewcommand*{\thepage}{\footnotesize\arabic{page}}
 ```
+
+## Footnote
+
+To move the footnote to bottom page it is necesary to use this package.
+
+```latex
+\usepackage[bottom]{footmisc}
+```

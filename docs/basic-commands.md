@@ -12,6 +12,8 @@ It is needed to be declared at the beginning of latex file, like so:
 
 ## Set font
 
+The simple use of this command apply the font to all document.
+
 ```latex
 \usepackage[sfdefault]{roboto}
 ```
@@ -22,7 +24,7 @@ It is needed to be declared at the beginning of latex file, like so:
 \newpage\phantom{blabla}\thispagestyle{empty}
 ```
 
-## Set spacing between two lines
+## Margin between two lines
 
 ```latex
 {\normalsize Top line \par}
@@ -34,7 +36,7 @@ It is needed to be declared at the beginning of latex file, like so:
 
 ```latex
 \begin{center}
-    {\includegraphics[scale=0.20]{./resources/logo.png}}
+  {\includegraphics[scale=0.20]{./resources/logo.png}}
 \end{center}
 ```
 

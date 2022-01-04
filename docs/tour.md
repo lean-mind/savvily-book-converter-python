@@ -9,7 +9,7 @@ We went over how to use the script [here](/#how-to-run-the-project).
 Basically it works by launching a `docker run` command based on the given flags and path.
 You'll see it uses some other scripts, we'll go over them later.
 
-It also makes a temporary copy of the manuscript and cleans after itself.
+It also makes a hidden temporary copy of the manuscript and cleans after itself.
 
 ## src/
 

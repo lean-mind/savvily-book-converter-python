@@ -11,22 +11,49 @@ In order to execute the conversion properly the <manuscript-dir> should follow t
 │   ├── book-cover-screen.png
 │   ├── book-cover-print.png
 │   ├── ...
-├── autor.md
-├── agradecimientos.md
-├── bibliografia.md
-├── savvily.md
+├── closing
+│   ├── 0_Thanks.md
+│   ├── 1_Author.md
+│   ├── 2_Bibliography.md
+│   ├── 3_Savvily.md
+│   ├── ...
+├── ...
 ```
 
-> If you are not using docker to convert the document you need to call your manuscript directory
-> "manuscript".
+This directory can be located and named wherever and however you prefer.
+
+> If you are not using docker **must** call your manuscript directory ".manuscript" and place it **exactly** at the projects root.
+
+## Closing directory
+
+The inclusion of a `/closing` directory is suggested but not strictly necessary.
+
+You'll want to add to it the parts of the manuscript you expect to **not** be included in the Table of Contents.
 
 ## Chapter numeration
 
 The chapters file names must begin with a number sequentially, for example:
+
 - 0_fancyChapterName1.md
 - 1_fancyChapterName2.md
 - 2_fancyChapterName3.md
 
+> Files not starting with a number will not be rendered.
+
+Just like the chapters of your manuscript, you need to numerate the files in the `/closing` directory (if you choose to include one).
+
+We suggest you follow the order in the example above, but this is ultimately up to you.
+
 ## Chapter beginning
 
-The chapters need to be started with a heading 1 to be included in table of contents.
+Each chapter needs to begin with a `h1` heading to be included in table of contents.
+
+Sections and subsections should follow suit.
+
+## File types
+
+At the moment the scripts accept both `.md` and `.txt`.
+
+> File with any other termination will be not be rendered.
+
+The ability to accept `.txt` is likely to be removed in the future and in any case you should provide a manuscript written strictly in common **markdown**.

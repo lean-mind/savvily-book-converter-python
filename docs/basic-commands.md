@@ -60,3 +60,5 @@ It is needed to be declared at the beginning of latex file, like so:
 ```latex
 \setcounter{page}{9}
 ```
+
+This is currently needed at the beginning of the closing section for adequate rendering.

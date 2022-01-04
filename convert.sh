@@ -9,7 +9,7 @@ ARGS=$(getopt --options psea --long "print,screen,epub,all" -- "$@")
 
 case "$1" in
   -p|--print)
-    mkdir -p manuscript && cp -r $2/* ./manuscript
+    mkdir -p .manuscript && cp -r $2/* ./.manuscript
     docker run -it --rm \
       --volume $PWD:/data \
       -u $(id -u ${USER}):$(id -g ${USER}) \
@@ -18,7 +18,7 @@ case "$1" in
     shift;;
 
   -s|--screen)
-    mkdir -p manuscript && cp -r $2/* ./manuscript
+    mkdir -p .manuscript && cp -r $2/* ./.manuscript
     docker run -it --rm \
       --volume $PWD:/data \
       -u $(id -u ${USER}):$(id -g ${USER}) \
@@ -27,7 +27,7 @@ case "$1" in
     shift;;
 
   -e|--epub)
-    mkdir -p manuscript && cp -r $2/* ./manuscript
+    mkdir -p .manuscript && cp -r $2/* ./.manuscript
     docker run -it --rm \
       --volume $PWD:/data \
       -u $(id -u ${USER}):$(id -g ${USER}) \
@@ -52,4 +52,4 @@ case "$1" in
     exit 1;;
 esac
 
-rm -rf manuscript
+rm -rf .manuscript

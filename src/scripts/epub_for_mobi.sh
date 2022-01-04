@@ -1,7 +1,7 @@
 #!/bin/sh
 
 mkdir -p output
-cd manuscript
+cd .manuscript
 
 # Prepare markdown for processing
 

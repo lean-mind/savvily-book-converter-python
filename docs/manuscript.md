@@ -57,3 +57,8 @@ At the moment the scripts accept both `.md` and `.txt`.
 > File with any other termination will be not be rendered.
 
 The ability to accept `.txt` is likely to be removed in the future and in any case you should provide a manuscript written strictly in common **markdown**.
+
+## Manuscript constrains
+
+- All files must be as LF.
+- This list constructions is not allowed (list and inline code): * `Practices = Principles(Context)`

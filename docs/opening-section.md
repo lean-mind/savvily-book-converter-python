@@ -1,16 +1,16 @@
-# Starting section
+# Opening section
 
-> This configuration can be found in `starting.tex` inside src/templates/<doc_type>/.
-> 
+> This configuration can be found in `opening.tex` inside src/templates/<doc_type>/.
+>
 > This portion includes everything from the book cover up to the table of contents.
-> 
+>
 > It consists of different subsections placed sequentially based on custom requirements.
 
 ## Book Cover
 
 The book cover is added by using this command.
 
-> The size image have to be equal to page size.
+> The size image has to be equal to page size.
 
 This command generates a new page with a background image, so it is needs to be used like so:
 

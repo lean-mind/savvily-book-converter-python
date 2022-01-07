@@ -5,11 +5,12 @@
 - **Screen and print**
 - [Basic commands](basic-commands.md)
 - [Page size](page-size.md)
-- [Starting section](starting-section.md)
+- [Opening section](opening-section.md)
 - [Table of contents](table-of-contents.md)
 - [Headers and Footers](headers-footers.md)
 - [Paragraph](paragraph.md)
 - [Code block](code-block.md)
+- [Closing section](closing-section.md)
 - **Epub**
 - [Epub config](epub.md)
 - **Documentation**

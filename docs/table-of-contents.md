@@ -1,6 +1,6 @@
 # Table of contents
 
-This section is also known as Index and is currently being generated between the [starting section](starting-section) and the first chapter of the book.
+This section is also known as Index and is currently being generated between the [opening section](opening-section) and the first chapter of the book.
 
 ## Basic configuration
 

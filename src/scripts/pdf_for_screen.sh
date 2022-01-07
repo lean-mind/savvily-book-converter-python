@@ -1,9 +1,9 @@
 #!/bin/sh
 
-mkdir -p output/.tmp && cd .manuscript
+mkdir -p output/.tmp && cd .manuscript || exit
 
 # Prepare markdown for processing
-xelatex -output-directory ./../output/.tmp ../src/templates/screen/starting.tex
+xelatex -output-directory ./../output/.tmp ../src/templates/screen/starting.tex && \
 
 # Prepare MD
 # Sort all chapters and cat them to stdout
@@ -19,7 +19,7 @@ pandoc \
     --listings \
     -V documentclass=report \
     -f markdown-implicit_figures \
-    -o ./../output/.tmp/tmp_book_for_screen.pdf \
+    -o ./../output/.tmp/tmp_book_for_screen.pdf  && \
 
 find ./closing/ -name "[0-9]*.txt" -o -name '[0-9]*.md' | sort -V | xargs  cat | \
 # Ensure: h1 headers work, links respect md format, code block languages are passed as capitalized titles
@@ -31,7 +31,7 @@ pandoc \
     --template=../src/templates/screen/ending.tex\
     --listings -V documentclass=report\
     -f markdown-implicit_figures\
-    -o ./../output/.tmp/ending.pdf
+    -o ./../output/.tmp/ending.pdf && \
 
 # Join pdf fragments
 gs \
@@ -40,7 +40,8 @@ gs \
   -dBATCH \
   -sDEVICE=pdfwrite \
   -sOutputFile=./../output/book_for_screen.pdf \
-  ./../output/.tmp/starting.pdf ./../output/.tmp/tmp_book_for_screen.pdf ./../output/.tmp/ending.pdf
-echo "PDF for screen successfully generated"
+  ./../output/.tmp/starting.pdf ./../output/.tmp/tmp_book_for_screen.pdf ./../output/.tmp/ending.pdf && \
 
-rm -rf ../output/.tmp
+rm -rf ../output/.tmp && \
+
+echo "PDF for screen successfully generated"

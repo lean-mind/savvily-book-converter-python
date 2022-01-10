@@ -5,7 +5,7 @@ mkdir -p output && cd .manuscript || exit
 # Prepare markdown for processing
 
 #find . -name "[0-9]*.txt" | sort -V | xargs  cat 2>/dev/null |\
-find . -maxdepth 1 -name "[0-9]*.txt" -o -name '[0-9]*.md' | sort -V | xargs  cat | \
+find . -maxdepth 1 -name "[0-9]*.txt" -o -name '[0-9]*.md' | sort -V | xargs cat | \
 
 # Ensure: h1 headers work, links respect md format, code block languages are passed as capitalized titles
 sed -Ee 's:(^#):\n\1:' \
@@ -14,10 +14,11 @@ sed -Ee 's:(^#):\n\1:' \
 
 # Run Pandoc on stdin
 pandoc \
-    --toc                                                 \
-    --css ../src/templates/epub/epub.css                                  \
-    --highlight-style ../src/templates/epub/monochrome.theme              \
-    --epub-cover-image ./resources/Codigo_Sostenible.png  \
-    -o ./../output/ebook_for_mobi.epub                 \
-    --metadata-file ../src/templates/epub/metadata.yml                    \
+    --toc \
+    --epub-embed-font=/usr/share/fonts/Roboto-Bold.ttf \
+    --css ../src/templates/epub/epub.css \
+    --highlight-style ../src/templates/epub/monochrome.theme \
+    --epub-cover-image ./resources/book-cover-print.png \
+    -o ./../output/ebook_for_mobi.epub \
+    --metadata-file ../src/templates/epub/metadata.yml \
 && echo "EPUB for MOBI successfully generated"

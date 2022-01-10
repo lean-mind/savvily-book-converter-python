@@ -17,4 +17,5 @@ RUN apk add ghostscript
 # Install JetBrains Mono font
 RUN mkdir -p /usr/share/fonts/
 COPY src/JetBrains_Mono/static/*.ttf /usr/share/fonts/
+COPY src/Roboto/*.ttf /usr/share/fonts/
 RUN fc-cache -f && rm -rf /var/cache/*

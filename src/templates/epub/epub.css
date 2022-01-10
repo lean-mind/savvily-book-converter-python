@@ -1,32 +1,99 @@
-/* This defines styles and classes used in the book */
-body { margin: 5%; text-align: justify; font-size: medium; }
-code { font-family: monospace; font-size: smaller}
+/*!* This defines styles and classes used in the book *!*/
+/*body { margin: 5%; text-align: justify; font-size: medium; }*/
+/*code { font-family: monospace; font-size: smaller}*/
+/*h1 { text-align: left; }*/
+/*h2 { text-align: left; }*/
+/*h3 { text-align: left; }*/
+/*h4 { text-align: left; }*/
+/*h5 { text-align: left; }*/
+/*h6 { text-align: left; }*/
+/*!* For title, author, and date on the cover page *!*/
+/*h1.title { }*/
+/*p.author { }*/
+/*p.date { }*/
+/*nav#toc ol,*/
+/*nav#landmarks ol { padding: 0; margin-left: 1em; }*/
+/*nav#toc ol li,*/
+/*nav#landmarks ol li { list-style-type: none; margin: 0; padding: 0; }*/
+/*a.footnote-ref { vertical-align: super; font-size: xx-small;}*/
+/*em, em em em, em em em em em { font-style: italic;}*/
+/*em em, em em em em { font-style: normal; }*/
+/*code{ white-space: pre-wrap; }*/
+/*span.smallcaps{ font-variant: small-caps; }*/
+/*span.underline{ text-decoration: underline; }*/
+/*q { quotes: "“" "”" "‘" "’"; }*/
+/*div.column{ display: inline-block; vertical-align: top; width: 50%; }*/
+/*div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}*/
+/*@media screen { !* Workaround for iBooks issue; see #6242 *!*/
+/*    .sourceCode {*/
+/*        overflow: visible !important;*/
+/*        white-space: pre-wrap !important;*/
+/*    }*/
+/*}*/
+
+@font-face {
+  font-family: MyRoboto;
+  font-style: normal;
+  font-weight: bold;
+  src: url("/usr/share/fonts/Roboto-Bold.ttf") format("truetype");
+}
+
+html {
+  font-size: 100%;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+}
+
+body {
+  font-family: MyRoboto, sans-serif;
+  margin: auto;
+  text-align: justify;
+  font-size: 16px;
+  line-height: 1.7;
+}
+
 h1 { text-align: left; }
 h2 { text-align: left; }
 h3 { text-align: left; }
 h4 { text-align: left; }
 h5 { text-align: left; }
 h6 { text-align: left; }
-/* For title, author, and date on the cover page */
-h1.title { }
-p.author { }
-p.date { }
-nav#toc ol,
-nav#landmarks ol { padding: 0; margin-left: 1em; }
+
+h1.title {
+  margin-top: 0;
+  text-align: center;
+}
+
+p.author {
+  text-align: center;
+}
+
+ol.toc {
+  margin: 1em 0;
+  padding: 0 0 0 2em;
+
+}
+
+ul.toc ul, ol.toc ol {
+  margin: .3em 0;
+}
+
+li { margin: 0; padding: 0 5px; }
+
+code {
+  font-family: monospace;
+  background-color: rgb(247, 247, 247);
+}
+
+pre {
+  font-family: monospace;;
+  padding: 16px;
+  overflow: auto;
+  font-size: 90%;
+  line-height: 1.45;
+  border-radius: 3px;
+  background-color: rgb(247, 247, 247);
+}
+
 nav#toc ol li,
 nav#landmarks ol li { list-style-type: none; margin: 0; padding: 0; }
-a.footnote-ref { vertical-align: super; font-size: xx-small;}
-em, em em em, em em em em em { font-style: italic;}
-em em, em em em em { font-style: normal; }
-code{ white-space: pre-wrap; }
-span.smallcaps{ font-variant: small-caps; }
-span.underline{ text-decoration: underline; }
-q { quotes: "“" "”" "‘" "’"; }
-div.column{ display: inline-block; vertical-align: top; width: 50%; }
-div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
-@media screen { /* Workaround for iBooks issue; see #6242 */
-    .sourceCode {
-        overflow: visible !important;
-        white-space: pre-wrap !important;
-    }
-}

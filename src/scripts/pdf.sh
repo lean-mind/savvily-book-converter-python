@@ -1,9 +1,12 @@
 #!/bin/sh
 
+outputType=$1
+latexClass=$2
+
 mkdir -p output/.tmp && cd .manuscript || exit
 
 # Process book opening section
-xelatex -output-directory ./../output/.tmp ../src/templates/print/opening.tex && \
+xelatex -output-directory ./../output/.tmp ../src/templates/"$outputType"/opening.tex && \
 
 # Process chapters
 # Sort all chapters and cat them to stdout
@@ -14,11 +17,11 @@ sed -Ee 's:(^#):\n\1:' -Ee 's:] \(:](:g' -Ee 's:(```)(.+)$:\1{title=\u\2}:' | \
 
 pandoc \
     --pdf-engine=xelatex \
-    --template=../src/templates/print/custom-book.tex \
+    --template=../src/templates/"$outputType"/custom-"$latexClass".tex \
     --listings \
-    -V documentclass=book \
+    -V documentclass="$latexClass" \
     -f markdown-implicit_figures \
-    -o ./../output/.tmp/tmp_book_for_print.pdf && \
+    -o ./../output/.tmp/tmp_book_for_"$outputType".pdf && \
 
 # Process book closing section
 find ./closing/ -name "[0-9]*.txt" -o -name '[0-9]*.md' | sort -V | xargs  cat | \
@@ -27,8 +30,8 @@ sed -Ee 's:(^#):\n\1:' -Ee 's:] \(:](:g' -Ee 's:(```)(.+)$:\1{title=\u\2}:' | \
 
 pandoc \
     --pdf-engine=xelatex \
-    --template=../src/templates/print/closing.tex \
-    --listings -V documentclass=book \
+    --template=../src/templates/"$outputType"/closing.tex \
+    --listings -V documentclass="$latexClass" \
     -f markdown-implicit_figures \
     -o ./../output/.tmp/closing.pdf && \
 
@@ -38,9 +41,9 @@ gs \
     -dNOPAUSE \
     -dBATCH \
     -sDEVICE=pdfwrite \
-    -sOutputFile=./../output/book_for_print.pdf \
-    ./../output/.tmp/opening.pdf ./../output/.tmp/tmp_book_for_print.pdf ./../output/.tmp/closing.pdf && \
+    -sOutputFile=./../output/book_for_"$outputType".pdf \
+    ./../output/.tmp/opening.pdf ./../output/.tmp/tmp_book_for_"$outputType".pdf ./../output/.tmp/closing.pdf && \
 
 rm -rf ../output/.tmp && \
 
-echo "PDF for print successfully generated"
+echo "PDF for $outputType successfully generated"

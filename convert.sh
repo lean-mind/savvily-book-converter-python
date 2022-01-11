@@ -6,11 +6,13 @@ if [ $# -lt 2 ]; then
 fi
 
 case "$1" in
-  -p) scriptToRun="./src/scripts/pdf.sh print book" ;;
+  -p| --print) scriptToRun="./src/scripts/pdf.sh print book" ;;
 
-  -s) scriptToRun="./src/scripts/pdf.sh screen report" ;;
+  -s| --screen) scriptToRun="./src/scripts/pdf.sh screen report" ;;
 
-  -e) scriptToRun="./src/scripts/epub.sh" ;;
+  -e| --epub) scriptToRun="./src/scripts/epub.sh" ;;
+
+  -a| --all) ./convert.sh -e "$2"; ./convert.sh -p "$2"; ./convert.sh -s "$2" ; exit 0;;
 
    *) printf "Unknown option %s\n" "$1" ; exit 1;;
 esac

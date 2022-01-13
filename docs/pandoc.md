@@ -4,6 +4,10 @@ You won't be able to use the main `convert.sh` script.
 
 In stead, you'll have to manually run the individual script you are interested in (they can be found under `src/scripts`)
 
+Keep in mind that the `pdf.sh` script will generate a print-ready file **or** a full color PDF for screen viewing
+based on the parameters it receives (`print` & `book` for a print-ready version or `screen` & `report` for a
+screen-ready PDF).
+
 For these to work they must be invoked from the project's root, where they expect to find a hidden directory called `.manuscript`.
 
 This directory must contain the full manuscript with the [expected format and structure](manuscript).

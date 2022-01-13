@@ -54,7 +54,7 @@ The available flags are:
 ```
 -p or --print --> Generates a pdf for printing
 -s or --screen --> Generates a pdf for screen viewing
--e or --epub --> Generates an epub (standard and mobi-redy)
+-e or --epub --> Generates an epub
 -a or --all --> All of the above
 ```
 

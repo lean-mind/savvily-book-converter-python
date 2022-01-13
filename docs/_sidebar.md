@@ -11,8 +11,9 @@
 - [Paragraph](paragraph.md)
 - [Code block](code-block.md)
 - [Closing section](closing-section.md)
-- **Epub**
+- **Epub and Mobi**
 - [Epub config](epub.md)
+- [Mobi config](mobi.md)
 - **Documentation**
 - [Docsify](docsify.md)
 - **Find Us**

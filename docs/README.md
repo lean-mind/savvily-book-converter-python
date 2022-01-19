@@ -30,7 +30,7 @@ Remember to configure it to [start on boot](https://docs.docker.com/engine/insta
 Clone the repo and `cd` into it:
 
 ```bash
-git clone git@github.com:lean-mind/savvily-book-converter.git && cd codigo-sostenible-book-converter-format
+git clone git@github.com:lean-mind/savvily-book-converter.git && cd savvily-book-converter
 ```
 
 Generate docker image:

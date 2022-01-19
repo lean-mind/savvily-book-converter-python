@@ -2,6 +2,7 @@ FROM pandoc/latex:latest
 
 # Install latex libraries
 RUN tlmgr update --self \
+    && tlmgr install pdfpages  \
     && tlmgr install tocloft  \
     && tlmgr install emptypage  \
     && tlmgr install footmisc  \
@@ -10,7 +11,8 @@ RUN tlmgr update --self \
     && tlmgr install roboto  \
     && tlmgr install incgraph  \
     && tlmgr install tcolorbox  \
-    && tlmgr install environ
+    && tlmgr install environ  \
+    && tlmgr install eso-pic
 RUN apk add sed
 RUN apk add ghostscript
 

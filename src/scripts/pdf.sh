@@ -23,18 +23,6 @@ pandoc \
     -f markdown-implicit_figures \
     -o ./../output/.tmp/tmp_book_for_"$outputType".pdf && \
 
-# Process book closing section
-find ./closing/ -name "[0-9]*.txt" -o -name '[0-9]*.md' | sort -V | xargs  cat | \
-# Ensure: h1 headers work, links respect md format, code block languages are passed as capitalized titles
-sed -Ee 's:(^#):\n\1:' -Ee 's:] \(:](:g' -Ee 's:(```)(.+)$:\1{title=\u\2}:' -Ee 's:\s\[\^:\[\^:g' | \
-
-pandoc \
-    --pdf-engine=xelatex \
-    --template=../src/templates/"$outputType"/closing.tex \
-    --listings -V documentclass="$latexClass" \
-    -f markdown-implicit_figures \
-    -o ./../output/.tmp/closing.pdf && \
-
 # Join opening, chapters and closing sections
 gs \
     -q \
@@ -42,7 +30,7 @@ gs \
     -dBATCH \
     -sDEVICE=pdfwrite \
     -sOutputFile=./../output/book_for_"$outputType".pdf \
-    ./../output/.tmp/opening.pdf ./../output/.tmp/tmp_book_for_"$outputType".pdf ./../output/.tmp/closing.pdf && \
+    ./../output/.tmp/opening.pdf ./../output/.tmp/tmp_book_for_"$outputType".pdf && \
 
 rm -rf ../output/.tmp && \
 

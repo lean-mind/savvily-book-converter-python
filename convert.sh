@@ -6,9 +6,9 @@ if [ $# -lt 2 ]; then
 fi
 
 case "$1" in
-  -p| --print) scriptToRun="./src/scripts/pdf.sh print book" ;;
+  -p| --print) scriptToRun="./src/scripts/pdf.sh print" ;;
 
-  -s| --screen) scriptToRun="./src/scripts/pdf.sh screen report" ;;
+  -s| --screen) scriptToRun="./src/scripts/pdf.sh screen" ;;
 
   -e| --epub) scriptToRun="./src/scripts/epub.sh" ;;
 

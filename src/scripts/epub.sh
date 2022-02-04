@@ -10,7 +10,8 @@ find . -maxdepth 1 -name "[0-9]*.txt" -o -name '[0-9]*.md' | sort -V | xargs  ca
 # Ensure: h1 headers work, links respect md format, code block languages are passed as capitalized titles
 sed -Ee 's:(^#):\n\1:' \
     -Ee 's:] \(:](:g' \
-    -Ee 's:(```)(.+)$:\1{title=\u\2}:' |\
+    -Ee 's:(```)(.+)$:\1{title=\u\2}:' \
+    -Ee 's:\s\[\^:\[\^:g'|\
 
 # Run Pandoc on stdin
 pandoc \

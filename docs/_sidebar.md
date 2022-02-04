@@ -10,7 +10,6 @@
 - [Headers and Footers](headers-footers.md)
 - [Paragraph](paragraph.md)
 - [Code block](code-block.md)
-- [Closing section](closing-section.md)
 - **Epub and Mobi**
 - [Epub config](epub.md)
 - [Mobi config](mobi.md)

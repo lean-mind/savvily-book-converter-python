@@ -13,7 +13,7 @@ xelatex -output-directory ./../output/.tmp ../src/templates/"$outputType"/openin
 find . -maxdepth 1 -name "[0-9]*.txt" -o -name '[0-9]*.md' | sort -V | xargs  cat | \
 
 # Ensure: h1 headers work, links respect md format, code block languages are passed as capitalized titles
-sed -Ee 's:(^#):\n\1:' -Ee 's:] \(:](:g' -Ee 's:(```)(.+)$:\1{title=\u\2}:' -Ee 's:\s\[\^:\[\^:g' | \
+sed -Ee 's:(^#):\n\1:' -Ee 's:] \(:](:g' -Ee 's:(```)(.+)$:\1{title=\u\2}:' -Ee '/!.*/! s:(.+?)\[(.+?)\]\(([^)]+)\)(.+?):\1\2[^\3]\4\n\n\n[^\3]\: \3\n:g' -Ee 's:\s\[\^:\[\^:g' | \
 
 pandoc \
     --pdf-engine=xelatex \

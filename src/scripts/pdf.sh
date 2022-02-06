@@ -1,15 +1,15 @@
 #!/bin/sh
-. ./src/scripts/markdownFormatter.sh
+. ./src/scripts/manuscriptFormatter.sh
 
 outputType=$1
 latexClass=$2
 
 mkdir -p output/.tmp && cd .manuscript || exit
 
-formattedPandocInput=$(markdownFormatter "$outputType")
+formattedManuscript=$(manuscriptFormatter "$outputType")
 
 # Process main section
-echo "$formattedPandocInput" | pandoc \
+echo "$formattedManuscript" | pandoc \
     --pdf-engine=xelatex \
     --template=../src/templates/"$outputType"/custom-"$latexClass".tex \
     --listings \

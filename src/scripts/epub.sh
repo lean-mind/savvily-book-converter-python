@@ -1,12 +1,12 @@
 #!/bin/sh
-. ./src/scripts/markdownFormatter.sh
+. ./src/scripts/manuscriptFormatter.sh
 
 mkdir -p output && cd .manuscript || exit
 
-formattedPandocInput=$(markdownFormatter "ebook")
+formattedManuscript=$(manuscriptFormatter "ebook")
 
 # Run Pandoc on formatted input
-echo "$formattedPandocInput" | pandoc \
+echo "$formattedManuscript" | pandoc \
     --toc \
     --epub-embed-font=/usr/share/fonts/Roboto-Bold.ttf \
     --css ../src/templates/epub/epub.css \

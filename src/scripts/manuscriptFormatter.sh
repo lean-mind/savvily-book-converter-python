@@ -1,8 +1,8 @@
 #!/bin/sh
 
-markdownFormatter(){
+manuscriptFormatter(){
   # Sort all chapters and cat their content to stdout
-  processedFiles=$(find . -maxdepth 1 -name "[0-9]*.txt" -o -name '[0-9]*.md' | sort -V | xargs  cat | \
+  processedManuscript=$(find . -maxdepth 1 -name "[0-9]*.txt" -o -name '[0-9]*.md' | sort -V | xargs  cat | \
   # Ensure:
   # correct h1 headers
   # links respect md format
@@ -15,9 +15,9 @@ markdownFormatter(){
 
   if [ "$1" = "print" ]; then
     # All non-images links ([some](text)) are converted to footnotes, uses the links as refs to avoid spaces and duplicates
-    processedFiles=$(echo "$processedFiles" | \
-      sed -E "/!.*/! s:(.+?)\[(.+?)\]\(([^)]+)\)(.+?):\1\2[^\3]\4\n\n\n[^\3]\: \3\n:g")
+    processedManuscript=$(echo "$processedManuscript" | \
+      sed -E "/!.*/! s:(.+?)\[(.+?)\]\(([^)]+)\)(.+?):\1\2[^\3]\4\n\n[^\3]\: \3\n:g")
   fi
 
-  echo "$processedFiles"
+  echo "$processedManuscript"
 }

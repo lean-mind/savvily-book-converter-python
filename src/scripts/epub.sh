@@ -6,7 +6,7 @@ mkdir -p output && cd .tmp-manuscript || exit
 formattedManuscript=$(manuscriptFormatter "ebook")
 
 # Run Pandoc on formatted input
-echo "$formattedManuscript" | pandoc \
+echo "$formattedManuscript" | timeout 600 pandoc \
     --epub-embed-font=/usr/share/fonts/Roboto-Bold.ttf \
     --css ../src/templates/epub/epub.css \
     --epub-cover-image ./resources/book-cover-print.png \

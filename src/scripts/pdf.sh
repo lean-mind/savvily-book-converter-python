@@ -9,7 +9,7 @@ mkdir -p output/.tmp && cd .tmp-manuscript || exit
 formattedManuscript=$(manuscriptFormatter "$outputType")
 
 # Process main section
-echo "$formattedManuscript" | pandoc \
+echo "$formattedManuscript" | timeout 600 pandoc \
     --pdf-engine=xelatex \
     --template=../src/templates/"$outputType"/custom-"$latexClass".tex \
     --listings \

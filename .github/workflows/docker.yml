@@ -1,0 +1,26 @@
+name: Docker Image CI
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+
+  build-and-generation:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Build the Docker image
+      run: docker build $PWD --file Dockerfile --tag savvily-book-generator
+    - name: Setup sample manuscript
+      run: mkdir -p .tmp-manuscript && cp -r sample-manuscript/* ./.tmp-manuscript
+    - name: Create sample epub
+      run: docker run --rm --volume "$PWD":/data -u "$(id -u "$USER"):$(id -g "$USER")" savvily-book-generator src/scripts/epub.sh
+    - name: Create sample screen-pdf
+      run: docker run --rm --volume "$PWD":/data -u "$(id -u "$USER"):$(id -g "$USER")" savvily-book-generator src/scripts/pdf.sh "screen" "report"
+    - name: Create sample print-pdf
+      run: docker run --rm --volume "$PWD":/data -u "$(id -u "$USER"):$(id -g "$USER")" savvily-book-generator src/scripts/pdf.sh "print" "book"

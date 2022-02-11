@@ -1,4 +1,4 @@
-name: Docker Image CI
+name: Docker - Pandoc
 
 on:
   push:
@@ -8,19 +8,13 @@ on:
 
 jobs:
 
-  build-and-generation:
+  build-and-generate:
 
     runs-on: ubuntu-latest
 
     steps:
     - uses: actions/checkout@v2
-    - name: Build the Docker image
+    - name: Build Docker image
       run: docker build $PWD --file Dockerfile --tag savvily-book-generator
-    - name: Setup sample manuscript
-      run: mkdir -p .tmp-manuscript && cp -r sample-manuscript/* ./.tmp-manuscript
-    - name: Create sample epub
-      run: docker run --rm --volume "$PWD":/data -u "$(id -u "$USER"):$(id -g "$USER")" savvily-book-generator src/scripts/epub.sh
-    - name: Create sample screen-pdf
-      run: docker run --rm --volume "$PWD":/data -u "$(id -u "$USER"):$(id -g "$USER")" savvily-book-generator src/scripts/pdf.sh "screen" "report"
-    - name: Create sample print-pdf
-      run: docker run --rm --volume "$PWD":/data -u "$(id -u "$USER"):$(id -g "$USER")" savvily-book-generator src/scripts/pdf.sh "print" "book"
+    - name: Generate sample book in all formats
+      run: ./convert.sh -a

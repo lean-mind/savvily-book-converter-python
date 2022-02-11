@@ -12,7 +12,9 @@ RUN tlmgr update --self \
     && tlmgr install incgraph  \
     && tlmgr install tcolorbox  \
     && tlmgr install environ  \
-    && tlmgr install eso-pic
+    && tlmgr install eso-pic \
+    && tlmgr install datatool \
+    && tlmgr install filecontents
 RUN apk add sed
 RUN apk add ghostscript
 

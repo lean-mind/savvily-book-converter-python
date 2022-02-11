@@ -3,6 +3,11 @@
 \usepackage{geometry}
 \usepackage[sfdefault]{roboto}
 \usepackage{graphicx}
+\usepackage{datatool, filecontents}
+
+\DTLsetseparator{ = }
+\DTLloaddb[noheader, keys={key,value}]{publishing-data}{../pub-data}
+\newcommand{\valueOf}[1]{\DTLfetch{publishing-data}{key}{#1}{value}}
 
 \geometry{paperwidth=17.9cm, paperheight=23.5cm}
 \geometry{left=2cm, right=2cm, top=2.5cm, bottom=2.5cm}
@@ -17,19 +22,17 @@
 \begin{titlepage}
   {\large\phantom{blabla} \par}
   \vspace{1cm}
-  {\huge\centering Código Sostenible \par}
+  {\huge\centering \valueOf{Title} \par}
 \end{titlepage}
-
-\newpage\phantom{blabla}\thispagestyle{empty}
 
 \begin{titlepage}\thispagestyle{empty}
   {\large\phantom{blabla} \par}
   \vspace{1cm}
-  {\scshape\Huge\centering Código Sostenible \par}
+  {\scshape\Huge\centering \valueOf{Title} \par}
   \vspace{0.5cm}
-  {\normalsize\centering Cómo programar código fácil de mantener \par}
+  {\normalsize\centering \valueOf{Subtitle} \par}
   \vspace{1cm}
-  {\large\centering Carlos Blé Jurado \par}
+  {\large\centering \valueOf{Author} \par}
   \vspace{8.5cm}
   \begin{center}
     {\includegraphics[scale=0.20]{./resources/logo.png}}
@@ -38,23 +41,23 @@
 
 \begin{titlepage}\thispagestyle{empty}
   \vspace*{\fill}
-  {\normalsize © Carlos Blé Jurado, 2021 \par}
-  {\normalsize © Editorial Savvily, S.L., 2022 \par}
-  {\normalsize © Edición: Liset Gómez \par}
-  {\normalsize © Ilustración de cubierta: Vanesa González \par}
-  {\normalsize © Dirección artística: Inés Arroyo \par}
-  {\normalsize Primera edición de esta colección: diciembre 2021 \par}
+  {\normalsize © \valueOf{Write-Date} \par}
+  {\normalsize © \valueOf{Publishing-Date} \par}
+  {\normalsize © Edición: \valueOf{Edition} \par}
+  {\normalsize © Ilustración de cubierta: \valueOf{Cover-Illustration} \par}
+  {\normalsize © Dirección artística: \valueOf{Artistic-Direction} \par}
+  {\normalsize Primera edición de esta colección: valueOf{First-Edition} \par}
   {\normalsize © Impresión \par}
-  {\normalsize Printed in Spain – Impreso en España \par}
-  {\normalsize Nombre de la empresa que imprime \par}
-  {\normalsize ISBN: 978-0-00-000000-0 \par}
-  {\normalsize Depósito legal: D.L. BA. 000-0000 \par}
+  {\normalsize \valueOf{Printed-In} \par}
+  {\normalsize \valueOf{Printing-Company} \par}
+  {\normalsize ISBN: \valueOf{ISBN} \par}
+  {\normalsize Depósito legal: \valueOf{Legal-Deposit} \par}
 \end{titlepage}
 
 \begin{titlepage}\thispagestyle{empty}
   \newgeometry{left=10.5cm, right=2cm, top=2.5cm, bottom=2.5cm}
   \vspace*{6cm}
-  {\itshape\small\raggedleft A mi maravilloso equipo de Lean Mind, por inspirarme, ayudarme y facilitarme que escribiera este libro. \par}
+  {\itshape\small\raggedleft \valueOf{Dedication} \par}
   \restoregeometry
 \end{titlepage}
 

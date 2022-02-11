@@ -27,6 +27,6 @@ docker run --rm \
   --volume "$PWD":/data \
   -u "$(id -u "$USER"):$(id -g "$USER")" \
   savvily-book-generator \
-  "$scriptToRun"
+  $scriptToRun
 
 rm -rf .tmp-manuscript

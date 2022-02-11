@@ -1,7 +1,11 @@
 #!/bin/sh
 
-if [ $# -lt 2 ]; then
-    echo "I need both a flag and a path!"
+if [ $# -eq 1 ]; then
+  manuscript="./sample-manuscript"
+elif [ $# -eq 2 ]; then
+  manuscript=$2
+else
+    echo "Wrong input"
     exit 1
 fi
 
@@ -17,7 +21,7 @@ case "$1" in
    *) printf "Unknown option %s\n" "$1" ; exit 1;;
 esac
 
-mkdir -p .manuscript && cp -r "$2"/* ./.manuscript
+mkdir -p .tmp-manuscript && cp -r "$manuscript"/* ./.tmp-manuscript
 
 docker run -it --rm \
   --volume "$PWD":/data \
@@ -25,4 +29,4 @@ docker run -it --rm \
   savvily-book-generator \
   $scriptToRun
 
-rm -rf .manuscript
+rm -rf .tmp-manuscript

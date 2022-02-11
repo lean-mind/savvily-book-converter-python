@@ -41,13 +41,27 @@ docker build -t "savvily-book-generator" $PWD
 
 Make sure to run this command from the project's root directory and do not change the name of the image (or do so in `convert.sh` as well).
 
+## Config
+
+You'll find a file called `pub-data`.
+It contains a list of **necessary** fields to produce proper legal and copyright information within the opening
+section of the book.
+
+It has some sample data by default but make sure to update this with your specific information.
+
+Also, consider that the given format must be respected:
+
+- The keys **must** be named as they are.
+- Keys and values **must** be separated by `[ = ]` (excluding brackets of course), spaces do matter.
+
 ## How to run the project
 
 From the project root directory:
 
-`./convert.sh [FLAG] [MANUSCRIPT_PATH]`
+`./convert.sh FLAG [MANUSCRIPT_PATH]`
 
-The script expects **both** a flag determining the wanted output format **and** a path (relative or absolute) to your [manuscript](manuscript).
+The script expects both a flag determining the wanted output format and a path (relative or absolute) to your [manuscript](manuscript).
+If no path is given the output will be generated under the sample book under `sample-manuscript/`
 
 The available flags are:
 
@@ -58,4 +72,4 @@ The available flags are:
 -a or --all --> All of the above
 ```
 
-You'll find the output in the `output` directory.
+You'll find the output in the `output/` directory.

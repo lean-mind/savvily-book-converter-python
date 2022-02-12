@@ -7,14 +7,14 @@ on:
     branches: [ master ]
 
 jobs:
-
   build-and-generate:
-
     runs-on: ubuntu-latest
 
     steps:
     - uses: actions/checkout@v2
+
     - name: Build Docker image
       run: docker build $PWD --file Dockerfile --tag savvily-book-generator
+
     - name: Generate sample book in all formats
       run: ./convert.sh -a

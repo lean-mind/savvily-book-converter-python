@@ -1,7 +1,8 @@
 #!/bin/sh
+set -e
 . ./src/scripts/manuscriptFormatter.sh
 
-mkdir -p output && cd .tmp-manuscript || exit
+mkdir -p output && cd .tmp-manuscript
 
 formattedManuscript=$(manuscriptFormatter "ebook")
 

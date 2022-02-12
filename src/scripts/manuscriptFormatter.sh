@@ -1,4 +1,5 @@
 #!/bin/sh
+set -e
 
 manuscriptFormatter(){
   # Sort all chapters and cat their content to stdout

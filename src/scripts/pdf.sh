@@ -1,10 +1,11 @@
 #!/bin/sh
+set -e
 . ./src/scripts/manuscriptFormatter.sh
 
 outputType=$1
 latexClass=$2
 
-mkdir -p output/.tmp && cd .tmp-manuscript || exit
+mkdir -p output/.tmp && cd .tmp-manuscript
 
 formattedManuscript=$(manuscriptFormatter "$outputType")
 

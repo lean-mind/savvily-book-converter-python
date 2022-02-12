@@ -1,4 +1,5 @@
 #!/bin/sh
+set -e
 
 if [ $# -eq 1 ]; then
   manuscript="./sample-manuscript"
@@ -16,14 +17,14 @@ case "$1" in
 
   -e| --epub) scriptToRun="./src/scripts/epub.sh" ;;
 
-  -a| --all) ./convert.sh -e "$manuscript"; ./convert.sh -p "$manuscript"; ./convert.sh -s "$manuscript" ; exit 0;;
+  -a| --all) ./convert.sh -e "$manuscript"; ./convert.sh -p "$manuscript"; ./convert.sh -s "$manuscript" ; exit ;;
 
    *) printf "Unknown option %s\n" "$1" ; exit 1;;
 esac
 
 mkdir -p .tmp-manuscript && cp -r "$manuscript"/* ./.tmp-manuscript
 
-docker run -it --rm \
+docker run --rm \
   --volume "$PWD":/data \
   -u "$(id -u "$USER"):$(id -g "$USER")" \
   savvily-book-generator \

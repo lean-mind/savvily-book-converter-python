@@ -3,7 +3,7 @@
 \usepackage{geometry}
 \usepackage[sfdefault]{roboto}
 \usepackage{graphicx}
-\usepackage{datatool, filecontents}
+\usepackage{datatool}
 
 \DTLsetseparator{ = }
 \DTLloaddb[noheader, keys={key,value}]{publishing-data}{../pub-data}
@@ -24,6 +24,8 @@
   \vspace{1cm}
   {\huge\centering \valueOf{Title} \par}
 \end{titlepage}
+
+\newpage\phantom{blabla}\thispagestyle{empty}
 
 \begin{titlepage}\thispagestyle{empty}
   {\large\phantom{blabla} \par}

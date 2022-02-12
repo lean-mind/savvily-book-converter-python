@@ -11,24 +11,12 @@ In order to execute the conversion properly the <manuscript-dir> should follow t
 │   ├── book-cover-screen.png
 │   ├── book-cover-print.png
 │   ├── ...
-├── closing
-│   ├── 0_Thanks.md
-│   ├── 1_Author.md
-│   ├── 2_Bibliography.md
-│   ├── 3_Savvily.md
-│   ├── ...
 ├── ...
 ```
 
 This directory can be located and named wherever and however you prefer.
 
 > If you are not using docker **must** call your manuscript directory ".manuscript" and place it **exactly** at the projects root.
-
-## Closing directory
-
-The inclusion of a `/closing` directory is suggested but not strictly necessary.
-
-You'll want to add to it the parts of the manuscript you expect to **not** be included in the Table of Contents.
 
 ## Chapter numeration
 
@@ -39,10 +27,6 @@ The chapters file names must begin with a number sequentially, for example:
 - 2_fancyChapterName3.md
 
 > Files not starting with a number will not be rendered.
-
-Just like the chapters of your manuscript, you need to numerate the files in the `/closing` directory (if you choose to include one).
-
-We suggest you follow the order in the example above, but this is ultimately up to you.
 
 ## Chapter beginning
 
@@ -60,5 +44,18 @@ The ability to accept `.txt` is likely to be removed in the future and in any ca
 
 ## Manuscript constrains
 
-- All files must be as LF.
-- This list constructions is not allowed (list and inline code): * `Practices = Principles(Context)`
+- No references can contain links. This will break the link when processing a print-ready PDF.
+- Referencing long URLs (which includes regular links for the print-ready version) will break the footnotes format.
+Use URL shorteners like [bitly](https://bitly.com/).
+- No list item can contain inline code:
+
+```
+Good List:
+- First item
+* Second item
+
+Bad List:
+- `First item`
+* `Second` item
+
+```

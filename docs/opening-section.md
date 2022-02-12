@@ -1,18 +1,32 @@
 # Opening section
 
-> This configuration can be found in `opening.tex` inside src/templates/<doc_type>/.
+> This configuration can be found in `opening.tex` inside src/templates/`<doc_type>`/.
 >
 > This portion includes everything from the book cover up to the table of contents.
 >
 > It consists of different subsections placed sequentially based on custom requirements.
 
+This template uses the `datatool` package to read from the file named `pub-data`.
+This is done in the following lines:
+
+```latex
+\usepackage{datatool}
+
+\DTLsetseparator{ = }
+\DTLloaddb[noheader, keys={key,value}]{publishing-data}{../pub-data}
+\newcommand{\valueOf}[1]{\DTLfetch{publishing-data}{key}{#1}{value}}
+```
+
+This creates a command `valueOf` with which we can read the wanted value from the file (given a `KEY = VALUE` structure, spaces matter).
+
+It is used throughout the file like so: `\valueOf{Title}`
+
+This allows us to achieve custom opening sections while following a general structure and allowing the final
+users to modify legal and copyright information according to its needs without having to interact with LaTeX directly.
+
 ## Book Cover
 
-The book cover is added by using this command.
-
-> The size image has to be equal to page size.
-
-This command generates a new page with a background image, so it is needs to be used like so:
+The book cover is added by using this command:
 
 ```latex
 \usepackage{wallpaper}
@@ -21,7 +35,11 @@ This command generates a new page with a background image, so it is needs to be 
 \end{document}
 ```
 
+It generates a new page with a background image, so it is needs to be used following the example.
+
 ![book cover](resources/images/book-cover.png)
+
+> The size image has to be equal to page size.
 
 > It is necessary to add a `book-cover.png` in manuscript resources folder.
 
@@ -74,7 +92,7 @@ A page dedicated to copyright and other information.
   {\normalsize © Front cover ilustration: <Ilustrator name> \par}
   {\normalsize © Artistic direction: <Director name> \par}
   {\normalsize © Printing \par}
-  {\normalsize Printed in Spain – Printed in <Country name> \par}
+  {\normalsize Printed in <Country name> \par}
   {\normalsize <Printing company name> \par}
   {\normalsize ISBN: <ISBN number> \par}
   {\normalsize Legal deposit: <Deposit number> \par}

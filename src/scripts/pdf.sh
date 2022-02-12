@@ -1,15 +1,16 @@
 #!/bin/sh
+set -e
 . ./src/scripts/manuscriptFormatter.sh
 
 outputType=$1
 latexClass=$2
 
-mkdir -p output/.tmp && cd .tmp-manuscript || exit
+mkdir -p output/.tmp && cd .tmp-manuscript
 
 formattedManuscript=$(manuscriptFormatter "$outputType")
 
 # Process main section
-echo "$formattedManuscript" | pandoc \
+echo "$formattedManuscript" | timeout 600 pandoc \
     --pdf-engine=xelatex \
     --template=../src/templates/"$outputType"/custom-"$latexClass".tex \
     --listings \

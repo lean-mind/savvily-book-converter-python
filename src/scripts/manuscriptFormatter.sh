@@ -17,7 +17,7 @@ manuscriptFormatter(){
   if [ "$1" = "print" ]; then
     # All non-images links ([some](text)) are converted to footnotes, uses the links as refs to avoid spaces and duplicates
     processedManuscript=$(echo "$processedManuscript" | \
-      sed -E "/!.*/! s:(.+?)\[(....+?)\]\(([^)]+)\)(.+?):\1\2[^\3]\4\n\n[^\3]\: \3\n:g")
+      sed -E "/!.*/! s:(.+?)\[(.....+?)\]\(([^)]+)\)(.+?):\1\2[^\3]\4\n\n[^\3]\: \3\n:g")
   fi
 
   echo "$processedManuscript"

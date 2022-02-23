@@ -47,6 +47,10 @@ The ability to accept `.txt` is likely to be removed in the future and in any ca
 - No references can contain links. This will break the link when processing a print-ready PDF.
 - Referencing long URLs (which includes regular links for the print-ready version) will break the footnotes format.
 Use URL shorteners like [bitly](https://bitly.com/).
+- Code blocks are not exempt from link processing and reference conversion. Only links of the format `[0](1)` will be excluded. This
+  means that:
+    - The structure `[foo](bar)` inside a code block **will** be considered a link.
+    - A code block containing a line with `[foo](bar)` **will** break for the print-ready PDF.
 - No list item can contain inline code:
 
 ```

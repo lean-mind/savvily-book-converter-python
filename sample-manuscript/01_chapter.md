@@ -11,7 +11,7 @@ Membra LEAN MIND [^lean] eripienda naufragus fors. Resecat lintea distentae et f
 est sola tempus cum orbem ducunt crudelesque quae occidit ducibusque avertens
 sileam. Reddere Typhoeus, facies fatisque homo! Ad positis, patulis clamato
 veste sed grave sum, novae. Atque nec petiti gladios capitis, iam inpulsumque
-pressa [texit a](http://adsensit.net/visa-inperfectus) damno *tegendas*.
+pressa [LINK1](http://adsensit.net/visa-inperfectuadsdasd) damno *tegendas*. pressa [LINK2](http://adsensit.net/visa-inperfectus) damno *tegendas*.
 
 [^lean]: Quae qui, de sine, tacuit, aequora saevorum inposito, parte ventrem pater;
 mergor toto. Tantos hic auditis defuit fontes nobis dummodo.

@@ -6,7 +6,7 @@
 \usepackage{datatool}
 
 \DTLsetseparator{ = }
-\DTLloaddb[noheader, keys={key,value}]{publishing-data}{../pub-data}
+\DTLloaddb[noheader, keys={key,value}]{publishing-data}{./resources/pub-data}
 \newcommand{\valueOf}[1]{\DTLfetch{publishing-data}{key}{#1}{value}}
 
 \geometry{paperwidth=17.9cm, paperheight=23.5cm}

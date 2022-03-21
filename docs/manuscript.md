@@ -10,6 +10,7 @@ In order to execute the conversion properly the <manuscript-dir> should follow t
 ├── resources
 │   ├── book-cover-screen.png
 │   ├── book-cover-print.png
+│   ├── pub-data
 │   ├── ...
 ├── ...
 ```
@@ -41,6 +42,20 @@ At the moment the scripts accept both `.md` and `.txt`.
 > File with any other termination will be not be rendered.
 
 The ability to accept `.txt` is likely to be removed in the future and in any case you should provide a manuscript written strictly in common **markdown**.
+
+## Publisher data
+
+You'll need to provide a file called `pub-data` within your `resources/` directory.
+It shall contain a list of **necessary** fields to produce proper legal and copyright information within the opening
+section of the book.
+
+You can take the one provided as part of the sample-manuscript as reference.
+The keys must be the same as the ones provided, but make sure to update the values with your specific information.
+
+Also, consider that the given format must be respected:
+
+- The keys **must** be named as they are.
+- Keys and values **must** be separated by `[ = ]` (excluding brackets of course), spaces do matter.
 
 ## Manuscript constrains
 

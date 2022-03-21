@@ -6,14 +6,14 @@
 >
 > It consists of different subsections placed sequentially based on custom requirements.
 
-This template uses the `datatool` package to read from the file named `pub-data`.
+This template uses the `datatool` package to read from a file named `pub-data` located in `resources/` within your book.
 This is done in the following lines:
 
 ```latex
 \usepackage{datatool}
 
 \DTLsetseparator{ = }
-\DTLloaddb[noheader, keys={key,value}]{publishing-data}{../pub-data}
+\DTLloaddb[noheader, keys={key,value}]{publishing-data}{./resources/pub-data}
 \newcommand{\valueOf}[1]{\DTLfetch{publishing-data}{key}{#1}{value}}
 ```
 

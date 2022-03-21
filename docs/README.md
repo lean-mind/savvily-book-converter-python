@@ -41,19 +41,6 @@ docker build -t "savvily-book-generator" $PWD
 
 Make sure to run this command from the project's root directory and do not change the name of the image (or do so in `convert.sh` as well).
 
-## Config
-
-You'll find a file called `pub-data`.
-It contains a list of **necessary** fields to produce proper legal and copyright information within the opening
-section of the book.
-
-It has some sample data by default but make sure to update this with your specific information.
-
-Also, consider that the given format must be respected:
-
-- The keys **must** be named as they are.
-- Keys and values **must** be separated by `[ = ]` (excluding brackets of course), spaces do matter.
-
 ## How to run the project
 
 From the project root directory:

@@ -13,7 +13,7 @@ unzip ebook.zip && rm ebook.zip
 
 cd ./EPUB/text/
 
-find . -maxdepth 1 -name "ch*.xhtml" -exec sed -i '' 's/<pre title="\([A-z]*\)".*/<code class="language">\1<\/code>\n&/' {} \;
+find . -maxdepth 1 -name "ch*.xhtml" -exec sed -i '' -E 's/<pre title="([A-z]*#?)".*/<code class="language">\1<\/code>\n&/' {} \;
 
 cd ../..
 

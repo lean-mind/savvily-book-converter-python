@@ -15,7 +15,7 @@ case "$1" in
 
   -s| --screen) scriptToRun="./src/scripts/pdf.sh screen report" ;;
 
-  -e| --epub) scriptToRun="./src/scripts/epub.sh" ;;
+  -e| --epub) scriptToRun="./src/scripts/epub.sh" format="epub";;
 
   -a| --all) ./convert.sh -e "$manuscript"; ./convert.sh -p "$manuscript"; ./convert.sh -s "$manuscript" ; exit ;;
 
@@ -31,3 +31,10 @@ docker run --rm \
   $scriptToRun
 
 rm -rf .tmp-manuscript
+
+if [ "$format" = "epub" ]; then
+  source ./src/scripts/epubFormatter.sh
+fi
+
+
+

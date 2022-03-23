@@ -35,7 +35,7 @@ docker run --rm \
 rm -rf .tmp-manuscript
 
 if [ "$format" = "epub" ]; then
-  source ./src/scripts/epubFormatter.sh
+  . ./src/scripts/epubFormatter.sh
 fi
 
 

@@ -1,0 +1,59 @@
+@font-face {
+  font-family: MyRoboto;
+  font-style: normal;
+  font-weight: bold;
+  src: url("/usr/share/fonts/Roboto-Bold.ttf") format("truetype");
+}
+
+body {
+  font-family: MyRoboto, sans-serif;
+  margin: auto;
+  text-align: justify;
+  font-size: 100%;
+  line-height: 1.7;
+}
+
+h1 { text-align: left; }
+h2 { text-align: left; }
+h3 { text-align: left; }
+h4 { text-align: left; }
+h5 { text-align: left; }
+h6 { text-align: left; }
+
+h1.title {
+  margin-top: 0;
+  text-align: center;
+}
+
+p.author {
+  text-align: center;
+}
+
+ol.toc {
+  margin: 1em 0;
+  padding: 0 0 0 2em;
+
+}
+
+ul.toc ul, ol.toc ol {
+  margin: .3em 0;
+}
+
+li { margin: 0; padding: 0 5px; }
+
+code {
+  font-family: monospace;
+}
+
+pre {
+  font-family: monospace;
+  padding-top: 6px;
+  padding-bottom: 6px;
+  overflow: auto;
+  font-size: 80%;
+  line-height: 1.45;
+  margin: 0;
+}
+
+nav#toc ol li,
+nav#landmarks ol li { list-style-type: none; margin: 0; padding: 0; }

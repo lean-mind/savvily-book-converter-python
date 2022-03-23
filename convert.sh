@@ -17,6 +17,8 @@ case "$1" in
 
   -e| --epub) scriptToRun="./src/scripts/epub.sh" format="epub";;
 
+  -m| --mobi) scriptToRun="./src/scripts/mobi.sh";;
+
   -a| --all) ./convert.sh -e "$manuscript"; ./convert.sh -p "$manuscript"; ./convert.sh -s "$manuscript" ; exit ;;
 
    *) printf "Unknown option %s\n" "$1" ; exit 1;;

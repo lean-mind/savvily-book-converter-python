@@ -18,7 +18,7 @@ find . -maxdepth 1 -name "ch*.xhtml" -exec sed -i '' -E 's/<pre title="([A-z]*#?
 cp ../../../../src/user-details-for-watermark.txt .
 
 add_watermark_for_epub() {
-  pathUserDetails=./user-details.txt
+  pathUserDetails=./user-details-for-watermark.txt
   name=$(cut -d ';' -f1 $pathUserDetails)
   email=$(cut -d ';' -f2 $pathUserDetails)
   dni=$(cut -d ';' -f3 $pathUserDetails)

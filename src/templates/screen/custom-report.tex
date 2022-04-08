@@ -13,6 +13,26 @@
 \usepackage[spanish]{babel}
 \usepackage{caption}
 \usepackage[bottom]{footmisc}
+\usepackage{eso-pic}
+
+% Add watermark
+\AddToShipoutPicture{%
+  \AtTextLowerLeft{%
+    \makebox(20,-60)[]{\resizebox{12mm}{!}{%
+      \rotatebox{0}{\textsf{\textbf{\color{darkgray} name}}}
+    }}
+  }
+  \AtTextLowerLeft{%
+    \makebox(20,-80)[]{\resizebox{30mm}{!}{%
+      \rotatebox{0}{\textsf{\textbf{\color{darkgray} email}}}
+    }}
+  }
+  \AtTextLowerLeft{%
+    \makebox(20,-100)[]{\resizebox{15mm}{!}{%
+      \rotatebox{0}{\textsf{\textbf{\color{darkgray} dni}}}
+    }}
+  }
+}
 
 \interfootnotelinepenalty=10000
 

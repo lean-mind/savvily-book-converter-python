@@ -9,6 +9,12 @@ mkdir -p output/.tmp && cd .tmp-manuscript
 
 formattedManuscript=$(manuscriptFormatter "$outputType")
 
+## Add watermark modify template screen to include user data
+if [ "$1" == "screen" ]
+then
+. ../src/scripts/addWatermark.sh "screen"
+fi
+
 # Process main section
 echo "$formattedManuscript" | timeout 600 pandoc \
     --pdf-engine=xelatex \
@@ -31,5 +37,8 @@ gs \
     ./../output/.tmp/opening.pdf ./../output/.tmp/tmp_book_for_"$outputType".pdf && \
 
 rm -rf ../output/.tmp && \
+
+## Reset watermark template screen
+. ../src/scripts/addWatermark.sh "reset"
 
 echo "PDF for $outputType successfully generated"

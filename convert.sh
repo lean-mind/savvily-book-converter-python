@@ -24,6 +24,10 @@ case "$1" in
    *) printf "Unknown option %s\n" "$1" ; exit 1;;
 esac
 
+if [ -d .tmp-manuscript ]; then
+  rm -rf .tmp-manuscript
+fi
+
 mkdir -p .tmp-manuscript && cp -r "$manuscript"/* ./.tmp-manuscript
 
 docker run --rm \

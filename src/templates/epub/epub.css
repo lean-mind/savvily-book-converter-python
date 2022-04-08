@@ -67,5 +67,12 @@ pre {
   margin: 0;
 }
 
+section.section-user-data {
+  margin: 0;
+  padding-left: 25px;
+  line-height: 1px;
+  color: black;
+}
+
 nav#toc ol li,
 nav#landmarks ol li { list-style-type: none; margin: 0; padding: 0; }

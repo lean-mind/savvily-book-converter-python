@@ -6,21 +6,16 @@
 \usepackage{datatool}
 \usepackage{eso-pic}
 
+% Add watermark
 \AddToShipoutPicture{%
   \AtTextLowerLeft{%
-    \makebox(20,-60)[]{\resizebox{12mm}{!}{%
-      \rotatebox{0}{\textsf{\textbf{\color{darkgray} name}}}
-    }}
-  }
-  \AtTextLowerLeft{%
-    \makebox(20,-80)[]{\resizebox{30mm}{!}{%
-      \rotatebox{0}{\textsf{\textbf{\color{darkgray} email}}}
-    }}
-  }
-  \AtTextLowerLeft{%
-    \makebox(20,-100)[]{\resizebox{15mm}{!}{%
-      \rotatebox{0}{\textsf{\textbf{\color{darkgray} dni}}}
-    }}
+    \makebox(45, -80){%
+      \begin{tabular}{ c }%
+        \textsf{\textbf{\color{darkgray} name}}\\
+        \textsf{\textbf{\color{darkgray} email}} \\
+        \textsf{\textbf{\color{darkgray} dni}}
+      \end{tabular}%
+    }
   }
 }
 

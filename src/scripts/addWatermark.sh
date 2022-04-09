@@ -6,33 +6,33 @@ name=$(cut -d ';' -f1 $pathUserDetails)
 email=$(cut -d ';' -f2 $pathUserDetails)
 dni=$(cut -d ';' -f3 $pathUserDetails)
 
-add_watermark_for_pdf_screen() {
-  sed -i 's/\\rotatebox{0}{\\textsf{\\textbf{\\color{darkgray} name}}}/\\rotatebox{0}{\\textsf{\\textbf{\\color{darkgray} '"$name"'}}}/' ../src/templates/screen/custom-report.tex
-  sed -i 's/\\rotatebox{0}{\\textsf{\\textbf{\\color{darkgray} email}}}/\\rotatebox{0}{\\textsf{\\textbf{\\color{darkgray} '"$email"'}}}/' ../src/templates/screen/custom-report.tex
-  sed -i 's/\\rotatebox{0}{\\textsf{\\textbf{\\color{darkgray} dni}}}/\\rotatebox{0}{\\textsf{\\textbf{\\color{darkgray} '"$dni"'}}}/' ../src/templates/screen/custom-report.tex
+add_watermark_to_template_pdf_screen() {
+  sed -i 's/\\textsf{\\textbf{\\color{darkgray} name}}/\\textsf{\\textbf{\\color{darkgray} '"$name"'}}/' ../src/templates/screen/custom-report.tex
+  sed -i 's/\\textsf{\\textbf{\\color{darkgray} email}}/\\textsf{\\textbf{\\color{darkgray} '"$email"'}}/' ../src/templates/screen/custom-report.tex
+  sed -i 's/\\textsf{\\textbf{\\color{darkgray} dni}}/\\textsf{\\textbf{\\color{darkgray} '"$dni"'}}/' ../src/templates/screen/custom-report.tex
 
-  sed -i 's/\\rotatebox{0}{\\textsf{\\textbf{\\color{darkgray} name}}}/\\rotatebox{0}{\\textsf{\\textbf{\\color{darkgray} '"$name"'}}}/' ../src/templates/screen/opening.tex
-  sed -i 's/\\rotatebox{0}{\\textsf{\\textbf{\\color{darkgray} email}}}/\\rotatebox{0}{\\textsf{\\textbf{\\color{darkgray} '"$email"'}}}/' ../src/templates/screen/opening.tex
-  sed -i 's/\\rotatebox{0}{\\textsf{\\textbf{\\color{darkgray} dni}}}/\\rotatebox{0}{\\textsf{\\textbf{\\color{darkgray} '"$dni"'}}}/' ../src/templates/screen/opening.tex
+  sed -i 's/\\textsf{\\textbf{\\color{darkgray} name}}/\\textsf{\\textbf{\\color{darkgray} '"$name"'}}/' ../src/templates/screen/opening.tex
+  sed -i 's/\\textsf{\\textbf{\\color{darkgray} email}}/\\textsf{\\textbf{\\color{darkgray} '"$email"'}}/' ../src/templates/screen/opening.tex
+  sed -i 's/\\textsf{\\textbf{\\color{darkgray} dni}}/\\textsf{\\textbf{\\color{darkgray} '"$dni"'}}/' ../src/templates/screen/opening.tex
 }
 
-reset_watermark_for_pdf_screen() {
-  sed -i 's/\\rotatebox{0}{\\textsf{\\textbf{\\color{darkgray} '"$name"'}}}/\\rotatebox{0}{\\textsf{\\textbf{\\color{darkgray} name}}}/' ../src/templates/screen/custom-report.tex
-  sed -i 's/\\rotatebox{0}{\\textsf{\\textbf{\\color{darkgray} '"$email"'}}}/\\rotatebox{0}{\\textsf{\\textbf{\\color{darkgray} email}}}/' ../src/templates/screen/custom-report.tex
-  sed -i 's/\\rotatebox{0}{\\textsf{\\textbf{\\color{darkgray} '"$dni"'}}}/\\rotatebox{0}{\\textsf{\\textbf{\\color{darkgray} dni}}}/' ../src/templates/screen/custom-report.tex
+reset_watermark_to_template_pdf_screen() {
+  sed -i 's/\\textsf{\\textbf{\\color{darkgray} '"$name"'}}/\\textsf{\\textbf{\\color{darkgray} name}}/' ../src/templates/screen/custom-report.tex
+  sed -i 's/\\textsf{\\textbf{\\color{darkgray} '"$email"'}}/\\textsf{\\textbf{\\color{darkgray} email}}/' ../src/templates/screen/custom-report.tex
+  sed -i 's/\\textsf{\\textbf{\\color{darkgray} '"$dni"'}}/\\textsf{\\textbf{\\color{darkgray} dni}}/' ../src/templates/screen/custom-report.tex
 
-  sed -i 's/\\rotatebox{0}{\\textsf{\\textbf{\\color{darkgray} '"$name"'}}}/\\rotatebox{0}{\\textsf{\\textbf{\\color{darkgray} name}}}/' ../src/templates/screen/opening.tex
-  sed -i 's/\\rotatebox{0}{\\textsf{\\textbf{\\color{darkgray} '"$email"'}}}/\\rotatebox{0}{\\textsf{\\textbf{\\color{darkgray} email}}}/' ../src/templates/screen/opening.tex
-  sed -i 's/\\rotatebox{0}{\\textsf{\\textbf{\\color{darkgray} '"$dni"'}}}/\\rotatebox{0}{\\textsf{\\textbf{\\color{darkgray} dni}}}/' ../src/templates/screen/opening.tex
+  sed -i 's/\\textsf{\\textbf{\\color{darkgray} '"$name"'}}/\\textsf{\\textbf{\\color{darkgray} name}}/' ../src/templates/screen/opening.tex
+  sed -i 's/\\textsf{\\textbf{\\color{darkgray} '"$email"'}}/\\textsf{\\textbf{\\color{darkgray} email}}/' ../src/templates/screen/opening.tex
+  sed -i 's/\\textsf{\\textbf{\\color{darkgray} '"$dni"'}}/\\textsf{\\textbf{\\color{darkgray} dni}}/' ../src/templates/screen/opening.tex
 }
 
 if [ "$1" == "screen" ]
 then
-  add_watermark_for_pdf_screen
+  add_watermark_to_template_pdf_screen
 fi
 
 if [ "$1" == "reset" ]
 then
-  reset_watermark_for_pdf_screen
+  reset_watermark_to_template_pdf_screen
 fi
 

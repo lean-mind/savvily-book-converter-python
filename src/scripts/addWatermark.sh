@@ -6,33 +6,17 @@ name=$(cut -d ';' -f1 $pathUserDetails)
 email=$(cut -d ';' -f2 $pathUserDetails)
 dni=$(cut -d ';' -f3 $pathUserDetails)
 
-add_watermark_to_template_pdf_screen() {
-  sed -i 's/\\textsf{\\textbf{\\color{darkgray} name}}/\\textsf{\\textbf{\\color{darkgray} '"$name"'}}/' ../src/templates/screen/custom-report.tex
-  sed -i 's/\\textsf{\\textbf{\\color{darkgray} email}}/\\textsf{\\textbf{\\color{darkgray} '"$email"'}}/' ../src/templates/screen/custom-report.tex
-  sed -i 's/\\textsf{\\textbf{\\color{darkgray} dni}}/\\textsf{\\textbf{\\color{darkgray} '"$dni"'}}/' ../src/templates/screen/custom-report.tex
+username="$(echo $name | sed 's/ /_/g')"
 
-  sed -i 's/\\textsf{\\textbf{\\color{darkgray} name}}/\\textsf{\\textbf{\\color{darkgray} '"$name"'}}/' ../src/templates/screen/opening.tex
-  sed -i 's/\\textsf{\\textbf{\\color{darkgray} email}}/\\textsf{\\textbf{\\color{darkgray} '"$email"'}}/' ../src/templates/screen/opening.tex
-  sed -i 's/\\textsf{\\textbf{\\color{darkgray} dni}}/\\textsf{\\textbf{\\color{darkgray} '"$dni"'}}/' ../src/templates/screen/opening.tex
+add_watermark_to_template_copy_of_pdf_screen() {
+  sed -i 's/\\textsf{\\textbf{\\color{darkgray} name}}/\\textsf{\\textbf{\\color{darkgray} '"$name"'}}/' ../src/templates/screen/.tmp_template_"$username"/custom-report_"$username".tex
+  sed -i 's/\\textsf{\\textbf{\\color{darkgray} email}}/\\textsf{\\textbf{\\color{darkgray} '"$email"'}}/' ../src/templates/screen/.tmp_template_"$username"/custom-report_"$username".tex
+  sed -i 's/\\textsf{\\textbf{\\color{darkgray} dni}}/\\textsf{\\textbf{\\color{darkgray} '"$dni"'}}/' ../src/templates/screen/.tmp_template_"$username"/custom-report_"$username".tex
+
+  sed -i 's/\\textsf{\\textbf{\\color{darkgray} name}}/\\textsf{\\textbf{\\color{darkgray} '"$name"'}}/' ../src/templates/screen/.tmp_template_"$username"/opening_"$username".tex
+  sed -i 's/\\textsf{\\textbf{\\color{darkgray} email}}/\\textsf{\\textbf{\\color{darkgray} '"$email"'}}/' ../src/templates/screen/.tmp_template_"$username"/opening_"$username".tex
+  sed -i 's/\\textsf{\\textbf{\\color{darkgray} dni}}/\\textsf{\\textbf{\\color{darkgray} '"$dni"'}}/' ../src/templates/screen/.tmp_template_"$username"/opening_"$username".tex
 }
 
-reset_watermark_to_template_pdf_screen() {
-  sed -i 's/\\textsf{\\textbf{\\color{darkgray} '"$name"'}}/\\textsf{\\textbf{\\color{darkgray} name}}/' ../src/templates/screen/custom-report.tex
-  sed -i 's/\\textsf{\\textbf{\\color{darkgray} '"$email"'}}/\\textsf{\\textbf{\\color{darkgray} email}}/' ../src/templates/screen/custom-report.tex
-  sed -i 's/\\textsf{\\textbf{\\color{darkgray} '"$dni"'}}/\\textsf{\\textbf{\\color{darkgray} dni}}/' ../src/templates/screen/custom-report.tex
-
-  sed -i 's/\\textsf{\\textbf{\\color{darkgray} '"$name"'}}/\\textsf{\\textbf{\\color{darkgray} name}}/' ../src/templates/screen/opening.tex
-  sed -i 's/\\textsf{\\textbf{\\color{darkgray} '"$email"'}}/\\textsf{\\textbf{\\color{darkgray} email}}/' ../src/templates/screen/opening.tex
-  sed -i 's/\\textsf{\\textbf{\\color{darkgray} '"$dni"'}}/\\textsf{\\textbf{\\color{darkgray} dni}}/' ../src/templates/screen/opening.tex
-}
-
-if [ "$1" == "screen" ]
-then
-  add_watermark_to_template_pdf_screen
-fi
-
-if [ "$1" == "reset" ]
-then
-  reset_watermark_to_template_pdf_screen
-fi
+add_watermark_to_template_copy_of_pdf_screen
 

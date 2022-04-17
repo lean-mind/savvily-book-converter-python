@@ -1,10 +1,10 @@
 #!/bin/sh
 set -e
 
-pathUserDetails=../src/user-details-for-watermark.txt
-name=$(cut -d ';' -f1 $pathUserDetails)
-email=$(cut -d ';' -f2 $pathUserDetails)
-dni=$(cut -d ';' -f3 $pathUserDetails)
+userInformation=$1
+name=$(echo $userInformation | cut -d ';' -f1)
+email=$(echo $userInformation | cut -d ';' -f2)
+dni=$(echo $userInformation | cut -d ';' -f3)
 
 username="$(echo $name | sed 's/ /_/g')"
 

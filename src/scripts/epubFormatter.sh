@@ -21,15 +21,15 @@ while read -r line; do
     rm -rf ./epub-version-"$username"/
   fi
 
-  cp ebook.epub ebook_"$username".epub
+  cp ebook.epub codigo_sostenible_"$username".epub
 
-  mv ebook_"$username".epub ebook_"$username".zip
+  mv codigo_sostenible_"$username".epub codigo_sostenible_"$username".zip
 
   mkdir epub-version-"$username"
 
-  mv ebook_"$username".zip ./epub-version-"$username" && cd ./epub-version-"$username"
+  mv codigo_sostenible_"$username".zip ./epub-version-"$username" && cd ./epub-version-"$username"
 
-  unzip ebook_"$username".zip && rm ebook_"$username".zip
+  unzip codigo_sostenible_"$username".zip && rm codigo_sostenible_"$username".zip
 
   cd ./EPUB/text/
 
@@ -39,11 +39,11 @@ while read -r line; do
 
   cd ../..
 
-  zip ebook_"$username".zip -r EPUB META-INF mimetype
+  zip codigo_sostenible_"$username".zip -r EPUB META-INF mimetype
 
-  mv ebook_"$username".zip ebook_"$username".epub
+  mv codigo_sostenible_"$username".zip codigo_sostenible_"$username".epub
 
-  mv ebook_"$username".epub ../
+  mv codigo_sostenible_"$username".epub ../
 
   cd ..
 

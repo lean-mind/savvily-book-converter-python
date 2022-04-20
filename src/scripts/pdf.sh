@@ -51,7 +51,7 @@ while read -r line; do
       -dNOPAUSE \
       -dBATCH \
       -sDEVICE=pdfwrite \
-      -sOutputFile=./../output/book_for_"$outputType"_"$username".pdf \
+      -sOutputFile=./../output/codigo_sostenible_for_"$outputType"_"$username".pdf \
       ./../output/.tmp_"$username"/opening_"$username".pdf ./../output/.tmp_"$username"/tmp_book_for_"$outputType"_"$username".pdf && \
 
   rm -rf ../src/templates/screen/.tmp_template_"$username"

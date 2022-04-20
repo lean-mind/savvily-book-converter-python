@@ -62,4 +62,7 @@ while read -r line; do
 
   echo "PDF for $outputType successfully generated"
 
+  mkdir -p ./output/codigo_sostenible_"$username"
+  mv ./output/codigo_sostenible_"$username".pdf ./output/codigo_sostenible_"$username"
+
 done < "$pathUserDetails"

@@ -49,4 +49,10 @@ while read -r line; do
 
   rm -rf ./epub-version-"$username"
 
+  mkdir -p codigo_sostenible_"$username"
+
+  mv codigo_sostenible_"$username".epub codigo_sostenible_"$username"
+
 done < "$pathUserDetails"
+
+cd ..

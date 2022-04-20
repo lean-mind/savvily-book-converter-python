@@ -42,5 +42,5 @@ if [ "$format" = "epub" ]; then
   . ./src/scripts/epubFormatter.sh
 fi
 
-
+. ./src/scripts/wrapBooks.sh
 

@@ -19,6 +19,8 @@ case "$1" in
 
   -m| --mobi) scriptToRun="./src/scripts/mobi.sh";;
 
+  -es | --epub-and-screen) ./convert.sh -e "$manuscript"; ./convert.sh -s "$manuscript"; exit ;;
+
   -a| --all) ./convert.sh -e "$manuscript"; ./convert.sh -p "$manuscript"; ./convert.sh -s "$manuscript" ; exit ;;
 
    *) printf "Unknown option %s\n" "$1" ; exit 1;;

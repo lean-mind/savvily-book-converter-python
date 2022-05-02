@@ -2,7 +2,15 @@
 set -e
 
 if [ $# -eq 1 ]; then
-  manuscript="./sample-manuscript"
+  if [ -d "./manuscript" ]; then
+    manuscript="./manuscript"
+  else
+    echo "The manuscript folder doesn't exist"
+    echo "The manuscript folder should contain a resources folder and files with .txt or .md extension \n"
+
+    echo "Please place the manuscript folder in the project root \n"
+    exit 1
+  fi
 elif [ $# -eq 2 ]; then
   manuscript=$2
 else

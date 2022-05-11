@@ -27,4 +27,4 @@ RUN /bin/sh -c \
 # Clean font cache
 RUN fc-cache -f && rm -rf /var/cache/*
 
-ENTRYPOINT ["sh"]
+ENTRYPOINT ["sh", "-c"]

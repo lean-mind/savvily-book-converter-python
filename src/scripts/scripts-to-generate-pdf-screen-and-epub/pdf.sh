@@ -10,7 +10,7 @@ name="$3"
 email="$4"
 
 #username="$(echo $name | sed 's/ /_/g')"
-username="$(echo $email | sed 's/\([A-z]*\).*/\1/')" # user_surname@gmail.com -> user_surname
+username="$(echo $email | sed 's/\(.*\)\@.*/\1/')" # user_surname@gmail.com -> user_surname
 
 if [ -d ./src/templates/"$outputType"/.tmp_template_"$username"/ ]; then
   rm -rf ./src/templates/"$outputType"/.tmp_template_"$username"/

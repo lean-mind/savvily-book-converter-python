@@ -6,12 +6,15 @@ cd ./output
 add_watermark_for_epub() {
   name="$1"
   email="$2"
+  if [ -z "$name" ]; then
+    name="$(echo $email | sed 's/\(.*\)\@.*/\1/')"
+  fi
   find . -maxdepth 1 -name "ch*.xhtml" -exec sed -i '' -E 's/<\/body>/<br\/><br\/><section class='\"section-user-data\"'><p>'"$name"'<\/p><p>'"$email"'<\/p><p>'"$dni"'<\/p><\/section>\n&/' {} \;
 }
 
 #name=$(echo "$line" | cut -d ';' -f1)
 #username="$(echo $name | sed 's/ /_/g')"
-username="$(echo $email | sed 's/\([A-z]*\).*/\1/')" # user_surname@gmail.com -> user_surname
+username="$(echo $email | sed 's/\(.*\)\@.*/\1/')" # user_surname@gmail.com -> user_surname
 
 if [ -d ./epub-version-"$username"/ ]; then
   rm -rf ./epub-version-"$username"/

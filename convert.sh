@@ -2,39 +2,40 @@
 set -e
 
 if [ $# -eq 1 ]; then
-  if [ -d "./manuscript" ]; then
-    manuscript="./manuscript"
-  else
-    echo "The manuscript folder doesn't exist"
-    echo "The manuscript folder should contain a resources folder and files with .txt or .md extension \n"
-
-    echo "Please place the manuscript folder in the project root \n"
-    exit 1
-  fi
+  manuscript='./tests/sample-manuscript/'
 elif [ $# -eq 2 ]; then
   manuscript=$2
 else
-    echo "Wrong input"
-    exit 1
+  echo "Wrong input"
+  exit 1
 fi
 
 case "$1" in
-  #-p| --print) scriptToRun="./src/scripts/pdf.sh print book" ;;
-  -p| --print) scriptToRun="python3 -B src/pdf-print.py $manuscript" ;;
+-p | --print) scriptToRun="python3 -B src/pdf-print.py $manuscript" ;;
 
-  #-s| --screen) scriptToRun="./src/scripts/pdf.sh screen report" ;;
-  -s| --screen) scriptToRun="python3 -B src/pdf-screen.py $manuscript" ;;
+-s | --screen) scriptToRun="python3 -B src/pdf-screen.py $manuscript" ;;
 
-  #-e| --epub) scriptToRun="./src/scripts/epub.sh" format="epub";;
-  -e| --epub) scriptToRun="python3 -B src/epub.py $manuscript";;
+-e | --epub) scriptToRun="python3 -B src/epub.py $manuscript" ;;
 
-  -m| --mobi) scriptToRun="./src/scripts/mobi.sh";;
+-m | --mobi) scriptToRun="./src/scripts/mobi.sh" ;;
 
-  -es | --epub-and-screen) ./convert.sh -e "$manuscript"; ./convert.sh -s "$manuscript"; exit ;;
+-es | --epub-and-screen)
+  ./convert.sh -e "$manuscript"
+  ./convert.sh -s "$manuscript"
+  exit
+  ;;
 
-  -a| --all) ./convert.sh -e "$manuscript"; ./convert.sh -p "$manuscript"; ./convert.sh -s "$manuscript" ; exit ;;
+-a | --all)
+  ./convert.sh -e "$manuscript"
+  ./convert.sh -p "$manuscript"
+  ./convert.sh -s "$manuscript"
+  exit
+  ;;
 
-   *) printf "Unknown option %s\n" "$1" ; exit 1;;
+*)
+  printf "Unknown option %s\n" "$1"
+  exit 1
+  ;;
 esac
 
 if [ -d .tmp-manuscript ]; then
@@ -52,8 +53,7 @@ docker run --rm \
 rm -rf .tmp-manuscript
 
 #if [ "$format" = "epub" ]; then
-  #. ./src/scripts/epubFormatter.sh
+#. ./src/scripts/epubFormatter.sh
 #fi
 
 #. ./src/scripts/wrapBooks.sh
-

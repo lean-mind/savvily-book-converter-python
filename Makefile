@@ -20,9 +20,9 @@ tests-watch: _check-output ## Run all tests in watch mode
 
 .PHONY: tests-ci
 tests-ci: ## Run all tests forcing book compilation
+	@pipenv --python `which python3` install
 	@pipenv install --dev
-	./convert.sh -a
-	@pipenv run tests
+	@pipenv run pytest
 
 .PHONY: check-output
 _check-output:

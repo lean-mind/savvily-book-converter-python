@@ -4,14 +4,24 @@ name: Docker - Pandoc
 on: [push, pull_request]
 
 jobs:
-  build-and-generate:
+  build-and-run-tests:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
+
+      - uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+
+      - name: Install pipenv
+        run: pip3 install pipenv
 
       - name: Build Docker image
         run: docker build $PWD --file Dockerfile --tag savvily-book-generator
 
-      - name: Generate sample book in all formats and run all tests
+      - name: Generate sample book in all formats
+        run: ./convert.sh -a
+
+      - name: Run all tests
         run: make tests-ci

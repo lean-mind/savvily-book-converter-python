@@ -1,20 +1,17 @@
+---
 name: Docker - Pandoc
 
-on:
-  push:
-    branches: [ master ]
-  pull_request:
-    branches: [ master ]
+on: [push, pull_request]
 
 jobs:
   build-and-generate:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v2
+      - uses: actions/checkout@v2
 
-    - name: Build Docker image
-      run: docker build $PWD --file Dockerfile --tag savvily-book-generator
+      - name: Build Docker image
+        run: docker build $PWD --file Dockerfile --tag savvily-book-generator
 
-    - name: Generate sample book in all formats
-      run: ./convert.sh -a
+      - name: Generate sample book in all formats and run all tests
+        run: make tests-ci

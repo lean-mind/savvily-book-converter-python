@@ -20,6 +20,7 @@ tests-watch: _check-output ## Run all tests in watch mode
 
 .PHONY: tests-ci
 tests-ci: ## Run all tests forcing book compilation
+	@pipenv install --dev
 	./convert.sh -a
 	@pipenv run tests
 

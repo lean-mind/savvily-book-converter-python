@@ -1,6 +1,6 @@
-import formatter.EpubFormatter as epubFormatter
-import formatter.ScreenPDFFormatter as screenPdfFormatter
-import formatter.PrintPDFFormatter as printPdfFormatter
+import src.formatter.EpubFormatter as epubFormatter
+import src.formatter.ScreenPDFFormatter as screenPdfFormatter
+import src.formatter.PrintPDFFormatter as printPdfFormatter
 import tests.expected_output_md as expected
 
 

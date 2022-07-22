@@ -2,7 +2,7 @@ from formatter.ManuscriptReader import ManuscriptReader
 import tests.expected_output_md as expected
 
 
-reader = ManuscriptReader("sample-manuscript")
+reader = ManuscriptReader("tests/sample-manuscript")
 
 
 class TestReader:

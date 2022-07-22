@@ -23,13 +23,13 @@ class PdfHelper:
 
     def get_heading_from_manuscript_for_chapter(self, chapter_number: int) -> str:
         heading_pattern = r"# (.*)\n"
-        with open(f"sample-manuscript/0{chapter_number}_chapter.md", "r") as f:
+        with open(f"tests/sample-manuscript/0{chapter_number}_chapter.md", "r") as f:
             lines = f.readlines()
         return self.find_pattern_in_list(heading_pattern, lines)[0]
 
     def get_links_from_manuscript_for_chapter(self, chapter_number: int) -> list:
         link_pattern = r".*(http://.*)\)"
-        with open(f"sample-manuscript/0{chapter_number}_chapter.md", "r") as f:
+        with open(f"tests/sample-manuscript/0{chapter_number}_chapter.md", "r") as f:
             lines = f.readlines()
         return self.find_pattern_in_list(link_pattern, lines)
 

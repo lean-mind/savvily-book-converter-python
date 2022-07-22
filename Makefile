@@ -12,16 +12,16 @@ setup: ## Setup local environment
 
 .PHONY: tests
 tests: _check-output ## Run all tests with coverage
-	@pipenv run tests-cov
+	@pipenv run pytest --cov=src
 
 .PHONY: tests-watch
 tests-watch: _check-output ## Run all tests in watch mode
-	@pipenv run tests-watch
+	@pipenv run ptw
 
 .PHONY: tests-ci
 tests-ci: ## Run all tests forcing book compilation
 	./convert.sh -a
-	@pipenv run tests-watch
+	@pipenv run tests
 
 .PHONY: check-output
 _check-output:

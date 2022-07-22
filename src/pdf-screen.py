@@ -9,7 +9,7 @@ logging.basicConfig(filename="logs.log", encoding="utf-8", level=logging.DEBUG)
 
 def __pandoc_command(manuscript_path: str) -> list:
     engine = "--pdf-engine=xelatex"
-    template = "--template=src/templates/screen/custom-report.tex"
+    template = "--template=src/pandoc-templates/screen/custom-report.tex"
     figures = "markdown-implicit_figures"
     resources = f"--resource-path={manuscript_path}"
     output = ".tmp-manuscript/chapters.pdf"
@@ -30,7 +30,7 @@ def __compile_opnening():
     logging.info(" === COMPILING screen pdf opening ===")
 
     chdir(".tmp-manuscript")
-    xelatex_command = ["xelatex", "-output-directory", ".", "../src/templates/screen/opening.tex"]
+    xelatex_command = ["xelatex", "-output-directory", ".", "../src/pandoc-templates/screen/opening.tex"]
     subprocess.run(xelatex_command)
     chdir("../")
 

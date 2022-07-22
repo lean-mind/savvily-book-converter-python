@@ -8,10 +8,10 @@ logging.basicConfig(filename="logs.log", encoding="utf-8", level=logging.DEBUG)
 
 
 def __pandoc_command(manuscript_path: str) -> list:
-    metadata = "--metadata-file=src/templates/epub/metadata.yml"
+    metadata = "--metadata-file=src/pandoc-templates/epub/metadata.yml"
     resources = f"--resource-path={manuscript_path}"
     output = "--output=output/ebook.epub"
-    css = "--css=src/templates/epub/epub.css"
+    css = "--css=src/pandoc-templates/epub/epub.css"
     cover_image = f"--epub-cover-image={manuscript_path}/resources/book-cover-print.png"
     font = "--epub-embed-font=/usr/share/fonts/Roboto-Bold.ttf"
 

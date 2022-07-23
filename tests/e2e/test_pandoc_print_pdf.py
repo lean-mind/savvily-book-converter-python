@@ -1,6 +1,6 @@
 import pytest
 from pdfminer.high_level import extract_text
-from tests.PdfHelper import PdfHelper
+from tests.fixtures.PdfHelper import PdfHelper
 
 full_text = extract_text("output/python_print.pdf")
 raw_pdf: list = [line for line in full_text.splitlines() if line]

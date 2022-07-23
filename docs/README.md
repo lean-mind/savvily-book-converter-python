@@ -48,7 +48,7 @@ From the project root directory:
 `./convert.sh FLAG [MANUSCRIPT_PATH]`
 
 The script expects both a flag determining the wanted output format and a path (relative or absolute) to your [manuscript](manuscript).
-If no path is given the output will be generated under the sample book under `sample-manuscript/`
+If no path is given the output will be generated under the sample book under `fixtures/sample-manuscript/`
 
 The available flags are:
 

@@ -2,7 +2,7 @@
 set -e
 
 if [ $# -eq 1 ]; then
-  manuscript='./tests/sample-manuscript/'
+  manuscript='./tests/fixtures/sample-manuscript/'
 elif [ $# -eq 2 ]; then
   manuscript=$2
 else

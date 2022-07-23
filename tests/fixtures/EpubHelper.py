@@ -29,7 +29,7 @@ class EpubHelper:
         field_name_plus_separator: str = f"{field_name} = "
         field_value_group: str = "(.*)"
         search_pattern: str = f"{field_name_plus_separator}{field_value_group}"
-        with open("tests/sample-manuscript/resources/pub-data", "r") as f:
+        with open("tests/fixtures/sample-manuscript/resources/pub-data", "r") as f:
             lines = f.readlines()
         return self.find_pattern_in_list(search_pattern, lines)
 

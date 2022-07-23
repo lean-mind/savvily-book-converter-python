@@ -1,8 +1,8 @@
 from formatter.ManuscriptReader import ManuscriptReader
-import tests.expected_output_md as expected
+import tests.fixtures.expected_output_md as expected
 
 
-reader = ManuscriptReader("tests/sample-manuscript")
+reader = ManuscriptReader("tests/fixtures/sample-manuscript")
 
 
 class TestReader:

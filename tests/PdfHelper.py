@@ -6,7 +6,7 @@ class PdfHelper:
         self.raw_pdf = raw_pdf
 
     def get_links_from_pdf(self) -> list:
-        link_pattern = r"(.*http://.*)"
+        link_pattern = r"(.*[http][https]://.*)"
         return self.find_pattern_in_list(link_pattern, self.raw_pdf)
 
     def get_page_numbers_of_headers_in_chapter(self, chapter_number: int) -> list:

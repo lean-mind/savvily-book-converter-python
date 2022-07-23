@@ -6,7 +6,7 @@ raw_pdf: list = [line for line in full_text.splitlines() if line]
 helper = PdfHelper(raw_pdf)
 
 
-class TestPrintOutput:
+class TestScreenOutput:
     def test_total_page_number(self):
         expected_number_of_pages: int = 18
         number_of_watermark_fields: int = 3
@@ -35,7 +35,8 @@ class TestPrintOutput:
         actual_code_block_lang_tag: str = raw_pdf[code_block_position - 1]
         assert actual_code_block_lang_tag == expected_code_block_lang_tag
 
-    def test_only_link_in_code_block_fails(self):
+    # Currently, links in code blocks are not processed by pandoc
+    def test_only_link_in_code_block_fails_to_render(self):
         links_in_pdf = helper.get_links_from_pdf()
-        print(links_in_pdf)
+        # This should == 0
         assert len(links_in_pdf) == 1

@@ -3,31 +3,24 @@ import re
 
 
 class BasicFormatter:
-    formatted_manuscript: str
 
-    def __init__(self, raw_manuscript: str):
-        self.raw_manuscript = raw_manuscript
+    def check_links(self, raw_manuscript: str):
+        return raw_manuscript.replace("] (", "](")
 
-    def check_links(self):
-        self.formatted_manuscript = self.raw_manuscript.replace("] (", "](")
+    def check_references(self, raw_manuscript: str):
+        return raw_manuscript.replace(" [", "[")
 
-    def check_references(self):
-        self.formatted_manuscript = self.raw_manuscript.replace(" [", "[")
+    def check_headings(self, raw_manuscript: str):
+        return raw_manuscript.replace("\n#", "\n\n#")
 
-    def check_headings(self):
-        self.formatted_manuscript = self.raw_manuscript.replace("\n#", "\n\n#")
-
-    def check_lang_tags(self):
+    def check_lang_tags(self, raw_manuscript: str):
         def format_and_capitalize(match):
             code_block_tag = match.group(1)
             capitalized_lang_tag = match.group(2).capitalize()
             return code_block_tag + r"{title=" + capitalized_lang_tag + r"}"
 
         code_block_tag_expression = r"(```)(.+)$"
-        self.formatted_manuscript = re.sub(code_block_tag_expression, format_and_capitalize, self.raw_manuscript)
-
-    def output(self):
-        return self.formatted_manuscript
+        return re.sub(code_block_tag_expression, format_and_capitalize, raw_manuscript)
 
 
 def run(input_markdown_path: str):

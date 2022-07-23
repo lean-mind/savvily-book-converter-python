@@ -31,11 +31,14 @@ if __name__ == "__main__":
         manuscript_path = sys.argv[1]
         __compile_epub_from(manuscript_path)
         logging.info(" === DONE generating Epub ===")
+        print(" === DONE generating Epub ===")
         sys.exit(0)
 
     except subprocess.CalledProcessError as e:
         logging.error(f" === Pandoc command failed! === \n{e}")
+        print(f" === Pandoc command failed! === \n{e}")
         sys.exit(1)
     except Exception as e:
         logging.error(f" === Something went wrong! === \n{e}")
+        print(f" === Something went wrong! === \n{e}")
         sys.exit(1)

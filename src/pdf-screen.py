@@ -4,7 +4,8 @@ import logging
 from os import makedirs, chdir
 import formatter.ScreenPDFFormatter as screenPdfFormatter
 
-logging.basicConfig(filename="logs.log", encoding="utf-8", level=logging.DEBUG)
+logging.basicConfig(filename="logs.log", encoding="utf-8", level=logging.DEBUG,
+                    format='%(asctime)s - %(levelname)s - %(message)s')
 
 
 def __pandoc_command(manuscript_path: str) -> list:
@@ -19,7 +20,7 @@ def __pandoc_command(manuscript_path: str) -> list:
 
 
 def __compile_chapters(manuscript_path: str):
-    logging.info(" === COMPILING screen pdf chapters ===")
+    logging.info(" === COMPILING Screen PDF chapters ===")
 
     formatted_stream = screenPdfFormatter.run(manuscript_path)
     subprocess.run(__pandoc_command(manuscript_path), stdin=formatted_stream, check=True)
@@ -27,16 +28,18 @@ def __compile_chapters(manuscript_path: str):
 
 # TODO.check pathing within template to avoid cd
 def __compile_opnening():
-    logging.info(" === COMPILING screen pdf opening ===")
+    logging.info(" === COMPILING Screen PDF opening ===")
 
-    chdir(".tmp-manuscript")
     xelatex_command = ["xelatex", "-output-directory", ".", "../src/pandoc-templates/screen/opening.tex"]
-    subprocess.run(xelatex_command)
+    chdir(".tmp-manuscript")
+    xelatex_output = subprocess.run(xelatex_command, stdout=subprocess.PIPE)
     chdir("../")
+
+    logging.info(f"XeLaTeX output:\n\n{xelatex_output.stdout.decode()}")
 
 
 def __join_sections(output_name: str):
-    logging.info(" === Joining screen pdf opening and chapters ===")
+    logging.info(" === Joining Screen PDF opening and chapters ===")
 
     output = f"-sOutputFile=output/{output_name}.pdf"
     ghostscript_command = ["gs", "-q", "-dNOPAUSE", "-dBATCH", "-sDEVICE=pdfwrite",
@@ -55,12 +58,15 @@ if __name__ == "__main__":
         makedirs("output", exist_ok=True)
         manuscript_path = sys.argv[1]
         __compile_pdf_from(manuscript_path)
-        logging.info(" === DONE generating screen pdf ===")
+        logging.info(" === DONE generating Screen PDF ===")
+        print(" === DONE generating Screen PDF ===")
         sys.exit(0)
 
     except subprocess.CalledProcessError as e:
         logging.error(f" === Pandoc command failed! === \n{e}")
+        print(f" === Pandoc command failed! === \n{e}")
         sys.exit(1)
     except Exception as e:
         logging.error(f" === Something went wrong! === \n{e}")
+        print(f" === Something went wrong! === \n{e}")
         sys.exit(1)

@@ -17,12 +17,18 @@ class TestBasicFormatter:
 
     def test_headings_format(self):
         formatter = BasicFormatter()
-        actual_output = formatter.check_headings("last paragraph.\n# New Chapter")
-        expected_output = "last paragraph.\n\n# New Chapter"
+        actual_output = formatter.check_headings("# last paragraph.\n# New Chapter")
+        expected_output = "\n# last paragraph.\n\n# New Chapter"
         assert actual_output == expected_output
 
     def test_language_tags_format(self):
         formatter = BasicFormatter()
         actual_output = formatter.check_lang_tags("```java")
         expected_output = "```{title=Java}"
+        assert actual_output == expected_output
+
+    def test_whole_formatter(self):
+        formatter = BasicFormatter()
+        actual_output = formatter.run(expected.default)
+        expected_output = expected.basic_format
         assert actual_output == expected_output

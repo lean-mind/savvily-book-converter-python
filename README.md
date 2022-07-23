@@ -1,15 +1,15 @@
 <br />
 <div align="center">
-  <a href="https://github.com/lean-mind/savvily-book-converter">
+  <a href="https://github.com/lean-mind/savvily-book-converter-python">
     <img src="docs/resources/images/logo.png" alt="Logo" width="80" height="80">
   </a>
 
-  <h3 align="center">Savvily Book Converter</h3>
+  <h3 align="center">Savvily Book Converter [Python]</h3>
 
   <p align="center">
     Easily convert your markdown manuscript into a pdf and/or epub book!
     <br />
-    <a href="https://lean-mind.github.io/savvily-book-converter/#/"><strong>Explore the docs »</strong></a>
+    <a href="https://lean-mind.github.io/savvily-book-converter-python/#/"><strong>Explore the docs »</strong></a>
     <br />
     </p>
 </div>
@@ -38,21 +38,21 @@ like pdf or epub.
 To format the Markdown, Pandoc uses [Latex](https://www.latex-project.org/).
 Latex is a composition text system and it counts with endless format configurations.
 
-Full documentation can also be found [here](https://lean-mind.github.io/savvily-book-converter/#/).
+Full documentation can also be found [here](https://lean-mind.github.io/savvily-book-converter-python/#/).
 
 ## Prerequisites
 
 The easiest way to run this project is with Docker.
 
 If you'd rather not use it (or can't), you'll have to install Latex and some other dependencies (see [the
-documentation](https://lean-mind.github.io/savvily-book-converter/#/)).
+documentation](https://lean-mind.github.io/savvily-book-converter-python/#/)).
 
 ## Getting started
 
 1. Clone the repo and `cd` into it:
 
 ```
-git clone git@github.com:lean-mind/savvily-book-converter.git && cd savvily-book-converter
+git clone git@github.com:lean-mind/savvily-book-converter-python.git savvily && cd savvily
 ```
 
 2. Build the Docker Image with:
@@ -95,7 +95,7 @@ The available flags are:
 -a or --all --> All of the above
 ```
 
-If you are not using docker, check the [docs](https://lean-mind.github.io/savvily-book-converter/#/) to see how to run
+If you are not using docker, check the [docs](https://lean-mind.github.io/savvily-book-converter-python/#/) to see how to run
 the project.
 
 ## Manuscript Structure
@@ -116,4 +116,4 @@ The Manuscript should follow this structure:
 
 Keep in mind that the Chapters name **must** follow the format `number_name` for the script to work!
 
-For more information regarding this, check the [docs](https://lean-mind.github.io/savvily-book-converter/#/manuscript).
+For more information regarding this, check the [docs](https://lean-mind.github.io/savvily-book-converter-python/#/manuscript).

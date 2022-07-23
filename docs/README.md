@@ -1,6 +1,6 @@
 <br />
 <div align="center">
-  <a href="https://github.com/lean-mind/savvily-book-converter">
+  <a href="https://github.com/lean-mind/savvily-book-converter-python">
     <img src="resources/images/logo.png" alt="Logo" width="80" height="80">
   </a>
 
@@ -30,7 +30,7 @@ Remember to configure it to [start on boot](https://docs.docker.com/engine/insta
 Clone the repo and `cd` into it:
 
 ```bash
-git clone git@github.com:lean-mind/savvily-book-converter.git && cd savvily-book-converter
+git clone git@github.com:lean-mind/savvily-book-converter-python.git savvily && cd savvily
 ```
 
 Generate docker image:

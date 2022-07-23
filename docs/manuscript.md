@@ -49,16 +49,31 @@ You'll need to provide a file called `pub-data` within your `resources/` directo
 It shall contain a list of **necessary** fields to produce proper legal and copyright information within the opening
 section of the book.
 
-You can take the one provided as part of the sample-manuscript as reference.
-The keys must be the same as the ones provided, but make sure to update the values with your specific information.
+Take the following as an example:
 
-Also, consider that the given format must be respected:
+```
+Title = [BOOK TITLE]
+Subtitle = [BOOK SUBTITLE]
+Author = [BOOK AUTHOR]
+Write-Date = [WRITTEN IN DATE]
+Publishing-Date = [PUBLISHED IN DATE]
+Edition = [EDITION NUMBER]
+Cover-Illustration = [COVER IMAGE FILE]
+Artistic-Direction = [CREDIT ARTISTS]
+First-Edition = [FIRST EDITION PUBLISHED IN DATE]
+Printed-In = [PRINTING PRESS LOCATION]
+Printing-Company = [CREDIT PRINTING PRESS]
+ISBN = [ISBN CODE]
+Legal-Deposit = [LEGAL DEPOSIT CODE]
+Dedication = [SMALL DEDICATION FOR BOOK OPENING SECTION]
+```
 
-- The keys **must** be named as they are.
+- The keys **must** be named as in the example.
 - Keys and values **must** be separated by `[ = ]` (excluding brackets of course), spaces do matter.
 
 ## Manuscript constrains
 
+- Links in lines that include `!` won't be properly converted to references when processing a print-ready PDF.
 - No references can contain links. This will break the link when processing a print-ready PDF.
 - Referencing long URLs (which includes regular links for the print-ready version) will break the footnotes format.
 Use URL shorteners like [bitly](https://bitly.com/).

@@ -27,10 +27,39 @@ class TestBasicFormatter:
         expected_output = "\n# last paragraph.\n\n# New Chapter"
         assert actual_output == expected_output
 
-    def test_language_tags_format(self):
+    def test_language_tags_format_simple_case(self):
         formatter = BasicFormatter()
         actual_output = formatter.check_lang_tags("```java")
         expected_output = "```{title=Java}"
+        assert actual_output == expected_output
+
+    def test_language_tags_format_complex_case(self):
+        formatter = BasicFormatter()
+        actual_output = formatter.check_lang_tags("""
+            Some pre-code block text
+
+            ```python
+            if (61) {
+                motherboard_dv(website + -2);
+            } else {
+                win(down_it_white, right * mms_dos, binary_firewire_page);
+            }
+            ```
+            Some post-code block text
+        """)
+
+        expected_output = """
+            Some pre-code block text
+
+            ```{title=Python}
+            if (61) {
+                motherboard_dv(website + -2);
+            } else {
+                win(down_it_white, right * mms_dos, binary_firewire_page);
+            }
+            ```
+            Some post-code block text
+        """
         assert actual_output == expected_output
 
     def test_whole_formatter(self):

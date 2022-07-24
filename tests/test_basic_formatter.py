@@ -21,7 +21,19 @@ class TestBasicFormatter:
         expected_output = "sample text [link text](link-url) more text"
         assert actual_output == expected_output
 
-    def test_headings_format(self):
+    def test_headings_format_h1(self):
+        formatter = BasicFormatter()
+        actual_output = formatter.check_headings("last paragraph.\n# New Chapter")
+        expected_output = "last paragraph.\n\n# New Chapter"
+        assert actual_output == expected_output
+
+    def test_headings_format_h2(self):
+        formatter = BasicFormatter()
+        actual_output = formatter.check_headings("# last paragraph.\n## New Chapter")
+        expected_output = "\n# last paragraph.\n\n## New Chapter"
+        assert actual_output == expected_output
+
+    def test_headings_format_h1_in_first_line(self):
         formatter = BasicFormatter()
         actual_output = formatter.check_headings("# last paragraph.\n# New Chapter")
         expected_output = "\n# last paragraph.\n\n# New Chapter"

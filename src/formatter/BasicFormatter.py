@@ -11,8 +11,7 @@ class BasicFormatter:
         return raw_manuscript.replace(" [^", "[^")
 
     def check_headings(self, raw_manuscript: str):
-        without_first_h1_of_chapter = re.sub(r"\n#", r"\n\n#", raw_manuscript)
-        return re.sub(r"^#", r"\n#", without_first_h1_of_chapter)
+        return re.sub(r"#(.*)", r"\n#\1", raw_manuscript)
 
     def check_lang_tags(self, raw_manuscript: str):
         def format_and_capitalize(match):

@@ -1,5 +1,5 @@
 from pdfminer.high_level import extract_text
-from tests.fixtures.PdfHelper import PdfHelper
+from tests.fixtures.helpers.PdfHelper import PdfHelper
 
 full_text = extract_text("output/python_screen.pdf")
 raw_pdf: list = [line for line in full_text.splitlines() if line]

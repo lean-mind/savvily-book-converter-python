@@ -1,5 +1,6 @@
 from formatter.BasicFormatter import BasicFormatter
-import tests.fixtures.expected_output_md as expected
+import tests.fixtures.data.legacy_basic_format_md as legacy_format_fixture
+import tests.fixtures.data.no_format_md as full_text_fixture
 
 
 class TestBasicFormatter:
@@ -76,6 +77,5 @@ class TestBasicFormatter:
 
     def test_whole_formatter(self):
         formatter = BasicFormatter()
-        actual_output = formatter.run(expected.default)
-        expected_output = expected.basic_format
-        assert actual_output == expected_output
+        formatted_md = formatter.run(full_text_fixture.content)
+        assert formatted_md == legacy_format_fixture.content

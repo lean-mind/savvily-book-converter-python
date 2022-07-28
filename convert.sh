@@ -12,27 +12,32 @@ fi
 
 case "$1" in
 -p | --print) scriptToRun="python3 -B src/pdf-print.py $manuscript" ;;
+-lp | --legacy-print) scriptToRun="python3 -B src/pdf-print.py legacy $manuscript" ;;
 
--s | --screen) scriptToRun="python3 -B src/pdf-screen.py $manuscript" ;;
+\
+  -s | --screen) scriptToRun="python3 -B src/pdf-screen.py $manuscript" ;;
+-ls | --legacy-screen) scriptToRun="python3 -B src/pdf-screen.py legacy $manuscript" ;;
 
--e | --epub) scriptToRun="python3 -B src/epub.py $manuscript" ;;
+\
+  -e | --epub) scriptToRun="python3 -B src/epub.py $manuscript" ;;
+-le | --legacy-epub) scriptToRun="python3 -B src/epub.py legacy $manuscript" ;;
 
--m | --mobi) scriptToRun="./src/scripts/mobi.sh" ;;
-
--es | --epub-and-screen)
-  ./convert.sh -e "$manuscript"
-  ./convert.sh -s "$manuscript"
-  exit
-  ;;
-
--a | --all)
+\
+  -a | --all)
   ./convert.sh -e "$manuscript"
   ./convert.sh -p "$manuscript"
   ./convert.sh -s "$manuscript"
   exit
   ;;
+-la | --legacy-all)
+  ./convert.sh -le "$manuscript"
+  ./convert.sh -lp "$manuscript"
+  ./convert.sh -ls "$manuscript"
+  exit
+  ;;
 
-*)
+\
+  *)
   printf "Unknown option %s\n" "$1"
   exit 1
   ;;
@@ -51,9 +56,3 @@ docker run --rm \
   "$scriptToRun"
 
 rm -rf .tmp-manuscript
-
-#if [ "$format" = "epub" ]; then
-#. ./src/scripts/epubFormatter.sh
-#fi
-
-#. ./src/scripts/wrapBooks.sh

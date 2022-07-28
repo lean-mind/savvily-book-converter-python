@@ -3,6 +3,8 @@ import sys
 import logging
 from os import makedirs, chdir
 import formatter.legacy.LegacyPrintPDFFormatter as printPdfFormatter
+from formatter.PrintPDFFormatter import PrintPDFFormatter
+from ManuscriptReader import ManuscriptReader
 
 logging.basicConfig(filename="logs.log", encoding="utf-8", level=logging.DEBUG,
                     format='%(asctime)s - %(levelname)s - %(message)s')
@@ -21,8 +23,11 @@ def __pandoc_command(manuscript_path: str) -> list:
 def __compile_chapters(manuscript_path: str):
     logging.info(" === COMPILING Print PDF chapters ===")
 
-    formatted_stream = printPdfFormatter.run(manuscript_path)
-    subprocess.run(__pandoc_command(manuscript_path), stdin=formatted_stream, check=True)
+    reader = ManuscriptReader()
+    full_manuscript = reader.read(manuscript_path)
+    new_formatter = PrintPDFFormatter()
+    formatted_manuscript = new_formatter.run(full_manuscript)
+    subprocess.run(__pandoc_command(manuscript_path), input=formatted_manuscript.encode(), check=True)
 
 
 # TODO.check pathing within template to avoid cd
@@ -52,11 +57,25 @@ def __compile_pdf_from(manuscript_path: str):
     __join_sections("python_print")
 
 
+def __legacy_compile(manuscript_path: str):
+    logging.info(" === COMPILING Print PDF chapters ===")
+
+    formatted_stream = printPdfFormatter.run(manuscript_path)
+    subprocess.run(__pandoc_command(manuscript_path), stdin=formatted_stream, check=True)
+    __compile_opnening()
+    __join_sections("python_screen")
+
+
 if __name__ == "__main__":
     try:
         makedirs("output", exist_ok=True)
-        manuscript_path = sys.argv[1]
-        __compile_pdf_from(manuscript_path)
+        mode = sys.argv[1]
+        manuscript_path = sys.argv[-1]
+        if mode == 'legacy':
+            print(" === LEGACY MODE ===")
+            __legacy_compile(manuscript_path)
+        else:
+            __compile_pdf_from(manuscript_path)
         logging.info(" === DONE generating Print PDF ===")
         print(" === DONE generating Print PDF ===")
         sys.exit(0)

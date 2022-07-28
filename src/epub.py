@@ -3,6 +3,8 @@ import sys
 import logging
 from os import makedirs
 import formatter.legacy.LegacyBasicFormatter as basicFormatter
+from formatter.BasicFormatter import BasicFormatter
+from ManuscriptReader import ManuscriptReader
 
 logging.basicConfig(filename="logs.log", encoding="utf-8", level=logging.DEBUG)
 
@@ -21,6 +23,16 @@ def __pandoc_command(manuscript_path: str) -> list:
 def __compile_epub_from(manuscript_path: str):
     logging.info(" === COMPILING Epub ===")
 
+    reader = ManuscriptReader()
+    full_manuscript = reader.read(manuscript_path)
+    new_formatter = BasicFormatter()
+    formatted_manuscript = new_formatter.run(full_manuscript)
+    subprocess.run(__pandoc_command(manuscript_path), input=formatted_manuscript.encode(), check=True)
+
+
+def __legacy_compile(manuscript_path: str):
+    logging.info(" === COMPILING Epub ===")
+
     formatted_stream = basicFormatter.run(manuscript_path)
     subprocess.run(__pandoc_command(manuscript_path), stdin=formatted_stream, check=True)
 
@@ -28,8 +40,13 @@ def __compile_epub_from(manuscript_path: str):
 if __name__ == "__main__":
     try:
         makedirs("output", exist_ok=True)
-        manuscript_path = sys.argv[1]
-        __compile_epub_from(manuscript_path)
+        mode = sys.argv[1]
+        manuscript_path = sys.argv[-1]
+        if mode == 'legacy':
+            print(" === LEGACY MODE ===")
+            __legacy_compile(manuscript_path)
+        else:
+            __compile_epub_from(manuscript_path)
         logging.info(" === DONE generating Epub ===")
         print(" === DONE generating Epub ===")
         sys.exit(0)

@@ -2,7 +2,7 @@ import subprocess
 import sys
 import logging
 from os import makedirs, chdir
-import formatter.PrintPDFFormatter as printPdfFormatter
+import formatter.legacy.LegacyPrintPDFFormatter as printPdfFormatter
 
 logging.basicConfig(filename="logs.log", encoding="utf-8", level=logging.DEBUG,
                     format='%(asctime)s - %(levelname)s - %(message)s')

@@ -2,7 +2,7 @@ import subprocess
 import sys
 import logging
 from os import makedirs, chdir
-import formatter.ScreenPDFFormatter as screenPdfFormatter
+import formatter.legacy.LegacyBasicFormatter as basicFormatter
 
 logging.basicConfig(filename="logs.log", encoding="utf-8", level=logging.DEBUG,
                     format='%(asctime)s - %(levelname)s - %(message)s')
@@ -22,7 +22,7 @@ def __pandoc_command(manuscript_path: str) -> list:
 def __compile_chapters(manuscript_path: str):
     logging.info(" === COMPILING Screen PDF chapters ===")
 
-    formatted_stream = screenPdfFormatter.run(manuscript_path)
+    formatted_stream = basicFormatter.run(manuscript_path)
     subprocess.run(__pandoc_command(manuscript_path), stdin=formatted_stream, check=True)
 
 

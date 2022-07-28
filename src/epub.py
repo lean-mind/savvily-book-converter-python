@@ -2,7 +2,7 @@ import subprocess
 import sys
 import logging
 from os import makedirs
-import formatter.EpubFormatter as epubFormatter
+import formatter.legacy.LegacyBasicFormatter as basicFormatter
 
 logging.basicConfig(filename="logs.log", encoding="utf-8", level=logging.DEBUG)
 
@@ -21,7 +21,7 @@ def __pandoc_command(manuscript_path: str) -> list:
 def __compile_epub_from(manuscript_path: str):
     logging.info(" === COMPILING Epub ===")
 
-    formatted_stream = epubFormatter.run(manuscript_path)
+    formatted_stream = basicFormatter.run(manuscript_path)
     subprocess.run(__pandoc_command(manuscript_path), stdin=formatted_stream, check=True)
 
 

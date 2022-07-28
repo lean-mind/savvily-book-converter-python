@@ -4,51 +4,51 @@ import tests.fixtures.data.no_format_md as full_text_fixture
 
 
 class TestBasicFormatter:
+    formatter = BasicFormatter()
+
     def test_link_format(self):
-        formatter = BasicFormatter()
-        actual_output = formatter.check_links("sample text [this is some linked text] (this-is-a-url) more text")
-        expected_output = "sample text [this is some linked text](this-is-a-url) more text"
-        assert actual_output == expected_output
+        broken_link = "sample text [this is some linked text] (this-is-a-url) more text"
+        fixed_link = self.formatter.check_links(broken_link)
+        expected_fix = "sample text [this is some linked text](this-is-a-url) more text"
+        assert fixed_link == expected_fix
 
     def test_reference_format(self):
-        formatter = BasicFormatter()
-        actual_output = formatter.check_references("sample text [^reference-text]: more text")
-        expected_output = "sample text[^reference-text]: more text"
-        assert actual_output == expected_output
+        broken_ref = "sample text [^reference-text]: more text"
+        fixed_ref = self.formatter.check_references(broken_ref)
+        expected_fix = "sample text[^reference-text]: more text"
+        assert fixed_ref == expected_fix
 
     def test_reference_format_omits_links(self):
-        formatter = BasicFormatter()
-        actual_output = formatter.check_references("sample text [link text](link-url) more text")
-        expected_output = "sample text [link text](link-url) more text"
-        assert actual_output == expected_output
+        working_link_no_ref = "sample text [link text](link-url) more text"
+        unchanged_link = self.formatter.check_references(working_link_no_ref)
+        assert unchanged_link == working_link_no_ref
 
     def test_headings_format_h1(self):
-        formatter = BasicFormatter()
-        actual_output = formatter.check_headings("last paragraph.\n# New Chapter")
-        expected_output = "last paragraph.\n\n# New Chapter"
-        assert actual_output == expected_output
+        broken_heading = "last paragraph.\n# New Chapter"
+        fixed_heading = self.formatter.check_headings(broken_heading)
+        expected_fix = "last paragraph.\n\n# New Chapter"
+        assert fixed_heading == expected_fix
 
     def test_headings_format_h2(self):
-        formatter = BasicFormatter()
-        actual_output = formatter.check_headings("# last paragraph.\n## New Chapter")
-        expected_output = "\n# last paragraph.\n\n## New Chapter"
-        assert actual_output == expected_output
+        broken_headings = "# last paragraph.\n## New Chapter"
+        fixed_headings = self.formatter.check_headings(broken_headings)
+        expected_fix = "\n# last paragraph.\n\n## New Chapter"
+        assert fixed_headings == expected_fix
 
     def test_headings_format_h1_in_first_line(self):
-        formatter = BasicFormatter()
-        actual_output = formatter.check_headings("# last paragraph.\n# New Chapter")
-        expected_output = "\n# last paragraph.\n\n# New Chapter"
-        assert actual_output == expected_output
+        broken_headings = "# last paragraph.\n# New Chapter"
+        fixed_headings = self.formatter.check_headings(broken_headings)
+        expected_fix = "\n# last paragraph.\n\n# New Chapter"
+        assert fixed_headings == expected_fix
 
     def test_language_tags_format_simple_case(self):
-        formatter = BasicFormatter()
-        actual_output = formatter.check_lang_tags("```java")
-        expected_output = "```{title=Java}"
-        assert actual_output == expected_output
+        broken_lang_tag = "```java"
+        fixed_lang_tag = self.formatter.check_lang_tags(broken_lang_tag)
+        expected_fix = "```{title=Java}"
+        assert fixed_lang_tag == expected_fix
 
     def test_language_tags_format_complex_case(self):
-        formatter = BasicFormatter()
-        actual_output = formatter.check_lang_tags("""
+        fixed_lang_tag_with_code_block = self.formatter.check_lang_tags("""
             Some pre-code block text
 
             ```python
@@ -61,7 +61,7 @@ class TestBasicFormatter:
             Some post-code block text
         """)
 
-        expected_output = """
+        expected_fix = """
             Some pre-code block text
 
             ```{title=Python}
@@ -73,9 +73,8 @@ class TestBasicFormatter:
             ```
             Some post-code block text
         """
-        assert actual_output == expected_output
+        assert fixed_lang_tag_with_code_block == expected_fix
 
     def test_whole_formatter(self):
-        formatter = BasicFormatter()
-        formatted_md = formatter.run(full_text_fixture.content)
+        formatted_md = self.formatter.run(full_text_fixture.content)
         assert formatted_md == legacy_format_fixture.content

@@ -2,7 +2,8 @@
 set -e
 
 if [ $# -eq 1 ]; then
-  manuscript='./tests/fixtures/sample-manuscript/'
+  echo "Sorry, I need a valid manuscript path to work"
+  exit 1
 elif [ $# -eq 2 ]; then
   manuscript=$2
 else

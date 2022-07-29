@@ -25,7 +25,7 @@ jobs:
         run: docker build $PWD --file Dockerfile --tag savvily-book-generator
 
       - name: Generate sample book in all formats
-        run: ./convert.sh -a
+        run: ./convert.sh -a 'tests/fixtures/sample-manuscript/'
 
       - name: Run all tests
         run: make tests-ci

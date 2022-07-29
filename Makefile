@@ -27,7 +27,7 @@ tests-ci: ## Run all tests forcing book compilation
 .PHONY: check-output
 _check-output:
 	@echo "Checking output"
-	@test -s output || { echo "No output found, compiling all formats..."; ./convert.sh -a; }
-	@test -s output/ebook.epub || { echo "No epub found, compiling ..."; ./convert.sh -e; }
-	@test -s output/python_print.pdf || { echo "No print pdf found, compiling ..."; ./convert.sh -p; }
-	@test -s output/python_screen.pdf || { echo "No screen pdf found, compiling ..."; ./convert.sh -s; }
+	@test -s output || { echo "No output found, compiling all formats..."; ./convert.sh -a './tests/fixtures/sample-manuscript/'; }
+	@test -s output/ebook.epub || { echo "No epub found, compiling ..."; ./convert.sh -e './tests/fixtures/sample-manuscript/'; }
+	@test -s output/python_print.pdf || { echo "No print pdf found, compiling ..."; ./convert.sh -p './tests/fixtures/sample-manuscript/'; }
+	@test -s output/python_screen.pdf || { echo "No screen pdf found, compiling ..."; ./convert.sh -s './tests/fixtures/sample-manuscript/'; }

@@ -64,7 +64,7 @@ def __legacy_compile(manuscript_path: str):
     formatted_stream = basicFormatter.run(manuscript_path)
     subprocess.run(__pandoc_command(manuscript_path), stdin=formatted_stream, check=True)
     __compile_opnening()
-    __join_sections("python_screen")
+    __join_sections("legacy_python_screen")
 
 
 if __name__ == "__main__":

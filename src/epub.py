@@ -9,10 +9,13 @@ from ManuscriptReader import ManuscriptReader
 logging.basicConfig(filename="logs.log", encoding="utf-8", level=logging.DEBUG)
 
 
-def __pandoc_command(manuscript_path: str) -> list:
+def __pandoc_command(manuscript_path: str, legacy_mode: bool = False) -> list:
     metadata = "--metadata-file=src/pandoc-templates/epub/metadata.yml"
     resources = f"--resource-path={manuscript_path}"
-    output = "--output=output/ebook.epub"
+    if legacy_mode:
+        output = "--output=output/legacy_ebook.epub"
+    else:
+        output = "--output=output/ebook.epub"
     css = "--css=src/pandoc-templates/epub/epub.css"
     cover_image = f"--epub-cover-image={manuscript_path}/resources/book-cover-print.png"
     font = "--epub-embed-font=/usr/share/fonts/Roboto-Bold.ttf"
@@ -34,7 +37,7 @@ def __legacy_compile(manuscript_path: str):
     logging.info(" === COMPILING Epub ===")
 
     formatted_stream = basicFormatter.run(manuscript_path)
-    subprocess.run(__pandoc_command(manuscript_path), stdin=formatted_stream, check=True)
+    subprocess.run(__pandoc_command(manuscript_path, True), stdin=formatted_stream, check=True)
 
 
 if __name__ == "__main__":

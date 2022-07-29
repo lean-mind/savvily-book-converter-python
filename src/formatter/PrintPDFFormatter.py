@@ -34,5 +34,5 @@ class PrintPDFFormatter:
 
     def run(self, raw_manuscript: str):
         formatter = BasicFormatter()
-        test = formatter.run(raw_manuscript)
-        return self.turn_links_to_footnotes(test)
+        formatted_manuscript = formatter.run(raw_manuscript)
+        return self.turn_links_to_footnotes(formatted_manuscript)

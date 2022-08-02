@@ -12,28 +12,28 @@ else
 fi
 
 case "$1" in
--p | --print) scriptToRun="python3 -B src/pdf-print.py $manuscript" ;;
--lp | --legacy-print) scriptToRun="python3 -B src/pdf-print.py legacy $manuscript" ;;
+-p | --print) scriptToRun="python3 -B src/pdf-print.py .tmp-manuscript" ;;
+-lp | --legacy-print) scriptToRun="python3 -B src/pdf-print.py legacy .tmp-manuscript" ;;
 
 \
-  -s | --screen) scriptToRun="python3 -B src/pdf-screen.py $manuscript" ;;
--ls | --legacy-screen) scriptToRun="python3 -B src/pdf-screen.py legacy $manuscript" ;;
+  -s | --screen) scriptToRun="python3 -B src/pdf-screen.py .tmp-manuscript" ;;
+-ls | --legacy-screen) scriptToRun="python3 -B src/pdf-screen.py legacy .tmp-manuscript" ;;
 
 \
-  -e | --epub) scriptToRun="python3 -B src/epub.py $manuscript" ;;
--le | --legacy-epub) scriptToRun="python3 -B src/epub.py legacy $manuscript" ;;
+  -e | --epub) scriptToRun="python3 -B src/epub.py .tmp-manuscript" ;;
+-le | --legacy-epub) scriptToRun="python3 -B src/epub.py legacy .tmp-manuscript" ;;
 
 \
   -a | --all)
-  ./convert.sh -e "$manuscript"
-  ./convert.sh -p "$manuscript"
-  ./convert.sh -s "$manuscript"
+  ./convert.sh -e ".tmp-manuscript"
+  ./convert.sh -p ".tmp-manuscript"
+  ./convert.sh -s ".tmp-manuscript"
   exit
   ;;
 -la | --legacy-all)
-  ./convert.sh -le "$manuscript"
-  ./convert.sh -lp "$manuscript"
-  ./convert.sh -ls "$manuscript"
+  ./convert.sh -le ".tmp-manuscript"
+  ./convert.sh -lp ".tmp-manuscript"
+  ./convert.sh -ls ".tmp-manuscript"
   exit
   ;;
 

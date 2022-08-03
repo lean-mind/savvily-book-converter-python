@@ -25,15 +25,15 @@ case "$1" in
 
 \
   -a | --all)
-  ./convert.sh -e ".tmp-manuscript"
-  ./convert.sh -p ".tmp-manuscript"
-  ./convert.sh -s ".tmp-manuscript"
+  ./convert.sh -e "$manuscript"
+  ./convert.sh -p "$manuscript"
+  ./convert.sh -s "$manuscript"
   exit
   ;;
 -la | --legacy-all)
-  ./convert.sh -le ".tmp-manuscript"
-  ./convert.sh -lp ".tmp-manuscript"
-  ./convert.sh -ls ".tmp-manuscript"
+  ./convert.sh -le "$manuscript"
+  ./convert.sh -lp "$manuscript"
+  ./convert.sh -ls "$manuscript"
   exit
   ;;
 

@@ -1,4 +1,4 @@
-from src.domain.ChapterSorter import ChapterSorter
+from src.infrastructure.ChapterSorter import ChapterSorter
 
 
 class TestSorter:

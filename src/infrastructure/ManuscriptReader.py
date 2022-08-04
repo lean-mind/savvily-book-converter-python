@@ -1,5 +1,5 @@
 import os
-from domain.ChapterSorter import ChapterSorter
+from infrastructure.ChapterSorter import ChapterSorter
 
 
 class ManuscriptReader:

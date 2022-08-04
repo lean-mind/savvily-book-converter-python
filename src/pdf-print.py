@@ -24,7 +24,7 @@ def __compile_chapters(manuscript_path: str):
     logging.info(" === COMPILING Print PDF chapters ===")
 
     reader = ManuscriptReader()
-    full_manuscript = reader.read(manuscript_path)
+    full_manuscript = reader.readFrom(manuscript_path)
     new_formatter = PrintPDFFormatter()
     formatted_manuscript = new_formatter.run(full_manuscript)
     subprocess.run(__pandoc_command(manuscript_path), input=formatted_manuscript.encode(), check=True)

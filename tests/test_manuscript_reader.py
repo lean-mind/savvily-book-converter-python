@@ -12,5 +12,5 @@ class TestReader:
         assert sorted_chapters == expected_files
 
     def test_whole_manuscript_is_read(self):
-        manuscript_content = self.reader.read("tests/fixtures/sample-manuscript")
+        manuscript_content = self.reader.readFrom("tests/fixtures/sample-manuscript")
         assert manuscript_content == full_text.content

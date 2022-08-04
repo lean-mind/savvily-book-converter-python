@@ -27,7 +27,7 @@ def __compile_epub_from(manuscript_path: str):
     logging.info(" === COMPILING Epub ===")
 
     reader = ManuscriptReader()
-    full_manuscript = reader.read(manuscript_path)
+    full_manuscript = reader.readFrom(manuscript_path)
     new_formatter = BasicFormatter()
     formatted_manuscript = new_formatter.run(full_manuscript)
     subprocess.run(__pandoc_command(manuscript_path), input=formatted_manuscript.encode(), check=True)

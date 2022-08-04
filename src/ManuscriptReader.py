@@ -3,7 +3,7 @@ import re
 
 
 class ManuscriptReader:
-    def read(self, path: str) -> str:
+    def readFrom(self, path: str) -> str:
         chapters_filenames = self.get_sorted_chapters(path)
         read_chapters = ""
         for file in chapters_filenames:

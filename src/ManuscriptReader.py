@@ -19,16 +19,28 @@ class ManuscriptReader:
         return self._list_to_string(read_chapters)
 
     def get_sorted_chapters(self, path: str) -> list:
-        manuscript = os.listdir(path)
-        digits = re.compile(r'(\d+)')
-        separator = re.compile('_')
-        filenames = [file for file in manuscript if re.match(r"\d+_.*\.md|\d+_.*\.txt", file)]
+        manuscript_chapters = os.listdir(path)
+        index_separator = '_'
+        valid_filenames = self._filter_valid_chapter_names(manuscript_chapters, index_separator)
 
-        def preceding_digits_as_integers(filename):
-            filename_index = separator.split(filename)[0]
-            return int(filename_index)
+        def chapters_indexes_as_integers(valid_filename):
+            chapter_index = valid_filename.split(index_separator)[0]
+            return int(chapter_index)
 
-        return sorted(filenames, key=preceding_digits_as_integers)
+        return sorted(valid_filenames, key=chapters_indexes_as_integers)
+
+    def _filter_valid_chapter_names(self, chapters: list, separator: str) -> list:
+        chapter_index = r'^(\d+)'
+        index_separator = '_'
+        chapter_name = r'.*'
+        markdown_ext = '.md'
+        text_ext = '.txt'
+        valid_md = re.compile(f"{chapter_index}{index_separator}{chapter_name}{markdown_ext}")
+        valid_txt = re.compile(f"{chapter_index}{index_separator}{chapter_name}{text_ext}")
+        return [
+            chapter_filename for chapter_filename in chapters
+            if valid_md.match(chapter_filename) or valid_txt.match(chapter_filename)
+        ]
 
     def _list_to_string(self, list: list) -> str:
         return "".join(list)

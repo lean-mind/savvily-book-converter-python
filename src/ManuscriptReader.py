@@ -20,7 +20,15 @@ class ManuscriptReader:
 
     def get_sorted_chapters(self, path: str) -> list:
         manuscript = os.listdir(path)
-        return sorted([file for file in manuscript if re.match(r"\d\d_.*\.md|\d\d_.*\.txt", file)])
+        digits = re.compile(r'(\d+)')
+        separator = re.compile('_')
+        filenames = [file for file in manuscript if re.match(r"\d+_.*\.md|\d+_.*\.txt", file)]
+
+        def preceding_digits_as_integers(filename):
+            filename_index = separator.split(filename)[0]
+            return int(filename_index)
+
+        return sorted(filenames, key=preceding_digits_as_integers)
 
     def _list_to_string(self, list: list) -> str:
         return "".join(list)

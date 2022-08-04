@@ -1,4 +1,4 @@
-from ManuscriptReader import ManuscriptReader
+from infrastructure.ManuscriptReader import ManuscriptReader
 import tests.fixtures.data.no_format_md as full_text
 
 

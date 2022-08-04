@@ -4,7 +4,7 @@ import logging
 from os import makedirs
 import formatter.legacy.LegacyBasicFormatter as basicFormatter
 from formatter.BasicFormatter import BasicFormatter
-from ManuscriptReader import ManuscriptReader
+from infrastructure.ManuscriptReader import ManuscriptReader
 
 logging.basicConfig(filename="logs.log", encoding="utf-8", level=logging.DEBUG)
 

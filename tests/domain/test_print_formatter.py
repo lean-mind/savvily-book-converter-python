@@ -1,7 +1,7 @@
-from formatter.PrintPDFFormatter import PrintPDFFormatter
+import pytest
+from src.formatter.PrintPDFFormatter import PrintPDFFormatter
 import tests.fixtures.data.new_print_format_md as new_print_format_fixture
 import tests.fixtures.data.no_format_md as full_text_fixture
-import pytest
 
 
 class TestPrintFormatter:

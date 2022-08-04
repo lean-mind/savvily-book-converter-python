@@ -1,5 +1,5 @@
-from ebooklib import epub, ITEM_COVER
 import pytest
+from ebooklib import epub, ITEM_COVER
 from tests.fixtures.helpers.EpubHelper import EpubHelper
 
 ebook = epub.read_epub("output/ebook.epub")

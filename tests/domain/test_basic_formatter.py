@@ -1,4 +1,4 @@
-from formatter.BasicFormatter import BasicFormatter
+from src.formatter.BasicFormatter import BasicFormatter
 import tests.fixtures.data.legacy_basic_format_md as legacy_format_fixture
 import tests.fixtures.data.no_format_md as full_text_fixture
 

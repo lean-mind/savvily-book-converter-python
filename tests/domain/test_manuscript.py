@@ -1,5 +1,5 @@
 import pytest
-from domain.Manuscript import Manuscript
+from src.domain.Manuscript import Manuscript
 import tests.fixtures.data.new_print_format_md as new_print_format_fixture
 import tests.fixtures.data.legacy_basic_format_md as legacy_format_fixture
 import tests.fixtures.data.no_format_md as full_text_fixture

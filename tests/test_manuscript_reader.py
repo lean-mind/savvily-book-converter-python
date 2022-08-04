@@ -1,6 +1,5 @@
 from ManuscriptReader import ManuscriptReader
 import tests.fixtures.data.no_format_md as full_text
-import tests.fixtures.data.no_format_ch_01 as ch_01
 
 
 class TestReader:
@@ -15,7 +14,3 @@ class TestReader:
     def test_whole_manuscript_is_read(self):
         manuscript_content = self.reader.read("tests/fixtures/sample-manuscript")
         assert manuscript_content == full_text.content
-
-    def test_slected_chapters_are_read(self):
-        selected_chapters = self.reader.read_chapters("tests/fixtures/sample-manuscript", ["01_chapter.md"])
-        assert selected_chapters == ch_01.content

@@ -13,17 +13,17 @@ class Manuscript:
         return Manuscript(self.text.replace(" [^", "[^"))
 
     def format_headings(self):
-        heading = r"^(#.*)"
-        new_line_added = r"\n\1"
-        return Manuscript(re.sub(heading, new_line_added, self.text, flags=re.MULTILINE))
+        heading = re.compile(r"^(#.*)", flags=re.MULTILINE)
+        new_line_before_match = r"\n\1"
+        return Manuscript(re.sub(heading, new_line_before_match, self.text))
 
     def format_lang_tags(self):
         def format_and_capitalize(match):
             code_block_tag = match.group(1)
             capitalized_lang_tag = match.group(2).capitalize()
-            return code_block_tag + r"{title=" + capitalized_lang_tag + r"}"
+            return f"{code_block_tag}{{title={capitalized_lang_tag}}}"
 
-        code_block_tag_expression = r"(```)(.+)"
+        code_block_tag_expression = re.compile(r"(```)(.+)")
         return Manuscript(re.sub(code_block_tag_expression, format_and_capitalize, self.text))
 
     def basic_format(self):

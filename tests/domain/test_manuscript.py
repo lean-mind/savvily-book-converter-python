@@ -48,6 +48,11 @@ class TestManuscript:
             expected_fix = "\n# last paragraph.\n\n# New Chapter"
             assert str(fixed_headings) == expected_fix
 
+        def test_headings_format_discards_non_heading_elements(self):
+            not_a_heading = Manuscript("En C# y Kotlin")
+            formatted_manuscript = not_a_heading.format_headings()
+            assert formatted_manuscript == not_a_heading
+
     class TestLangTagFormat:
 
         def test_language_tags_format_simple_case(self):

@@ -41,6 +41,11 @@ class TestBasicFormatter:
         expected_fix = "\n# last paragraph.\n\n# New Chapter"
         assert fixed_headings == expected_fix
 
+    def test_headings_format_discards_non_heading_elements(self):
+        not_a_heading = "En C# y Kotlin"
+        fixed_headings = self.formatter.check_headings(not_a_heading)
+        assert fixed_headings == not_a_heading
+
     def test_language_tags_format_simple_case(self):
         broken_lang_tag = "```java"
         fixed_lang_tag = self.formatter.check_lang_tags(broken_lang_tag)

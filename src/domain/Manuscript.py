@@ -13,7 +13,9 @@ class Manuscript:
         return Manuscript(self.text.replace(" [^", "[^"))
 
     def format_headings(self):
-        return Manuscript(re.sub(r"#(.*)", r"\n#\1", self.text))
+        heading = r"^(#.*)"
+        new_line_added = r"\n\1"
+        return Manuscript(re.sub(heading, new_line_added, self.text, flags=re.MULTILINE))
 
     def format_lang_tags(self):
         def format_and_capitalize(match):

@@ -6,9 +6,14 @@ import tests.fixtures.data.no_format_md as full_text_fixture
 
 class TestManuscript:
 
-    def test_basic_format(self):
+    def test_epub_format(self):
         broken_md = Manuscript(full_text_fixture.content)
-        formatted_md = broken_md.basic_format()
+        formatted_md = broken_md.epub_format()
+        assert str(formatted_md) == legacy_format_fixture.content
+
+    def test_screen_pdf_format(self):
+        broken_md = Manuscript(full_text_fixture.content)
+        formatted_md = broken_md.screen_pdf_format()
         assert str(formatted_md) == legacy_format_fixture.content
 
     def test_print_pdf_format(self):

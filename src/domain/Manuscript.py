@@ -26,13 +26,6 @@ class Manuscript:
         code_block_tag_expression = re.compile(r"(```)(.+)")
         return Manuscript(re.sub(code_block_tag_expression, format_and_capitalize, self.text))
 
-    def basic_format(self):
-        return Manuscript(self.text) \
-            .format_links() \
-            .format_references() \
-            .format_headings() \
-            .format_lang_tags()
-
     def turn_links_to_footnotes(self):
         link_regex = re.compile(r"""
             (.*|)           # group before link, '|' for lines starting with link
@@ -60,10 +53,27 @@ class Manuscript:
 
         return Manuscript(re.sub(link_regex, turn_to_footnote, self.text))
 
+    def screen_pdf_format(self):
+        return Manuscript(self.text) \
+            .format_links() \
+            .format_references() \
+            .format_headings() \
+            .format_lang_tags()
+
+    def epub_format(self):
+        return Manuscript(self.text) \
+            .format_links() \
+            .format_references() \
+            .format_headings() \
+            .format_lang_tags()
+
     def print_pdf_format(self):
         return Manuscript(self.text) \
-            .basic_format() \
+            .screen_pdf_format() \
             .turn_links_to_footnotes()
+
+    def as_encoded_string(self):
+        return str(self).encode()
 
     def __str__(self):
         return self.text

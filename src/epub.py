@@ -3,8 +3,8 @@ import sys
 import logging
 from os import makedirs
 import formatter.legacy.LegacyBasicFormatter as basicFormatter
-from formatter.BasicFormatter import BasicFormatter
 from infrastructure.ManuscriptReader import ManuscriptReader
+from domain.Manuscript import Manuscript
 
 logging.basicConfig(filename="logs.log", encoding="utf-8", level=logging.DEBUG)
 
@@ -28,9 +28,9 @@ def __compile_epub_from(manuscript_path: str):
 
     reader = ManuscriptReader()
     full_manuscript = reader.readFrom(manuscript_path)
-    new_formatter = BasicFormatter()
-    formatted_manuscript = new_formatter.run(full_manuscript)
-    subprocess.run(__pandoc_command(manuscript_path), input=formatted_manuscript.encode(), check=True)
+    manuscript = Manuscript(full_manuscript)
+    formatted_manuscript = manuscript.epub_format()
+    subprocess.run(__pandoc_command(manuscript_path), input=formatted_manuscript.as_encoded_string(), check=True)
 
 
 def __legacy_compile(manuscript_path: str):

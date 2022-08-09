@@ -3,8 +3,8 @@ import sys
 import logging
 from os import makedirs, chdir
 import formatter.legacy.LegacyPrintPDFFormatter as printPdfFormatter
-from formatter.PrintPDFFormatter import PrintPDFFormatter
 from infrastructure.ManuscriptReader import ManuscriptReader
+from domain.Manuscript import Manuscript
 
 logging.basicConfig(filename="logs.log", encoding="utf-8", level=logging.DEBUG,
                     format='%(asctime)s - %(levelname)s - %(message)s')
@@ -25,9 +25,9 @@ def __compile_chapters(manuscript_path: str):
 
     reader = ManuscriptReader()
     full_manuscript = reader.readFrom(manuscript_path)
-    new_formatter = PrintPDFFormatter()
-    formatted_manuscript = new_formatter.run(full_manuscript)
-    subprocess.run(__pandoc_command(manuscript_path), input=formatted_manuscript.encode(), check=True)
+    manuscript = Manuscript(full_manuscript)
+    formatted_manuscript = manuscript.print_pdf_format()
+    subprocess.run(__pandoc_command(manuscript_path), input=formatted_manuscript.as_encoded_string(), check=True)
 
 
 # TODO.check pathing within template to avoid cd

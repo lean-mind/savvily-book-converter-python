@@ -15,6 +15,8 @@ RUN tlmgr update --self \
   environ  \
   eso-pic \
   datatool
+
+RUN apk update && apk upgrade
 RUN apk add sed ghostscript curl python3
 
 # Install fonts

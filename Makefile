@@ -11,15 +11,19 @@ setup: ## Setup local environment
 	@pipenv install --dev
 
 .PHONY: tests
-tests: _check-output ## Run all tests with coverage
+tests: _check-output ## Run all tests
+	@pipenv run pytest
+
+.PHONY: tests-c
+tests-c: _check-output ## Run all tests with coverage
 	@pipenv run pytest --cov=src
 
-.PHONY: tests-watch
-tests-watch: _check-output ## Run all tests in watch mode
-	@pipenv run ptw
+.PHONY: tests-w
+tests-w: ## Run domain and infrastructure tests in watch mode
+	@pipenv run ptw tests/infrastructure tests/domain
 
 .PHONY: tests-ci
-tests-ci: ## Run all tests forcing book compilation
+tests-ci: _check-output
 	@pipenv --python `which python3` install
 	@pipenv install --dev
 	@pipenv run pytest

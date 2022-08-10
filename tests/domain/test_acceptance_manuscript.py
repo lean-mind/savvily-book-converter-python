@@ -21,3 +21,7 @@ class TestManuscript:
         broken_md = Manuscript(unformatted_md.content)
         formatted_md = broken_md.print_pdf_format()
         assert str(formatted_md) == print_pdf_format.content
+
+    def test_encodes_itself_as_string(self):
+        manuscript = Manuscript("This text gets encoded, which is needed for it to be used as stdin for Pandoc!")
+        assert manuscript.as_encoded_string() == b'This text gets encoded, which is needed for it to be used as stdin for Pandoc!'

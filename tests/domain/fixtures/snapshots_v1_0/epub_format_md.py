@@ -1,4 +1,4 @@
-# MD outputted by legacy book generator for eput and screen pdf
+# MD as outputted by legacy book generator
 content = """
 # Est versat sed remorum ordine murice
 
@@ -166,7 +166,7 @@ procerum, albet vincirem, Enaesimus et hunc motis, ensem. Lumina succedere
 Iliaden.
 
 Ius erat pectora tempora capillos verum corporibus telluris tulit, dracones
-laeva praeposuisse fatebar. Regemque alma, verbis fulvo, non Phaethon, meum
+laeva praeposuisse fatebar. Regemque C# alma, verbis fulvo, non Phaethon, meum
 mulcendas frangit: amictu auras Diana. Dixerat *eheu* agger, servabat instant,
 nomen ventis petis.
 

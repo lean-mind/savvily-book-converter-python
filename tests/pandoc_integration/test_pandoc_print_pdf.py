@@ -41,20 +41,10 @@ class TestPrintOutput:
 
 
 class TestPrintLinks:
-    def test_all_links_are_in_footnotes_except_for_links_in_code_blocks(self):
-        known_broken_link = "http:// block.wrong"
+    def test_all_links_are_converted_to_footnotes(self):
+        links_in_sample_md = 8
         links_in_pdf = helper.get_links_from_pdf()
-        links_in_pdf_with_broken_link_removed = [
-            link
-            for link in links_in_pdf
-            if known_broken_link not in link
-        ]
-        links_in_footnotes = [
-            link
-            for link in links_in_pdf_with_broken_link_removed
-            if link[0].isdigit()
-        ]
-        assert links_in_footnotes == links_in_pdf_with_broken_link_removed
+        assert len(links_in_pdf) == links_in_sample_md
 
     @pytest.mark.skip(reason="Currently broken, links in references are not handled")
     def test_links_in_references_are_handled(self):
@@ -66,14 +56,3 @@ class TestPrintLinks:
             if known_broken_link_in_reference in line
         ]
         assert len(known_broken_link_in_reference_from_pdf) == 0
-
-    @pytest.mark.skip(reason="Currently broken, links in code blocks are not processed by pandoc")
-    def test_links_in_code_blocks_are_rendered_as_footnotes(self):
-        known_broken_link_in_code_block = "[^ http:// block.wrong]"
-        links_in_pdf = helper.get_links_from_pdf()
-        known_broken_link_in_code_block_from_pdf = [
-            line
-            for line in links_in_pdf
-            if known_broken_link_in_code_block in line
-        ]
-        assert len(known_broken_link_in_code_block_from_pdf) == 0

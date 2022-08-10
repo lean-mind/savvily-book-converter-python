@@ -20,7 +20,7 @@ tests-c: _check-output ## Run all tests with coverage
 
 .PHONY: tests-w
 tests-w: ## Run domain and infrastructure tests in watch mode
-	@pipenv run ptw tests/infrastructure tests/domain
+	@pipenv run ptw --ignore tests/pandoc_integration
 
 .PHONY: tests-ci
 tests-ci: _check-output

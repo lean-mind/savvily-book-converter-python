@@ -1,12 +1,12 @@
 import subprocess
 import sys
-import logging
 from os import makedirs
 import formatter.legacy.LegacyBasicFormatter as basicFormatter
 from infrastructure.ManuscriptReader import ManuscriptReader
+from infrastructure.Logger import Logger
 from domain.Manuscript import Manuscript
 
-logging.basicConfig(filename="logs.log", encoding="utf-8", level=logging.DEBUG)
+custom_logger = Logger()
 
 
 def __pandoc_command(manuscript_path: str, legacy_mode: bool = False) -> list:
@@ -24,7 +24,7 @@ def __pandoc_command(manuscript_path: str, legacy_mode: bool = False) -> list:
 
 
 def __compile_epub_from(manuscript_path: str):
-    logging.info(" === COMPILING Epub ===")
+    custom_logger.info(" === COMPILING Epub ===")
 
     reader = ManuscriptReader()
     full_manuscript = reader.readFrom(manuscript_path)
@@ -34,7 +34,7 @@ def __compile_epub_from(manuscript_path: str):
 
 
 def __legacy_compile(manuscript_path: str):
-    logging.info(" === COMPILING Epub ===")
+    custom_logger.info(" === COMPILING Epub ===")
 
     formatted_stream = basicFormatter.run(manuscript_path)
     subprocess.run(__pandoc_command(manuscript_path, True), stdin=formatted_stream, check=True)
@@ -50,15 +50,15 @@ if __name__ == "__main__":
             __legacy_compile(manuscript_path)
         else:
             __compile_epub_from(manuscript_path)
-        logging.info(" === DONE generating Epub ===")
+        custom_logger.info(" === DONE generating Epub ===")
         print(" === DONE generating Epub ===")
         sys.exit(0)
 
     except subprocess.CalledProcessError as e:
-        logging.error(f" === Pandoc command failed! === \n{e}")
+        custom_logger.error(" === Pandoc command failed! ===", e)
         print(f" === Pandoc command failed! === \n{e}")
         sys.exit(1)
     except Exception as e:
-        logging.error(f" === Something went wrong! === \n{e}")
+        custom_logger.error(" === Something went wrong! ===", e)
         print(f" === Something went wrong! === \n{e}")
         sys.exit(1)

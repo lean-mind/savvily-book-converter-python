@@ -1,13 +1,12 @@
 import subprocess
 import sys
-import logging
 from os import makedirs, chdir
 import formatter.legacy.LegacyPrintPDFFormatter as printPdfFormatter
 from infrastructure.ManuscriptReader import ManuscriptReader
+from infrastructure.Logger import Logger
 from domain.Manuscript import Manuscript
 
-logging.basicConfig(filename="logs.log", encoding="utf-8", level=logging.DEBUG,
-                    format='%(asctime)s - %(levelname)s - %(message)s')
+custom_logger = Logger()
 
 
 def __pandoc_command(manuscript_path: str) -> list:
@@ -21,7 +20,7 @@ def __pandoc_command(manuscript_path: str) -> list:
 
 
 def __compile_chapters(manuscript_path: str):
-    logging.info(" === COMPILING Print PDF chapters ===")
+    custom_logger.info(" === COMPILING Print PDF chapters ===")
 
     reader = ManuscriptReader()
     full_manuscript = reader.readFrom(manuscript_path)
@@ -32,18 +31,18 @@ def __compile_chapters(manuscript_path: str):
 
 # TODO.check pathing within template to avoid cd
 def __compile_opnening():
-    logging.info(" === COMPILING Print PDF opening ===")
+    custom_logger.info(" === COMPILING Print PDF opening ===")
 
     xelatex_command = ["xelatex", "-output-directory", ".", "../src/pandoc-templates/print/opening.tex"]
     chdir(".tmp-manuscript")
     xelatex_output = subprocess.run(xelatex_command, stdout=subprocess.PIPE)
     chdir("../")
 
-    logging.info(f"XeLaTeX output:\n\n{xelatex_output.stdout.decode()}")
+    custom_logger.info(f"XeLaTeX output:\n\n{xelatex_output.stdout.decode()}")
 
 
 def __join_sections(output_name: str):
-    logging.info(" === Joining Print PDF opening and chapters ===")
+    custom_logger.info(" === Joining Print PDF opening and chapters ===")
 
     output = f"-sOutputFile=output/{output_name}.pdf"
     ghostscript_command = ["gs", "-q", "-dNOPAUSE", "-dBATCH", "-sDEVICE=pdfwrite",
@@ -58,7 +57,7 @@ def __compile_pdf_from(manuscript_path: str):
 
 
 def __legacy_compile(manuscript_path: str):
-    logging.info(" === COMPILING Print PDF chapters ===")
+    custom_logger.info(" === COMPILING Print PDF chapters ===")
 
     formatted_stream = printPdfFormatter.run(manuscript_path)
     subprocess.run(__pandoc_command(manuscript_path), stdin=formatted_stream, check=True)
@@ -76,15 +75,15 @@ if __name__ == "__main__":
             __legacy_compile(manuscript_path)
         else:
             __compile_pdf_from(manuscript_path)
-        logging.info(" === DONE generating Print PDF ===")
+        custom_logger.info(" === DONE generating Print PDF ===")
         print(" === DONE generating Print PDF ===")
         sys.exit(0)
 
     except subprocess.CalledProcessError as e:
-        logging.error(f" === Pandoc command failed! === \n{e}")
+        custom_logger.error(" === Pandoc command failed! ===", e)
         print(f" === Pandoc command failed! === \n{e}")
         sys.exit(1)
     except Exception as e:
-        logging.error(f" === Something went wrong! === \n{e}")
+        custom_logger.error(" === Something went wrong! ===", e)
         print(f" === Something went wrong! === \n{e}")
         sys.exit(1)

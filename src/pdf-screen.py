@@ -1,18 +1,12 @@
 import subprocess
 import sys
-import logging
-from logging.handlers import RotatingFileHandler
 from os import makedirs, chdir
 import formatter.legacy.LegacyBasicFormatter as basicFormatter
 from infrastructure.ManuscriptReader import ManuscriptReader
+from infrastructure.Logger import Logger
 from domain.Manuscript import Manuscript
 
-logfile = "logfile"
-logging.basicConfig(filename=logfile, encoding="utf-8", level=logging.DEBUG,
-                    format='%(asctime)s - %(levelname)s - %(message)s')
-handler = RotatingFileHandler(logfile, maxBytes=2 * 100 * 1024, backupCount=1)
-log = logging.getLogger()
-log.addHandler(handler)
+custom_logger = Logger()
 
 
 def __pandoc_command(manuscript_path: str) -> list:
@@ -27,7 +21,7 @@ def __pandoc_command(manuscript_path: str) -> list:
 
 
 def __compile_chapters(manuscript_path: str):
-    logging.info(" === COMPILING Screen PDF chapters ===")
+    custom_logger.info(" === COMPILING Screen PDF chapters ===")
 
     reader = ManuscriptReader()
     full_manuscript = reader.readFrom(manuscript_path)
@@ -38,18 +32,18 @@ def __compile_chapters(manuscript_path: str):
 
 # TODO.check pathing within template to avoid cd
 def __compile_opnening():
-    logging.info(" === COMPILING Screen PDF opening ===")
+    custom_logger.info(" === COMPILING Screen PDF opening ===")
 
     xelatex_command = ["xelatex", "-output-directory", ".", "../src/pandoc-templates/screen/opening.tex"]
     chdir(".tmp-manuscript")
     xelatex_output = subprocess.run(xelatex_command, stdout=subprocess.PIPE)
     chdir("../")
 
-    logging.info(f"XeLaTeX output:\n\n{xelatex_output.stdout.decode()}")
+    custom_logger.info(f"XeLaTeX output:\n\n{xelatex_output.stdout.decode()}")
 
 
 def __join_sections(output_name: str):
-    logging.info(" === Joining Screen PDF opening and chapters ===")
+    custom_logger.info(" === Joining Screen PDF opening and chapters ===")
 
     output = f"-sOutputFile=output/{output_name}.pdf"
     ghostscript_command = ["gs", "-q", "-dNOPAUSE", "-dBATCH", "-sDEVICE=pdfwrite",
@@ -64,7 +58,7 @@ def __compile_pdf_from(manuscript_path: str):
 
 
 def __legacy_compile(manuscript_path: str):
-    logging.info(" === COMPILING Screen PDF chapters ===")
+    custom_logger.info(" === COMPILING Screen PDF chapters ===")
 
     formatted_stream = basicFormatter.run(manuscript_path)
     subprocess.run(__pandoc_command(manuscript_path), stdin=formatted_stream, check=True)
@@ -82,15 +76,15 @@ if __name__ == "__main__":
             __legacy_compile(manuscript_path)
         else:
             __compile_pdf_from(manuscript_path)
-        logging.info(" === DONE generating Screen PDF ===")
+        custom_logger.info(" === DONE generating Screen PDF ===")
         print(" === DONE generating Screen PDF ===")
         sys.exit(0)
 
     except subprocess.CalledProcessError as e:
-        logging.error(f" === Pandoc command failed! === \n{e}")
+        custom_logger.error(" === Pandoc command failed! ===", e)
         print(f" === Pandoc command failed! === \n{e}")
         sys.exit(1)
     except Exception as e:
-        logging.error(f" === Something went wrong! === \n{e}")
+        custom_logger.error(" === Something went wrong! ===", e)
         print(f" === Something went wrong! === \n{e}")
         sys.exit(1)

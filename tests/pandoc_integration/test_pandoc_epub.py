@@ -1,6 +1,6 @@
 import pytest
 from ebooklib import epub, ITEM_COVER
-from tests.pandoc_integration.fixtures.helpers.EpubHelper import EpubHelper
+from tests.pandoc_integration.fixtures.EpubHelper import EpubHelper
 
 ebook = epub.read_epub("output/ebook.epub")
 helper = EpubHelper(ebook)

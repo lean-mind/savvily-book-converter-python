@@ -6,6 +6,7 @@ class Logger(logging.getLoggerClass()):
     log_filename = "logfile"
     log_format = logging.Formatter('%(asctime)s - %(levelname)s - %(message)s')
     log_level = logging.DEBUG
+    log_byte_size = 200 * 1024
 
     def __init__(self):
         self.root = logging.getLogger()
@@ -19,7 +20,7 @@ class Logger(logging.getLoggerClass()):
         self.root.error(f"{log} \n{err}")
 
     def _setup_handler(self):
-        handler = RotatingFileHandler(self.log_filename, encoding="utf-8", maxBytes=2 * 100 * 1024, backupCount=1)
+        handler = RotatingFileHandler(self.log_filename, encoding="utf-8", maxBytes=self.log_byte_size, backupCount=1)
         handler.setFormatter(self.log_format)
         handler.setLevel(self.log_level)
         return handler

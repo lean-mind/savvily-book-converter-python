@@ -1,13 +1,18 @@
 import subprocess
 import sys
 import logging
+from logging.handlers import RotatingFileHandler
 from os import makedirs, chdir
 import formatter.legacy.LegacyBasicFormatter as basicFormatter
 from infrastructure.ManuscriptReader import ManuscriptReader
 from domain.Manuscript import Manuscript
 
-logging.basicConfig(filename="logs.log", encoding="utf-8", level=logging.DEBUG,
+logfile = "logfile"
+logging.basicConfig(filename=logfile, encoding="utf-8", level=logging.DEBUG,
                     format='%(asctime)s - %(levelname)s - %(message)s')
+handler = RotatingFileHandler(logfile, maxBytes=2 * 100 * 1024, backupCount=1)
+log = logging.getLogger()
+log.addHandler(handler)
 
 
 def __pandoc_command(manuscript_path: str) -> list:

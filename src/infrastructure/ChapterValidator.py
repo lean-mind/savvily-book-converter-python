@@ -2,6 +2,11 @@ import re
 
 
 class ChapterValidator:
+    def filter(self, chapters: list) -> list:
+        valid_filenames = [filename for filename in chapters
+                           if self.is_valid_name(filename)]
+        return valid_filenames
+
     def is_valid_name(self, filename: str) -> bool:
         index_separator = '_'
         chapter_index = r'^(\d+)'

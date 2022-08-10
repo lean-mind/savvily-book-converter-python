@@ -1,12 +1,16 @@
 import os
 from infrastructure.ChapterSorter import ChapterSorter
+from infrastructure.ChapterValidator import ChapterValidator
 
 
 class ManuscriptReader:
+    sorter = ChapterSorter()
+    validator = ChapterValidator()
+
     def readFrom(self, path: str) -> str:
-        sorter = ChapterSorter()
         manuscript_chapters = os.listdir(path)
-        chapters_filenames = sorter.sort(manuscript_chapters)
+        valid_chapters = self.validator.filter(manuscript_chapters)
+        chapters_filenames = self.sorter.sort(valid_chapters)
 
         read_chapters = ""
         for file in chapters_filenames:

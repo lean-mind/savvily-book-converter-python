@@ -40,8 +40,8 @@ class Manuscript:
             reference_url = match.group(3)
             text_after_ref = match.group(4)
 
-            # Discard lines that start with !, aka images
-            if match.group(0).startswith('!'):
+            # Discard lines that start with ![, aka images
+            if match.group(0).startswith('!['):
                 return match.group(0)
             else:
                 return (

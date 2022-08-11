@@ -91,11 +91,11 @@ class TestLinksToFootnotes:
     @pytest.mark.skip(reason="Currently broken, links in the same line are swallowed")
     def test_two_links_one_line(self):
         line_with_two_links = Manuscript(
-            "sample text [this is some linked text](this-is-a-url) more text [and](another-url) after that"
+            "sample text [this is some linked text](this-is-a-url) more text [and yet](another-url) after that"
         )
         line_with_two_refs = line_with_two_links.turn_links_to_footnotes()
         expected_ref_format = (
-            "sample text this is some linked text[^this-is-a-url] more text and[^another-url] after that"
+            "sample text this is some linked text[^this-is-a-url] more text and yet[^another-url] after that"
             "\n\n"
             "[^this-is-a-url]: this-is-a-url"
             "\n"

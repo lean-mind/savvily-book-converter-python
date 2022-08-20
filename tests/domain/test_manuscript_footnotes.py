@@ -36,6 +36,22 @@ class TestLinksToFootnotes:
         )
         assert str(line_with_ref) == expected_ref_format
 
+    def test_asterisk_in_link_text(self):
+        link_with_asterisks = Manuscript("sample text [*emphasis*](url-link) more text")
+        line_with_ref = link_with_asterisks.turn_links_to_footnotes()
+        expected_ref_format = (
+            "sample text *emphasis*[^url-link] more text"
+            "\n\n"
+            "[^url-link]: url-link"
+            "\n"
+        )
+        assert str(line_with_ref) == expected_ref_format
+
+    def test_discard_if_referenced_text_is_less_than_four_chars(self):
+        link_with_short_text = Manuscript("[123](array-tuple)")
+        unformatted_line = link_with_short_text.turn_links_to_footnotes()
+        assert str(unformatted_line) == str(link_with_short_text)
+
     def test_discard_images(self):
         line_with_image = Manuscript("![image-name](image/path)")
         unformatted_line = line_with_image.turn_links_to_footnotes()

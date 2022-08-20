@@ -27,6 +27,14 @@ class Manuscript:
         return Manuscript(re.sub(code_block_tag_expression, format_and_capitalize, self.text))
 
     def turn_links_to_footnotes(self):
+        link_regex = re.compile(r"[^!]\[....+?\]\(([^)]+)\)|^\[....+?\]\(([^)]+)\)")
+
+        parsed_text = self.text
+        while re.search(link_regex, parsed_text):
+            parsed_text = self.substitute(parsed_text)
+        return Manuscript(parsed_text)
+
+    def substitute(self, text):
         link_regex = re.compile(r"""
             (.*|)           # group before link, '|' for lines starting with link
             \[(....+?)\]    # group link text, anything between the first '[' and the first ']' of the line
@@ -51,7 +59,7 @@ class Manuscript:
                     "\n"
                 )
 
-        return Manuscript(re.sub(link_regex, turn_to_footnote, self.text))
+        return re.sub(link_regex, turn_to_footnote, text)
 
     def screen_pdf_format(self):
         return Manuscript(self.text) \

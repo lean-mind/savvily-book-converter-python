@@ -41,8 +41,8 @@ class TestPrintOutput:
 
 
 class TestPrintLinks:
-    def test_all_links_are_converted_to_footnotes(self):
-        links_in_sample_md = 8
+    def test_all_links_are_converted_to_footnote_format(self):
+        links_in_sample_md = 10
         links_in_pdf = helper.get_links_from_pdf()
         assert len(links_in_pdf) == links_in_sample_md
 

@@ -27,45 +27,33 @@ class Manuscript:
         return Manuscript(re.sub(code_block_tag_expression, format_and_capitalize, self.text))
 
     def turn_links_to_footnotes(self):
-        link = r"\[.{4,}\]\(.+?\)"
-        not_image_or_starts_with = r"[^!]" + link + r"|^" + link
-        link_regex = re.compile(not_image_or_starts_with)
-
-        parsed_text = self.text
-        while re.search(link_regex, parsed_text):
-            parsed_text = self.substitute(parsed_text)
-        return Manuscript(parsed_text)
-
-    def substitute(self, text):
         link_regex = re.compile(r"""
-            # group before link
-            (^.*)
+            # group before link, anything before the last '[' of the line, except for '!' (discard images)
+            ^([^!]*)
             # group link text, anything 4 or more chars long between the last '[' of the line and the following ']'
             \[(.{4,}?)\]
             # group link url, anything between the last '(' of the line and the following ')'
             \((.+?)\)
-            # group after link
+            # group after link, anything between the last ')' and EOL
             (.*$)
         """, flags=re.VERBOSE | re.MULTILINE)
 
-        def turn_to_footnote(match):
-            text_before_ref = match.group(1)
-            referenced_text = match.group(2)
-            reference_url = match.group(3)
-            text_after_ref = match.group(4)
-
-            # Discard lines that start with ![, aka images
-            if match.group(0).startswith('!['):
-                return match.group(0)
-            else:
+        parsed_text = self.text
+        while re.search(link_regex, parsed_text):
+            def build_footnote(match):
+                text_before_ref = match.group(1)
+                referenced_text = match.group(2)
+                reference_url = match.group(3)
+                text_after_ref = match.group(4)
                 return (
                     f"{text_before_ref}{referenced_text}[^{reference_url}]{text_after_ref}"
                     "\n\n"
                     f"[^{reference_url}]: {reference_url}"
                     "\n"
                 )
+            parsed_text = re.sub(link_regex, build_footnote, parsed_text)
 
-        return re.sub(link_regex, turn_to_footnote, text)
+        return Manuscript(parsed_text)
 
     def screen_pdf_format(self):
         return Manuscript(self.text) \

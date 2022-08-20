@@ -1,4 +1,3 @@
-import pytest
 from src.domain.Manuscript import Manuscript
 
 
@@ -88,7 +87,6 @@ class TestLinksToFootnotes:
         )
         assert str(lines_with_image_and_ref) == expected_ref_format
 
-    @pytest.mark.skip(reason="Currently broken, links in the same line are swallowed")
     def test_two_links_one_line(self):
         line_with_two_links = Manuscript(
             "sample text [this is some linked text](this-is-a-url) more text [and yet](another-url) after that"
@@ -98,6 +96,8 @@ class TestLinksToFootnotes:
             "sample text this is some linked text[^this-is-a-url] more text and yet[^another-url] after that"
             "\n\n"
             "[^this-is-a-url]: this-is-a-url"
+            "\n"
+            "\n"
             "\n"
             "[^another-url]: another-url"
             "\n"

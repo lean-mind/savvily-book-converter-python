@@ -27,7 +27,9 @@ class Manuscript:
         return Manuscript(re.sub(code_block_tag_expression, format_and_capitalize, self.text))
 
     def turn_links_to_footnotes(self):
-        link_regex = re.compile(r"[^!]\[....+?\]\(([^)]+)\)|^\[....+?\]\(([^)]+)\)")
+        link = r"\[.{4,}\]\(.+?\)"
+        not_image_or_starts_with = r"[^!]" + link + r"|^" + link
+        link_regex = re.compile(not_image_or_starts_with)
 
         parsed_text = self.text
         while re.search(link_regex, parsed_text):
@@ -36,11 +38,15 @@ class Manuscript:
 
     def substitute(self, text):
         link_regex = re.compile(r"""
-            (.*|)           # group before link, '|' for lines starting with link
-            \[(....+?)\]    # group link text, anything between the first '[' and the first ']' of the line
-            \(([^)]+)\)     # group link url, anything between the first '(' and the first ')' of the line
-            (.*)            # group after link
-        """, flags=re.VERBOSE)
+            # group before link
+            (^.*)
+            # group link text, anything 4 or more chars long between the last '[' of the line and the following ']'
+            \[(.{4,}?)\]
+            # group link url, anything between the last '(' of the line and the following ')'
+            \((.+?)\)
+            # group after link
+            (.*$)
+        """, flags=re.VERBOSE | re.MULTILINE)
 
         def turn_to_footnote(match):
             text_before_ref = match.group(1)

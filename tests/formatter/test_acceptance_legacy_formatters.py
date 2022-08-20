@@ -1,5 +1,5 @@
-import src.formatter.legacy.LegacyBasicFormatter as basicFormatter
-import src.formatter.legacy.LegacyPrintPDFFormatter as printPdfFormatter
+import formatter.legacy.LegacyBasicFormatter as basicFormatter
+import formatter.legacy.LegacyPrintPDFFormatter as printPdfFormatter
 import tests.formatter.fixtures.legacy_epub_format_md as epub_format_md
 import tests.formatter.fixtures.legacy_screen_pdf_format_md as screen_pdf_format_md
 import tests.formatter.fixtures.legacy_print_pdf_format_md as print_pdf_format_md

@@ -1,6 +1,7 @@
 # MD as outputted by legacy book generator, with some improvements:
-# 1. Handles '!' as expected (used to discard link -> footnote conversion in lines with '!')
-# 2. Long links as expected (used to discard link -> footnote conversion after a certain link length)
+# 1. Handles '!' as expected (used to discard link if any ! was in the same line -> converts links to footnotes in lines with '!')
+# 2. Long links are converted (used to discard long links -> converts long links to footnotes)
+# 3. Lines with two links work! (used to discard second link -> converts both links to footnotes)
 content = """
 # Est versat sed remorum ordine murice
 
@@ -22,7 +23,10 @@ veste sed grave sum, novae. Atque nec petiti gladios capitis, iam inpulsumque.
 [^lean]: Quae qui, de sine, tacuit, aequora saevorum inposito, parte ventrem pater;
 mergor toto. Tantos hic auditis defuit fontes nobis dummodo.
 
-Pressa [LINK1](http://adsensit.net/visa-inperfectuadsdasd) damno *tegendas*. pressa LINK2[^http://adsensit.net/visa-inperfectus] damno *tegendas*.
+Pressa LINK1[^http://adsensit.net/visa-inperfectuadsdasd] damno *tegendas*. pressa LINK2[^http://adsensit.net/visa-inperfectus] damno *tegendas*.
+
+[^http://adsensit.net/visa-inperfectuadsdasd]: http://adsensit.net/visa-inperfectuadsdasd
+
 
 [^http://adsensit.net/visa-inperfectus]: http://adsensit.net/visa-inperfectus
 

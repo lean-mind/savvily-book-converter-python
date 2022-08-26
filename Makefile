@@ -26,12 +26,6 @@ tests-c: _check-output ## Run all tests with coverage
 tests-w: ## Run domain and infrastructure tests in watch mode
 	@pipenv run ptw --ignore tests/pandoc_integration
 
-.PHONY: tests-ci
-tests-ci: _check-output
-	@pipenv --python `which python3` install
-	@pipenv install --dev
-	@pipenv run pytest
-
 .PHONY: check-output
 _check-output:
 	@echo "Checking output"

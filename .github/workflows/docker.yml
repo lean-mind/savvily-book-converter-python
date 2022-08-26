@@ -21,8 +21,8 @@ jobs:
       - name: Install pipenv
         run: pip3 install pipenv
 
-      - name: Install mypy
-        run: pipenv install mypy
+      - name: Install dependencies
+        run: make setup
 
       - name: Check types
         run: make check-types
@@ -33,5 +33,5 @@ jobs:
       - name: Generate sample book in all formats
         run: ./convert.sh -a 'tests/pandoc_integration/fixtures/sample-manuscript/'
 
-      - name: Run all tests
-        run: make tests-ci
+      - name: Run tests
+        run: make tests

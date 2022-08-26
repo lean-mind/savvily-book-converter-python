@@ -21,6 +21,12 @@ jobs:
       - name: Install pipenv
         run: pip3 install pipenv
 
+      - name: Install mypy
+        run: pipenv install mypy
+
+      - name: Check types
+        run: make check-types
+
       - name: Build Docker image
         run: docker build $PWD --file Dockerfile --tag savvily-book-generator
 

@@ -3,13 +3,14 @@ import sys
 from os import makedirs
 import formatter.legacy.LegacyBasicFormatter as basicFormatter
 from infrastructure.ManuscriptReader import ManuscriptReader
-from infrastructure.Logger import Logger
-from domain.Manuscript import Manuscript
+from infrastructure.Logger import Logger  # type: ignore
+from domain.Manuscript import Manuscript  # type: ignore
+
 
 custom_logger = Logger()
 
 
-def __pandoc_command(manuscript_path: str, legacy_mode: bool = False) -> list:
+def __pandoc_command(manuscript_path: str, legacy_mode: bool = False) -> list[str]:
     metadata = "--metadata-file=src/pandoc-templates/epub/metadata.yml"
     resources = f"--resource-path={manuscript_path}"
     if legacy_mode:
@@ -23,7 +24,7 @@ def __pandoc_command(manuscript_path: str, legacy_mode: bool = False) -> list:
     return ["timeout", "600", "pandoc", font, css, cover_image, output, metadata, resources]
 
 
-def __compile_epub_from(manuscript_path: str):
+def __compile_epub_from(manuscript_path: str) -> None:
     custom_logger.info(" === COMPILING Epub ===")
 
     reader = ManuscriptReader()
@@ -33,7 +34,7 @@ def __compile_epub_from(manuscript_path: str):
     subprocess.run(__pandoc_command(manuscript_path), input=formatted_manuscript.as_encoded_string(), check=True)
 
 
-def __legacy_compile(manuscript_path: str):
+def __legacy_compile(manuscript_path: str) -> None:
     custom_logger.info(" === COMPILING Epub ===")
 
     formatted_stream = basicFormatter.run(manuscript_path)

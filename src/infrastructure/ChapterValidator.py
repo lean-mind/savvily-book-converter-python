@@ -2,7 +2,7 @@ import re
 
 
 class ChapterValidator:
-    def filter(self, chapters: list) -> list:
+    def filter(self, chapters: list[str]) -> list[str]:
         valid_filenames = [filename for filename in chapters
                            if self.is_valid_name(filename)]
         return valid_filenames

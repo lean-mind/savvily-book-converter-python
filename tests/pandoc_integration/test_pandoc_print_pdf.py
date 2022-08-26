@@ -3,7 +3,7 @@ from pdfminer.high_level import extract_text
 from tests.pandoc_integration.fixtures.PdfHelper import PdfHelper
 
 full_text = extract_text("output/python_print.pdf")
-raw_pdf: list = [line for line in full_text.splitlines() if line]
+raw_pdf: list[str] = [line for line in full_text.splitlines() if line]
 helper = PdfHelper(raw_pdf)
 
 
@@ -16,12 +16,12 @@ class TestPrintOutput:
         assert actual_number_of_pages == expected_number_of_pages
 
     def test_code_block_lang_tag_capitalized(self):
-        all_code_block_lang_tags: list = [
+        all_code_block_lang_tags: list[str] = [
             tag
             for tag in raw_pdf
             if tag.lower() in ["java", "python"]
         ]
-        capitalized_lang_tags: list = [
+        capitalized_lang_tags: list[str] = [
             capitalized_tag
             for capitalized_tag in all_code_block_lang_tags
             if capitalized_tag[0].isupper()

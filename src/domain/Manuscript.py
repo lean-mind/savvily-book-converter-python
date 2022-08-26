@@ -1,3 +1,4 @@
+# type: ignore
 from dataclasses import dataclass
 import re
 
@@ -18,7 +19,7 @@ class Manuscript:
         return Manuscript(re.sub(heading, new_line_before_match, self.text))
 
     def format_lang_tags(self):
-        def format_and_capitalize(match):
+        def format_and_capitalize(match: re.Match[str]) -> str:
             code_block_tag = match.group(1)
             capitalized_lang_tag = match.group(2).capitalize()
             return f"{code_block_tag}{{title={capitalized_lang_tag}}}"
@@ -40,7 +41,7 @@ class Manuscript:
 
         parsed_text = self.text
         while re.search(link_regex, parsed_text):
-            def build_footnote(match):
+            def build_footnote(match: re.Match[str]) -> str:
                 text_before_ref = match.group(1)
                 referenced_text = match.group(2)
                 reference_url = match.group(3)
@@ -74,8 +75,8 @@ class Manuscript:
             .screen_pdf_format() \
             .turn_links_to_footnotes()
 
-    def as_encoded_string(self):
+    def as_encoded_string(self) -> bytes:
         return str(self).encode()
 
-    def __str__(self):
+    def __str__(self) -> str:
         return self.text

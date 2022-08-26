@@ -2,7 +2,7 @@ import subprocess as sp
 import formatter.legacy.LegacyBasicFormatter as bf
 
 
-def run(input_markdown_path: str):
+def run(input_markdown_path: str):  # type: ignore
     ignore_images = r"/!.*/!"
     search = __build_search_regex()
     replace = __build_replace_regex()

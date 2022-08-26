@@ -12,8 +12,7 @@ setup: ## Setup local environment
 
 .PHONY: check-types
 check-types: ## Setup local environment
-	@pipenv run mypy --namespace-packages --explicit-package-bases src/
-	@pipenv run mypy --namespace-packages --explicit-package-bases tests/
+	@pipenv run mypy src
 
 .PHONY: tests
 tests: _check-output ## Run all tests

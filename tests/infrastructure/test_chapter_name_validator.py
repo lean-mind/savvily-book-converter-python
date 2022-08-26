@@ -1,4 +1,4 @@
-from src.infrastructure.ChapterValidator import ChapterValidator
+from infrastructure.ChapterValidator import ChapterValidator
 
 
 class TestValidator:

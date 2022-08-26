@@ -3,13 +3,13 @@ import sys
 from os import makedirs, chdir
 import formatter.legacy.LegacyPrintPDFFormatter as printPdfFormatter
 from infrastructure.ManuscriptReader import ManuscriptReader
-from infrastructure.Logger import Logger
-from domain.Manuscript import Manuscript
+from infrastructure.Logger import Logger  # type: ignore
+from domain.Manuscript import Manuscript  # type: ignore
 
 custom_logger = Logger()
 
 
-def __pandoc_command(manuscript_path: str) -> list:
+def __pandoc_command(manuscript_path: str) -> list[str]:
     engine = "--pdf-engine=xelatex"
     template = "--template=src/pandoc-templates/print/custom-book.tex"
     figures = "markdown-implicit_figures"
@@ -19,7 +19,7 @@ def __pandoc_command(manuscript_path: str) -> list:
     return ["timeout", "600", "pandoc", engine, template, "--listings", "-V", "documentclass=book", "-f", figures, "-o", output, resources]
 
 
-def __compile_chapters(manuscript_path: str):
+def __compile_chapters(manuscript_path: str) -> None:
     custom_logger.info(" === COMPILING Print PDF chapters ===")
 
     reader = ManuscriptReader()
@@ -30,7 +30,7 @@ def __compile_chapters(manuscript_path: str):
 
 
 # TODO.check pathing within template to avoid cd
-def __compile_opnening():
+def __compile_opnening() -> None:
     custom_logger.info(" === COMPILING Print PDF opening ===")
 
     xelatex_command = ["xelatex", "-output-directory", ".", "../src/pandoc-templates/print/opening.tex"]
@@ -41,7 +41,7 @@ def __compile_opnening():
     custom_logger.info(f"XeLaTeX output:\n\n{xelatex_output.stdout.decode()}")
 
 
-def __join_sections(output_name: str):
+def __join_sections(output_name: str) -> None:
     custom_logger.info(" === Joining Print PDF opening and chapters ===")
 
     output = f"-sOutputFile=output/{output_name}.pdf"
@@ -50,13 +50,13 @@ def __join_sections(output_name: str):
     subprocess.run(ghostscript_command)
 
 
-def __compile_pdf_from(manuscript_path: str):
+def __compile_pdf_from(manuscript_path: str) -> None:
     __compile_chapters(manuscript_path)
     __compile_opnening()
     __join_sections("python_print")
 
 
-def __legacy_compile(manuscript_path: str):
+def __legacy_compile(manuscript_path: str) -> None:
     custom_logger.info(" === COMPILING Print PDF chapters ===")
 
     formatted_stream = printPdfFormatter.run(manuscript_path)
